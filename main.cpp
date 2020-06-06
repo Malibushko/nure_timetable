@@ -2,15 +2,14 @@
 #include <QQmlApplicationEngine>
 #include <QDebug>
 
-#include "src/internal/api_structs.h"
-#include "src/internal/json_parser.h"
-
+#include "src/api.h"
 int main(int argc, char *argv[])
 {
-
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<timetable::ApiJSON>("lib",1,0,"ApiJSON");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -20,6 +19,6 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-
     return app.exec();
+
 }

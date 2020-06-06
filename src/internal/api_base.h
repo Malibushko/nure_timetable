@@ -2,9 +2,11 @@
 #include "api_structs.h"
 namespace timetable::internal::api {
 
-class ApiBase {
-
+class ApiBase : public QObject {
+    Q_OBJECT
 public:
+    ApiBase(QObject* obj = nullptr) : QObject{obj} {}
+
     virtual void faculties() = 0;
     virtual void departments(int32_t p_id_faculty) = 0;
     virtual void teachers(int32_t p_id_department) = 0;

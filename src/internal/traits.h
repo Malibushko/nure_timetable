@@ -5,6 +5,7 @@
 #include <memory>
 #include <string_view>
 #include <variant>
+#include <QString>
 
 namespace timetable::internal::traits {
 // implementation from cppreference
@@ -68,7 +69,7 @@ struct is_any_of {
     static constexpr bool value = std::disjunction_v<std::is_same<T, Ts>...>;
 };
 template <class T>
-constexpr static bool is_string_type = is_any_of<T,const char *,char *,std::string,std::string_view>::value;
+constexpr static bool is_string_type = is_any_of<T,const char *,char *,std::string,std::string_view,QString>::value;
 
 template <class T,class ... Ts>
 inline constexpr bool is_any_of_v = is_any_of<T,Ts...>::value;

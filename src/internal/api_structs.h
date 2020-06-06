@@ -9,7 +9,11 @@
 
 namespace timetable::internal {
 
-using string_t = std::string;
+using string_t = QString;
+
+template <class T>
+using container_t = QList<T>;
+
 using int_t = int32_t;
 using int_long_t = int64_t;
 
@@ -23,7 +27,7 @@ struct Department {
     declare_field(int_t,id);
     declare_field(string_t,short_name);
     declare_field(string_t,full_name);
-    declare_field(std::vector<Teacher>,teachers);
+    declare_field(container_t<Teacher>,teachers);
 };
 struct Teacher {
     declare_struct(Teacher)
@@ -36,8 +40,8 @@ struct Faculty {
     declare_field(int_t,id);
     declare_field(string_t,short_name);
     declare_field(string_t,full_name);
-    declare_field(std::vector<Department>,departments);
-    declare_field(std::vector<Direction>,directions);
+    declare_field(container_t<Department>,departments);
+    declare_field(container_t<Direction>,directions);
 };
 struct AuditoryType {
     declare_struct(AuditoryType)
@@ -46,7 +50,7 @@ struct AuditoryType {
 };
 struct AuditoryTypes {
     declare_struct(AuditoryTypes)
-    declare_field(std::vector<AuditoryType>,auditory_types);
+    declare_field(container_t<AuditoryType>,auditory_types);
 };
 struct Auditory {
     declare_struct(Auditory)
@@ -54,14 +58,14 @@ struct Auditory {
     declare_field(string_t,short_name);
     declare_field(string_t,floor);
     declare_field(string_t,is_have_power);
-    declare_field(std::vector<AuditoryType>,auditory_types);
+    declare_field(container_t<AuditoryType>,auditory_types);
 };
 
 struct University {
     declare_struct(University)
     declare_field(string_t,short_name);
     declare_field(string_t,full_name);
-    declare_field(std::vector<Faculty>,faculties);
+    declare_field(container_t<Faculty>,faculties);
 };
 struct Group {
     declare_struct(Group);
@@ -74,7 +78,7 @@ struct Speciality {
     declare_field(int_t,id);
     declare_field(string_t,short_name);
     declare_field(string_t,full_name);
-    declare_field(std::vector<Group>,groups);
+    declare_field(container_t<Group>,groups);
 };
 
 struct Direction {
@@ -82,8 +86,21 @@ struct Direction {
     declare_field(int_t,id);
     declare_field(string_t,short_name);
     declare_field(string_t,full_name);
-    declare_field(std::vector<Speciality>,specialities);
-    declare_field(std::vector<Group>,groups);
+    declare_field(container_t<Speciality>,specialities);
+    declare_field(container_t<Group>,groups);
+};
+
+struct UniversityWrapper {
+    declare_struct(UniversityWrapper)
+    declare_field(University,university);
+};
+struct DepartmentWrapper {
+    declare_struct(DepartmentWrapper)
+    declare_field(Department,department);
+};
+struct FacultyWrapper {
+    declare_struct(FacultyWrapper);
+    declare_field(Faculty,faculty);
 };
 
 struct Lesson {
