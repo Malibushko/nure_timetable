@@ -2,5 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>qml/components/Settings.qml</file>
+        <file>qml/styles/StyledText.qml</file>
+        <file>qml/styles/StyledTextLarge.qml</file>
+        <file>qml/styles/StyledTextMedium.qml</file>
+        <file>qml/components/Header.qml</file>
+        <file>qml/styles/BurgerButton.qml</file>
     </qresource>
 </RCC>
