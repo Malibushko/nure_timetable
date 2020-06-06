@@ -7,6 +7,16 @@
         <file>qml/styles/StyledTextLarge.qml</file>
         <file>qml/styles/StyledTextMedium.qml</file>
         <file>qml/components/Header.qml</file>
-        <file>qml/styles/BurgerButton.qml</file>
+        <file>qml/icons/calendar.svg</file>
+        <file>qml/icons/search.svg</file>
+        <file>qml/styles/HeaderButton.qml</file>
+        <file>qml/icons/back.svg</file>
+        <file>qml/icons/settings.svg</file>
+        <file>qml/components/SavedTimetables.qml</file>
+        <file>qml/styles/BottomBorder.qml</file>
+        <file>qml/styles/RowButton.qml</file>
+        <file>qml/icons/refresh.svg</file>
+        <file>qml/icons/trash.svg</file>
+        <file>qml/components/FindPage.qml</file>
     </qresource>
 </RCC>

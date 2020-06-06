@@ -9,4 +9,5 @@ Item {
     property double padding: (isPortrait ? screenWidth : screenHeight) * 0.05
     property double rowHeight: screenHeight * 0.1
     property double rowWidth: screenWidth
+    property var iconColor: "white"
 }

@@ -17,10 +17,16 @@ ApplicationWindow {
     Settings {
         id: appSettings
     }
-    header: Header {
-    }
+    header: Header {}
+
     StackView {
         id: mainView
         anchors.fill: parent
+        initialItem: SavedTimetables {
+            id: savedTimetables
+        }
+        FindPage {
+            id: findPage
+        }
     }
 }
