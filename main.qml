@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
+
 import "./qml/components"
 
 ApplicationWindow {
@@ -18,6 +19,7 @@ ApplicationWindow {
         id: appSettings
     }
     header: Header {}
+
 
     StackView {
         id: mainView

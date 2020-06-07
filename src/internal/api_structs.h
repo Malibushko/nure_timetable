@@ -1,3 +1,4 @@
+#pragma once
 #include <QMetaObject>
 #include <QObject>
 #include <QDate>
@@ -29,6 +30,8 @@ struct Department {
     declare_field(string_t,full_name);
     declare_field(container_t<Teacher>,teachers);
 };
+
+
 struct Teacher {
     declare_struct(Teacher)
     declare_field(int_t,id);
@@ -102,6 +105,11 @@ struct FacultyWrapper {
     declare_struct(FacultyWrapper);
     declare_field(Faculty,faculty);
 };
+struct Timetable {
+    declare_struct(Timetable)
+    declare_field(int,id);
+    declare_field(string_t,title);
+};
 
 struct Lesson {
     QDate date;
@@ -147,3 +155,15 @@ struct Lesson {
 };
 
 }
+Q_DECLARE_METATYPE(timetable::internal::Department)
+Q_DECLARE_METATYPE(timetable::internal::Teacher)
+Q_DECLARE_METATYPE(timetable::internal::Faculty)
+Q_DECLARE_METATYPE(timetable::internal::AuditoryType)
+Q_DECLARE_METATYPE(timetable::internal::AuditoryTypes)
+Q_DECLARE_METATYPE(timetable::internal::Auditory)
+Q_DECLARE_METATYPE(timetable::internal::University)
+Q_DECLARE_METATYPE(timetable::internal::Group)
+Q_DECLARE_METATYPE(timetable::internal::Speciality)
+Q_DECLARE_METATYPE(timetable::internal::Direction)
+Q_DECLARE_METATYPE(timetable::internal::Timetable)
+Q_DECLARE_METATYPE(timetable::internal::Lesson)

@@ -52,12 +52,20 @@ inline namespace details {
         }
     }
     QByteArray decode1251(const char* data) {
-            QTextCodec * codec = QTextCodec::codecForName("WINDOWS-1251");
-            QTextDecoder * decoder = codec->makeDecoder();
-            QByteArray encodedData(decoder->toUnicode(data).toUtf8());
-            return encodedData;
+        QTextCodec * codec = QTextCodec::codecForName("WINDOWS-1251");
+        QTextDecoder * decoder = codec->makeDecoder();
+        QByteArray encodedData(decoder->toUnicode(data).toUtf8());
+        return encodedData;
     }
 }
+
+QString ApiJSON::getRoot() const {
+    return API_ROOT;
+}
+void ApiJSON::setRoot(const QString& root) {
+    API_ROOT = root;
+}
+
 void ApiJSON::faculties() {
     QUrl request(API_ROOT+map(API_TYPES::P_API_FACULTIES_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
@@ -164,5 +172,47 @@ void ApiJSON::schedule(int32_t p_group_id) {
     });
     mng->get(QNetworkRequest{request});
 }
+void ApiJSON::groups() {
+    QUrl request(API_ROOT+map(API_TYPES::P_API_GROUP_JSON));
+    QNetworkReply * r = mng->get(QNetworkRequest{request});
+    connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
+        if (r->error() != QNetworkReply::NoError) {
+            emit error(r->errorString());
+            return;
+        }
+        internal::UniversityWrapper response = internal::JsonParser::i().
+                fromJson<internal::UniversityWrapper>(details::decode1251(r->readAll().data()).data());
+        for (const auto & faculty : response.university.faculties) {
+            for (const auto & direction : faculty.directions) {
+                for (const auto & group : direction.groups)
+                    emit groupResponse(QVariant::fromValue(internal::Timetable{group.id,group.name}));
+                for (const auto & speciality : direction.specialities) {
+                    for (const auto & group : speciality.groups) {
+                        emit groupResponse(QVariant::fromValue(internal::Timetable{group.id,group.name}));
+                    }
+                }
+            }
+        }
+    });
+}
+void ApiJSON::teachers() {
+    QUrl request(API_ROOT+map(API_TYPES::P_API_PODR_JSON));
+    QNetworkReply * r = mng->get(QNetworkRequest{request});
+    connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
+        if (r->error() != QNetworkReply::NoError) {
+            emit error(r->errorString());
+            return;
+        }
+        internal::UniversityWrapper response = internal::JsonParser::i().
+                fromJson<internal::UniversityWrapper>(details::decode1251(r->readAll().data()).data());
+        for (const auto & faculty : response.university.faculties) {
+            for (const auto & department : faculty.departments) {
+                for (const auto & teacher : department.teachers)
+                    emit teacherResponse(QVariant::fromValue(internal::Timetable{teacher.id,teacher.full_name}));
+            }
+        }
+    });
+}
+
 
 }

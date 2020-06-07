@@ -47,7 +47,7 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/internal/traits.h
             ${CMAKE_SOURCE_DIR}/src/internal/json_parser.h
             ${CMAKE_SOURCE_DIR}/src/internal/macro.h
-            )
+            ${CMAKE_SOURCE_DIR}/src/qml/search_model.h)
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp main.cpp)
 if(ANDROID)
     add_library(Timetable2 SHARED

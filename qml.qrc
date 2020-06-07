@@ -18,5 +18,7 @@
         <file>qml/icons/refresh.svg</file>
         <file>qml/icons/trash.svg</file>
         <file>qml/components/FindPage.qml</file>
+        <file>qml/components/SearchComponent.qml</file>
+        <file>qml/icons/plus.svg</file>
     </qresource>
 </RCC>
