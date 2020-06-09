@@ -4,7 +4,7 @@
 #include <type_traits>
 #include <utility>
 #include <variant>
-
+#include <QtDebug>
 #include <rapidjson/document.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
@@ -112,6 +112,11 @@ public:
             value);
         }
         // string case
+        else if constexpr (std::is_same_v<QString, type>) {
+            val = rapidjson::Value(rapidjson::kStringType);
+            std::string std_value = value.toStdString();
+            val.SetString(std_value.data(),std_value.size(),allocator);
+        }
         else if constexpr (traits::is_string_type<type>) {
             val = rapidjson::Value(rapidjson::kStringType);
             val.SetString(value.data(), value.size(), allocator);

@@ -20,5 +20,6 @@
         <file>qml/components/FindPage.qml</file>
         <file>qml/components/SearchComponent.qml</file>
         <file>qml/icons/plus.svg</file>
+        <file>qml/components/TimetableTable.qml</file>
     </qresource>
 </RCC>

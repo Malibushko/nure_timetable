@@ -13,22 +13,11 @@ Page {
     function addTeacher(teacher) {
         teachersTab.modelRef.addItem(teacher)
     }
-
-    Api {
-        id: api
-        onGroupResponse: {
-            addGroup(group)
-        }
-        onTeacherResponse: {
-            addTeacher(teacher)
-        }
-        Component.onCompleted: {
-            if (!groupTab.modelRef.initialized())
-                groups()
-            if (!teachersTab.modelRef.initialized())
-                teachers()
-
-        }
+    function groupInitialized() {
+        return groupTab.modelRef.initialized();
+    }
+    function teachersInitialized() {
+        return teachersTab.modelRef.initialized();
     }
 
     StackLayout {

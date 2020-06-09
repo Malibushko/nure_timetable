@@ -15,7 +15,7 @@ using string_t = QString;
 template <class T>
 using container_t = QList<T>;
 
-using int_t = int32_t;
+using int_t = int;
 using int_long_t = int64_t;
 
 struct Department;
@@ -30,7 +30,6 @@ struct Department {
     declare_field(string_t,full_name);
     declare_field(container_t<Teacher>,teachers);
 };
-
 
 struct Teacher {
     declare_struct(Teacher)
@@ -113,20 +112,21 @@ struct Timetable {
 
 struct Lesson {
     QDate date;
-    qint32 lesInd;
     QString subject;
     QString type;
     QString auditory;
-    QString timeStart;
-    QString note;
+    QTime timeStart;
+    QTime timeEnd;
     Lesson() = default;
     static Lesson fromCSV(const QString & csvLine) {
         QString editText;
         QStringList innerList = csvLine.split('\"',QString::SplitBehavior::SkipEmptyParts);
+        if (innerList.size() < 4)
+            return {};
         innerList.erase(std::remove_if(innerList.begin(),innerList.end(),[](QString string){
                             return string.size() <= 1;
                         }),innerList.end());
-        
+
         QString firstToken = innerList.first();
         QRegExp exp("[,]\\s+");
         firstToken.replace(exp,",");
@@ -146,10 +146,12 @@ struct Lesson {
             for (auto it = buff.rbegin();it != buff.rend();++it)
                 lesson.subject += ' ' + (*it);
         }
+        lesson.subject = lesson.subject.trimmed();
         lesson.date = QDate::fromString(innerList.at(1),"dd.MM.yyyy");
-        auto time_start = QTime::fromString(innerList.at(2),"h:mm:ss");
-        lesson.timeStart = innerList.at(2).chopped(3)+ '\n'+ innerList.at(4).chopped(3);
-        //     lesson.lesInd = lesson.detectLessonType(time_start);
+        auto timeParsed = {innerList.at(2).chopped(3),innerList.at(4).chopped(3)};
+        assert(timeParsed.size() == 2);
+        lesson.timeStart = QTime::fromString(*timeParsed.begin());
+        lesson.timeEnd = QTime::fromString(*(timeParsed.begin()+1));
         return  lesson;    
     }
 };

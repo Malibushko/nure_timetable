@@ -40,15 +40,19 @@ conan_cmake_run(REQUIRES
                 BUILD missing)
 
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/api.h
             ${CMAKE_SOURCE_DIR}/src/internal/api_structs.h
             ${CMAKE_SOURCE_DIR}/src/internal/traits.h
             ${CMAKE_SOURCE_DIR}/src/internal/json_parser.h
             ${CMAKE_SOURCE_DIR}/src/internal/macro.h
-            ${CMAKE_SOURCE_DIR}/src/qml/search_model.h)
-set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp main.cpp)
+            ${CMAKE_SOURCE_DIR}/src/qml/search_model.h
+            ${CMAKE_SOURCE_DIR}/src/qml/table_model.h
+            ${CMAKE_SOURCE_DIR}/src/src/cache.h)
+set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
+             ${CMAKE_SOURCE_DIR}/src/src/cache.cpp 
+             main.cpp)
 if(ANDROID)
     add_library(Timetable2 SHARED
       ${HEADERS} ${SOURCES}
@@ -67,4 +71,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/src)
 target_compile_definitions(Timetable2
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(Timetable2
-  PRIVATE Qt5::Core Qt5::Quick ${CONAN_LIBS})
+  PRIVATE Qt5::Core Qt5::Quick Qt5::Sql ${CONAN_LIBS})

@@ -53,7 +53,6 @@ Item {
                         ToolTip.text: qsTr("Save timetable")
                     }
                 }
-
             }
         }
     }
