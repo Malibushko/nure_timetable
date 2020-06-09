@@ -10,7 +10,7 @@ class SearchItemModel : public QAbstractListModel {
     Q_OBJECT
 private:
     QList<internal::Timetable> mTimetables;
-    QString filter;
+    QRegularExpression filter;
 public:
     SearchItemModel(QObject* /* parent */= nullptr) {
 
@@ -19,7 +19,7 @@ public:
         return mTimetables.size();
     }
     Q_INVOKABLE void setFilter(const QString & s) {
-        filter = s;
+        filter.setPattern(s);
         emit dataChanged(createIndex(0,0),createIndex(mTimetables.size(),0),{Qt::UserRole+2});
     }
 
@@ -59,7 +59,7 @@ public:
             case Qt::UserRole+1:
                 return item.title;
             case Qt::UserRole+2:
-                return item.title.startsWith(filter,Qt::CaseInsensitive);
+                return filter.match(item.title).hasMatch();
         }
         return {};
     }

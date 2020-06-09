@@ -175,13 +175,17 @@ void ApiJSON::schedule(int id,bool isTeacher) {
         getUrl.setQuery(query);
 
         QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
-        connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
+        connect(r,&QNetworkReply::finished,[=](){
            if (r->error() != QNetworkReply::NoError) {
                qDebug() << "Error in " << __func__ << " :" << r->error();
                return;
            }
            QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
            // remove header
+           if (rows.empty()) {
+               qDebug() << "No data";
+               return;
+           }
            rows.pop_front();
            emit timetableAboutToBeArrived(rows.size());
            for (const QString& row : rows) {
@@ -213,7 +217,7 @@ void ApiJSON::groups() {
     qDebug() << "Network Request";
     QUrl request(API_ROOT+map(API_TYPES::P_API_GROUP_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
-    connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
+    connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
             emit error(r->errorString());
             return;
@@ -257,7 +261,7 @@ void ApiJSON::teachers() {
 
     QUrl request(API_ROOT+map(API_TYPES::P_API_PODR_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
-    connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
+    connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
             emit error(r->errorString());
             return;

@@ -11,6 +11,7 @@ import lib 1.0
 Item {
     property alias modelRef: listModel_
     property alias textInputRef : searchInput
+    property bool isTeacher: false
     ColumnLayout {
         anchors.fill: parent
         TextField {
@@ -38,6 +39,13 @@ Item {
                 BottomBorder {
                     color: Material.color(Material.LightGreen)
                 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        api.schedule(timetable_id,isTeacher);
+                    }
+                }
+
                 RowLayout {
                     anchors.fill: parent
                     StyledText {

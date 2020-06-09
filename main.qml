@@ -29,9 +29,11 @@ ApplicationWindow {
         onTimetableAboutToBeArrived: {
             timetable.modelRef.prepareForNewTimetable(rowCount)
         }
+        // @disable-check M16
         onGroupResponse: {
             findPage.addGroup(group);
         }
+        // @disable-check M16
         onTeacherResponse: {
             findPage.addTeacher(teacher)
         }
@@ -47,14 +49,14 @@ ApplicationWindow {
     StackView {
         id: mainView
         anchors.fill: parent
-        initialItem: TimetableTable {
-            id: timetable
-        }
-        SavedTimetables {
+        initialItem: SavedTimetables {
             id: savedTimetables
         }
         FindPage {
             id: findPage
+        }
+        TimetableTable {
+            id: timetable
         }
     }
 }

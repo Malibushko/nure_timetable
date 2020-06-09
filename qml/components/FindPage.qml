@@ -32,6 +32,7 @@ Page {
         }
         SearchComponent {
             id: teachersTab
+            isTeacher: true
             Component.onCompleted: {
                 teachersTab.textInputRef.placeholderText = qsTr("Степан Андреевич Бандера")
             }
