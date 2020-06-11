@@ -39,7 +39,6 @@ public:
         beginInsertRows({},mTimetables.size(),mTimetables.size());
 
         mTimetables.push_back(qvariant_cast<internal::Timetable>(item));
-
         endInsertRows();
     }
     int columnCount(const QModelIndex & /* parent */) const override {

@@ -25,7 +25,7 @@ Page {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: appSettings.margin
-        visible: mainView.currentItem == timetable
+        visible: mainView.currentItem == timetablePage
         background: Rectangle {
             anchors.fill: parent
             color: mainHeader.background.color
@@ -33,7 +33,12 @@ Page {
         icon.source: "qrc:///qml/icons/save"
         ToolTip.text: qsTr("Save timetable")
         onClicked: {
-
+            var timetable = localStorage.createTimetable(findPage.timetableId,
+                                                         findPage.timetableTitle,
+                                                         findPage.isTeacher,
+                                                         tableModel.getModel());
+            localStorage.save(TableType.SAVED_TIMETABLE,timetable)
+            savedTimetables.modelRef.addItem(timetable);
         }
     }
 
@@ -64,7 +69,7 @@ Page {
             }
             // @disable-check M16
             onTimetableCompleted: {
-                mainView.push(timetable)
+                mainView.push(timetablePage)
             }
         }
         delegate: Rectangle {

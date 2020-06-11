@@ -43,6 +43,9 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         api.schedule(timetable_id,isTeacher);
+                        findPage.timetableId = model.timetable_id;
+                        findPage.timetableTitle = model.title
+                        findPage.isTeacher = isTeacher;
                     }
                 }
 

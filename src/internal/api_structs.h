@@ -111,12 +111,13 @@ struct Timetable {
 };
 
 struct Lesson {
-    QDate date;
-    QString subject;
-    QString type;
-    QString auditory;
-    QTime timeStart;
-    QTime timeEnd;
+    declare_struct(Lesson);
+    declare_field(QDate,date);
+    declare_field(QString,subject);
+    declare_field(QString,type);
+    declare_field(QString,auditory);
+    declare_field(QTime,timeStart);
+    declare_field(QTime,timeEnd);
     Lesson() = default;
     static Lesson fromCSV(const QString & csvLine) {
         QString editText;
@@ -160,7 +161,8 @@ struct SavedTimetable {
     declare_field(int,id);
     declare_field(string_t,title);
     declare_field(string_t,lastUpdate);
-    declare_field(container_t<Lesson>,lessons);
+    declare_field(bool,isTeacher);
+    declare_field(std::vector<Lesson>,lessons);
 };
 }
 Q_DECLARE_METATYPE(timetable::internal::Department)

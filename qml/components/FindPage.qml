@@ -7,6 +7,11 @@ import lib 1.0
 
 Page {
     id: root_
+
+    property int timetableId
+    property var timetableTitle
+    property bool isTeacher
+
     function addGroup(group) {
         groupTab.modelRef.addItem(group)
     }

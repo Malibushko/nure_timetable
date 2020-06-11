@@ -1,6 +1,7 @@
 #include <QUrlQuery>
 #include <QTextCodec>
 #include <QTextDecoder>
+#include <QEventLoop>
 #include "api.h"
 #include "internal/json_parser.h"
 
@@ -164,56 +165,73 @@ void ApiJSON::directions(int p_id_faculty) {
 }
 
 void ApiJSON::schedule(int id,bool isTeacher) {
-        QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)
-                                      : map(API_TYPES::P_API_GROUP_REQUEST)));
-        QUrlQuery query;
-        query.addQueryItem("ATypeDoc","3");
-        query.addQueryItem((isTeacher ? "Aid_sotr":"Aid_group"),QString::number(id));
-        query.addQueryItem((isTeacher ? "Aid_kaf" : "Aid_potok"),"0");
-        query.addQueryItem("ADateStart",dateStart);
-        query.addQueryItem("ADateEnd",dateEnd);
-        getUrl.setQuery(query);
+    QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)
+                                     : map(API_TYPES::P_API_GROUP_REQUEST)));
+    QUrlQuery query;
+    query.addQueryItem("ATypeDoc","3");
+    query.addQueryItem((isTeacher ? "Aid_sotr":"Aid_group"),QString::number(id));
+    query.addQueryItem((isTeacher ? "Aid_kaf" : "Aid_potok"),"0");
+    query.addQueryItem("ADateStart",dateStart);
+    query.addQueryItem("ADateEnd",dateEnd);
+    getUrl.setQuery(query);
 
-        QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
-        connect(r,&QNetworkReply::finished,[=](){
-           if (r->error() != QNetworkReply::NoError) {
-               qDebug() << "Error in " << __func__ << " :" << r->error();
-               return;
-           }
-           QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
-           // remove header
-           if (rows.empty()) {
-               qDebug() << "No data";
-               return;
-           }
-           rows.pop_front();
-           emit timetableAboutToBeArrived(rows.size());
-           for (const QString& row : rows) {
-                emit newLesson(id,QVariant::fromValue(internal::Lesson::fromCSV(row)));
-           }
-        });
+    QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
+    connect(r,&QNetworkReply::finished,[=](){
+        if (r->error() != QNetworkReply::NoError) {
+            qDebug() << "Error in " << __func__ << " :" << r->error();
+            return;
+        }
+        QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
+        // remove header
+        if (rows.empty()) {
+            qDebug() << "No data";
+            return;
+        }
+        rows.pop_front();
+        emit timetableAboutToBeArrived(rows.size());
+        for (const QString& row : rows) {
+            emit newLesson(id,QVariant::fromValue(internal::Lesson::fromCSV(row)));
+        }
+    });
+}
+QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
+    QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)
+                                     : map(API_TYPES::P_API_GROUP_REQUEST)));
+    QUrlQuery query;
+    query.addQueryItem("ATypeDoc","3");
+    query.addQueryItem((isTeacher ? "Aid_sotr":"Aid_group"),QString::number(id));
+    query.addQueryItem((isTeacher ? "Aid_kaf" : "Aid_potok"),"0");
+    query.addQueryItem("ADateStart",dateStart);
+    query.addQueryItem("ADateEnd",dateEnd);
+    getUrl.setQuery(query);
+
+    QEventLoop waiter;
+    QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
+    connect(r,&QNetworkReply::finished,&waiter,&QEventLoop::quit);
+    waiter.exec();
+
+    if (r->error() != QNetworkReply::NoError) {
+        qDebug() << "Error in " << __func__ << " :" << r->error();
+        return {};
+    }
+    QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
+    // remove header
+    qDebug() << rows;
+    if (rows.empty()) {
+        qDebug() << "No data";
+        return {};
+    }
+    rows.pop_front();
+    QVariantList result;
+    result.reserve(rows.size());
+
+    for (const QString& row : rows) {
+        result.push_back(QVariant::fromValue(internal::Lesson::fromCSV(row)));
+    }
+    return result;
 }
 
 void ApiJSON::groups() {
-    emit cacheFind(Database::TableType::SEARCH_GROUP);
-
-    bool exitFlag = false;
-    QEventLoop loop;
-    connect(&cache,&Cache::cacheHit,[&](bool b){
-        if (!b) {
-            qDebug() << "Cache miss";
-        }
-        else {
-            qDebug() << "Cache hit";
-            exitFlag = true;
-            emit cacheGet(Database::TableType::SEARCH_GROUP);
-        }
-    });
-    connect(&cache,&Cache::cacheHit,&loop,&QEventLoop::quit);
-    loop.exec();
-    if (exitFlag)
-        return;
-
     qDebug() << "Network Request";
     QUrl request(API_ROOT+map(API_TYPES::P_API_GROUP_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
@@ -239,26 +257,6 @@ void ApiJSON::groups() {
     });
 }
 void ApiJSON::teachers() {
-
-    emit cacheFind(Database::TableType::SEARCH_TEACHER);
-
-    bool exitFlag = false;
-    QEventLoop loop;
-    connect(&cache,&Cache::cacheHit,[&](bool b){
-        if (!b) {
-            qDebug() << "Cache miss teacher";
-        }
-        else {
-            qDebug() << "Cache hit teacher";
-            exitFlag = true;
-            emit cacheGet(Database::TableType::SEARCH_TEACHER);
-        }
-    });
-    connect(&cache,&Cache::cacheHit,&loop,&QEventLoop::quit);
-    loop.exec();
-    if (exitFlag)
-        return;
-
     QUrl request(API_ROOT+map(API_TYPES::P_API_PODR_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
     connect(r,&QNetworkReply::finished,[=](){

@@ -3,9 +3,10 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 
+import lib 1.0
 import "./qml/components"
 
-import lib 1.0
+
 ApplicationWindow {
     id: root
     visible: true
@@ -26,10 +27,10 @@ ApplicationWindow {
     Api {
         id: api
         onNewLesson: {
-            timetable.modelRef.addLesson(id,lesson)
+            timetablePage.modelRef.addLesson(id,lesson)
         }
         onTimetableAboutToBeArrived: {
-            timetable.modelRef.prepareForNewTimetable(rowCount)
+            timetablePage.modelRef.prepareForNewTimetable(rowCount)
         }
         // @disable-check M16
         onGroupResponse: {
@@ -40,11 +41,33 @@ ApplicationWindow {
             findPage.addTeacher(teacher)
         }
         Component.onCompleted: {
-            if (!findPage.groupInitialized())
-                groups()
-            if(!findPage.teachersInitialized())
-                teachers()
+            if (!findPage.groupInitialized()) {
+                var cacheResult = localStorage.get(TableType.SEARCH_GROUP);
+                if (cacheResult.length > 0) {
+                    console.log("Cache hit groups");
+                    for (var group in cacheResult) {
+                        findPage.addGroup(cacheResult[group])
+                    }
+                }
+                else
+                    groups();
+            }
+            if(!findPage.teachersInitialized()) {
+                var cacheTeacherResult = localStorage.get(TableType.SEARCH_TEACHER);
+                if (cacheTeacherResult.length > 0) {
+                    console.log("Cache hit teachers")
+                    for (var teacher in cacheTeacherResult) {
+                        findPage.addTeacher(cacheTeacherResult[teacher])
+                    }
+                }
+                else
+                    teachers();
+
+            }
         }
+    }
+    Storage {
+        id: localStorage
     }
 
     StackView {
@@ -57,7 +80,7 @@ ApplicationWindow {
             id: findPage
         }
         TimetableTable {
-            id: timetable
+            id: timetablePage
         }
     }
 }

@@ -13,6 +13,7 @@ class TableModel : public QAbstractTableModel {
         {"Пз","#DAE9D9",},
         {"Лк","#FEFEEA"}
     };
+    QString m_title;
     QHash<uint64_t,internal::Lesson> lessons;
     QStringList m_horizontalHeaderData;
     std::set<QString> m_verticalHeaderData;
@@ -72,6 +73,13 @@ public:
         m_horizontalHeaderData.clear();
         endResetModel();
     }
+    Q_INVOKABLE QVariantList getModel() const {
+        QVariantList list;
+        list.reserve(lessons.size());
+        for (auto it : lessons)
+            list.push_back(QVariant::fromValue(it));
+        return list;
+    }
     Q_INVOKABLE int currentColumn() {
         if (m_horizontalHeaderData.empty())
             return 0;
@@ -94,8 +102,8 @@ public:
         return m_horizontalHeaderData.size();
     }
     QVariant data([[maybe_unused]]const QModelIndex& index, int role = Qt::UserRole) const override {
-        if (index.row() > m_verticalHeaderData.size() || index.column() >m_horizontalHeaderData.size())
-            return "";
+        if (!index.isValid())
+            return {""};
         QDateTime modelIndex;
         modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],"dd.MM.yyyy"));
         auto iter = m_verticalHeaderData.begin();

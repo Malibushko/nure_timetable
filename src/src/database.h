@@ -9,6 +9,16 @@
 #include "../internal/query_builder.h"
 #include "../internal/json_parser.h"
 namespace timetable {
+Q_NAMESPACE
+enum TableType {
+    SETTINGS        = 1 << 0,
+    SEARCH_TEACHER  = 1 << 1,
+    SEARCH_GROUP    = 1 << 2,
+    SAVED_REF       = 1 << 3,
+    SAVED_TIMETABLE = 1 << 4
+};
+Q_ENUM_NS(TableType);
+
 
 using DefaultCallback = std::function<void(QVariant)>;
 
@@ -51,14 +61,6 @@ private:
         }
     }
 public:
-    enum class TableType : uint8_t {
-        SETTINGS        = 1 << 0,
-        SEARCH_TEACHER  = 1 << 1,
-        SEARCH_GROUP    = 1 << 2,
-        SAVED_REF       = 1 << 3,
-        SAVED_TIMETABLE = 1 << 4
-    };
-    Q_ENUM(TableType);
     static Database& instance() {
         static Database db;
         return db;
@@ -125,7 +127,16 @@ public:
             return QVariant::fromValue(q.lastError().type() != QSqlError::NoError);
         }).then(cb);
     }
-
+    void beginTransaction() {
+        se.submit([](){
+            return QVariant::fromValue(QSqlDatabase::database().transaction());
+        });
+    }
+    void endTransaction() {
+        se.submit([]{
+            return QVariant::fromValue(QSqlDatabase::database().commit());
+        }).then(DefaultCallback{});
+    }
 signals:
     emit void unableToConnect();
     emit void error(QString description);

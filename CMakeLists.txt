@@ -52,6 +52,7 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/local_storage.h
             ${CMAKE_SOURCE_DIR}/src/src/database.h
             ${CMAKE_SOURCE_DIR}/src/internal/query_builder.h
+            ${CMAKE_SOURCE_DIR}/src/qml/saved_model.h
             ${CMAKE_SOURCE_DIR}/src/internal/executor.h)
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
              main.cpp)

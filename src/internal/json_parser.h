@@ -5,10 +5,10 @@
 #include <utility>
 #include <variant>
 #include <QtDebug>
+#include <QTime>
 #include <rapidjson/document.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
-
 #include <boost/pfr.hpp>
 
 #include "traits.h"
@@ -115,6 +115,16 @@ public:
         else if constexpr (std::is_same_v<QString, type>) {
             val = rapidjson::Value(rapidjson::kStringType);
             std::string std_value = value.toStdString();
+            val.SetString(std_value.data(),std_value.size(),allocator);
+        }
+        else if constexpr(std::is_same_v<QTime, type>) {
+            val = rapidjson::Value(rapidjson::kStringType);
+            std::string std_value = value.toString("hh:mm").toStdString();
+            val.SetString(std_value.data(),std_value.size(),allocator);
+        }
+        else if constexpr(std::is_same_v<QDate, type>) {
+            val = rapidjson::Value(rapidjson::kStringType);
+            std::string std_value = value.toString("dd.MM.yyyy").toStdString();
             val.SetString(std_value.data(),std_value.size(),allocator);
         }
         else if constexpr (traits::is_string_type<type>) {
@@ -346,7 +356,8 @@ private:
                 array.push_back(it.GetString());
             }
             // another structure
-        } else if constexpr (traits::is_parsable_v<typename type::value_type>) {
+        }
+        else if constexpr (traits::is_parsable_v<typename type::value_type>) {
             for (auto &&it : arr) {
                 rapidjson::Document doc(&allocator);
                 doc.SetObject();
@@ -407,6 +418,10 @@ private:
                 field = val.GetFloat();
         else if constexpr (std::is_integral_v<field_type>)
                 field = val.GetInt64();
+        else if constexpr(std::is_same_v<QTime, field_type>)
+                field = QTime::fromString(val.GetString(),"hh:mm");
+        else if constexpr(std::is_same_v<QDate, field_type>)
+                field = QDate::fromString(val.GetString(),"dd.MM.yyyy");
         else if constexpr (traits::is_parsable_v<field_type>) {
             rapidjson::Document subdoc(&doc.GetAllocator());
             subdoc.SetObject();
