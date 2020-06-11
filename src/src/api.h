@@ -20,18 +20,17 @@ private:
     QString dateEnd;
 public:
     ApiJSON() : mng{new QNetworkAccessManager(this)} {
-        connect(&cacheThread,&QThread::started,&cache,&Cache::tryConnect);
 
         connect(this,&ApiJSON::groupResponse,&cache,&Cache::SaveSlotGroup);
         connect(this,&ApiJSON::teacherResponse,&cache,&Cache::SaveSlotTeacher);
         connect(this,&ApiJSON::cacheFind,&cache,&Cache::cacheCheck);
         connect(this,&ApiJSON::cacheGet,&cache,&Cache::cacheGet);
-        connect(&cache,&Cache::cacheData,[&](const QVariant& v,Cache::CacheType type){
+        connect(&cache,&Cache::cacheData,[&](const QVariant& v,Database::TableType type){
             switch (type) {
-                case Cache::CacheType::SEARCH_GROUP:
+                case Database::TableType::SEARCH_GROUP:
                     emit groupResponse(v);
                     break;
-                case Cache::CacheType::SEARCH_TEACHER:
+                case Database::TableType::SEARCH_TEACHER:
                     emit teacherResponse(v);
                     break;
                 default:
@@ -65,8 +64,8 @@ public:
     Q_INVOKABLE void specialities(int p_id_faculty, int p_id_department) override;
     Q_INVOKABLE void directions(int p_id_faculty) override;
 signals:
-    void cacheFind(Cache::CacheType type);
-    void cacheGet(Cache::CacheType type);
+    void cacheFind(Database::TableType type);
+    void cacheGet(Database::TableType type);
     void newLesson(int id,const QVariant& lesson);
     void timetableAboutToBeArrived(int rowCount);
 };

@@ -49,9 +49,11 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/internal/macro.h
             ${CMAKE_SOURCE_DIR}/src/qml/search_model.h
             ${CMAKE_SOURCE_DIR}/src/qml/table_model.h
-            ${CMAKE_SOURCE_DIR}/src/src/cache.h)
+            ${CMAKE_SOURCE_DIR}/src/src/local_storage.h
+            ${CMAKE_SOURCE_DIR}/src/src/database.h
+            ${CMAKE_SOURCE_DIR}/src/internal/query_builder.h
+            ${CMAKE_SOURCE_DIR}/src/internal/executor.h)
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
-             ${CMAKE_SOURCE_DIR}/src/src/cache.cpp 
              main.cpp)
 if(ANDROID)
     add_library(Timetable2 SHARED

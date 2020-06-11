@@ -20,6 +20,22 @@ Page {
     function resetOffset() {
         tableView.contentX = 0;
     }
+    HeaderButton {
+        parent: mainHeader
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: appSettings.margin
+        visible: mainView.currentItem == timetable
+        background: Rectangle {
+            anchors.fill: parent
+            color: mainHeader.background.color
+        }
+        icon.source: "qrc:///qml/icons/save"
+        ToolTip.text: qsTr("Save timetable")
+        onClicked: {
+
+        }
+    }
 
     TableView {
         id: tableView
@@ -76,8 +92,6 @@ Page {
                         text: modelData
                         anchors.centerIn: parent
                         color: "white"
-                        font.pixelSize: 15
-                        padding: 10
                     }
                     verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
                     background: Rectangle { color: Material.color(Material.Green) }
@@ -101,7 +115,6 @@ Page {
                         text: modelData
                         anchors.centerIn: parent
                         color: "white"
-                        font.pixelSize: 15
                     }
                     verticalAlignment: Text.AlignVCenter
                     background: Rectangle { color: Material.color(Material.Green)  }

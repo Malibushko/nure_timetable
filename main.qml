@@ -20,7 +20,9 @@ ApplicationWindow {
     Settings {
         id: appSettings
     }
-    header: Header {}
+    header: Header {
+        id: mainHeader
+    }
     Api {
         id: api
         onNewLesson: {
@@ -37,7 +39,6 @@ ApplicationWindow {
         onTeacherResponse: {
             findPage.addTeacher(teacher)
         }
-
         Component.onCompleted: {
             if (!findPage.groupInitialized())
                 groups()

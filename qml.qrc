@@ -21,5 +21,6 @@
         <file>qml/components/SearchComponent.qml</file>
         <file>qml/icons/plus.svg</file>
         <file>qml/components/TimetableTable.qml</file>
+        <file>qml/icons/save</file>
     </qresource>
 </RCC>

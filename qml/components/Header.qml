@@ -43,7 +43,7 @@ ToolBar {
             }
             HeaderButton {
                 id: findButton
-                visible: mainView.currentItem !== findPage
+                visible: mainView.currentItem != findPage
                 icon.source: "qrc:///qml/icons/search.svg"
                 ToolTip.text: qsTr("Search for a timetable")
                 onClicked: {

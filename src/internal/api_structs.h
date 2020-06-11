@@ -155,7 +155,13 @@ struct Lesson {
         return  lesson;    
     }
 };
-
+struct SavedTimetable {
+    declare_struct(SavedTimetable);
+    declare_field(int,id);
+    declare_field(string_t,title);
+    declare_field(string_t,lastUpdate);
+    declare_field(container_t<Lesson>,lessons);
+};
 }
 Q_DECLARE_METATYPE(timetable::internal::Department)
 Q_DECLARE_METATYPE(timetable::internal::Teacher)
@@ -169,3 +175,4 @@ Q_DECLARE_METATYPE(timetable::internal::Speciality)
 Q_DECLARE_METATYPE(timetable::internal::Direction)
 Q_DECLARE_METATYPE(timetable::internal::Timetable)
 Q_DECLARE_METATYPE(timetable::internal::Lesson)
+Q_DECLARE_METATYPE(timetable::internal::SavedTimetable)

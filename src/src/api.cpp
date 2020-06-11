@@ -195,7 +195,7 @@ void ApiJSON::schedule(int id,bool isTeacher) {
 }
 
 void ApiJSON::groups() {
-    emit cacheFind(Cache::CacheType::SEARCH_GROUP);
+    emit cacheFind(Database::TableType::SEARCH_GROUP);
 
     bool exitFlag = false;
     QEventLoop loop;
@@ -206,7 +206,7 @@ void ApiJSON::groups() {
         else {
             qDebug() << "Cache hit";
             exitFlag = true;
-            emit cacheGet(Cache::CacheType::SEARCH_GROUP);
+            emit cacheGet(Database::TableType::SEARCH_GROUP);
         }
     });
     connect(&cache,&Cache::cacheHit,&loop,&QEventLoop::quit);
@@ -240,7 +240,7 @@ void ApiJSON::groups() {
 }
 void ApiJSON::teachers() {
 
-    emit cacheFind(Cache::CacheType::SEARCH_TEACHER);
+    emit cacheFind(Database::TableType::SEARCH_TEACHER);
 
     bool exitFlag = false;
     QEventLoop loop;
@@ -251,7 +251,7 @@ void ApiJSON::teachers() {
         else {
             qDebug() << "Cache hit teacher";
             exitFlag = true;
-            emit cacheGet(Cache::CacheType::SEARCH_TEACHER);
+            emit cacheGet(Database::TableType::SEARCH_TEACHER);
         }
     });
     connect(&cache,&Cache::cacheHit,&loop,&QEventLoop::quit);
