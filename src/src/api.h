@@ -43,6 +43,8 @@ public:
     Q_INVOKABLE void directions(int p_id_faculty) override;
 signals:
     void newLesson(int id,const QVariant& lesson);
+    void transferingFinished();
+    void transferingStarted();
     void timetableAboutToBeArrived(int rowCount);
 };
 

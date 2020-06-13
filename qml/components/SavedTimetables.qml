@@ -23,6 +23,7 @@ Page {
         delegate: Rectangle {
             width: parent.width
             height: appSettings.rowHeight
+            color: appSettings.componentColor
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -45,11 +46,12 @@ Page {
                     StyledText {
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(title)
+                        color: appSettings.textColor
                     }
                     StyledText {
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(lastUpdate)
-                        color: Material.color(Material.Grey)
+                        color: appSettings.utilityColor
                     }
                 }
                 RowLayout {
@@ -87,7 +89,7 @@ Page {
                 }
             }
             BottomBorder {
-                color: Material.color(Material.LightGreen)
+                color: appSettings.accentColor
             }
         }
     }

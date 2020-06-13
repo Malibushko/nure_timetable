@@ -22,5 +22,7 @@
         <file>qml/icons/plus.svg</file>
         <file>qml/components/TimetableTable.qml</file>
         <file>qml/icons/save</file>
+        <file>qml/components/SettingsPage.qml</file>
+        <file>qml/components/SettingsGroupPage.qml</file>
     </qresource>
 </RCC>

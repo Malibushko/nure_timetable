@@ -2,10 +2,9 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
-
+import QtGraphicalEffects 1.0
 import lib 1.0
 import "./qml/components"
-
 
 ApplicationWindow {
     id: root
@@ -15,15 +14,16 @@ ApplicationWindow {
 
     title: qsTr("TimeTable")
 
-    Material.theme: Material.Light
-    Material.accent: Material.LightGreen
-
     Settings {
         id: appSettings
     }
     header: Header {
         id: mainHeader
     }
+
+    Material.theme: appSettings.appTheme
+    Material.accent: appSettings.accentColor
+    Material.primary: appSettings.primaryColor
     Api {
         id: api
         onNewLesson: {
@@ -34,11 +34,20 @@ ApplicationWindow {
         }
         // @disable-check M16
         onGroupResponse: {
+            localStorage.save(TableType.SEARCH_GROUP,group)
             findPage.addGroup(group);
         }
+
         // @disable-check M16
         onTeacherResponse: {
+            localStorage.save(TableType.SEARCH_TEACHER,teacher)
             findPage.addTeacher(teacher)
+        }
+        onTransferingFinished: {
+            localStorage.endTransaction();
+        }
+        onTransferingStarted: {
+            localStorage.beginTransaction();
         }
         Component.onCompleted: {
             if (!findPage.groupInitialized()) {
@@ -69,7 +78,6 @@ ApplicationWindow {
     Storage {
         id: localStorage
     }
-
     StackView {
         id: mainView
         anchors.fill: parent
@@ -81,6 +89,12 @@ ApplicationWindow {
         }
         TimetableTable {
             id: timetablePage
+        }
+        SettingsPage {
+            id: settingsPage
+        }
+        SettingsGroupPage {
+            id: settingsGroup
         }
     }
 }

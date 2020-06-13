@@ -1,5 +1,57 @@
-import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
+import QtQuick.Controls.Material 2.12
+import "../styles"
+import lib 1.0
+Page {
+    property alias modelRef: settingsModel
 
-Item {
-
+    ListView {
+        anchors.fill: parent
+        model: SettingsModel {
+            id: settingsModel
+            onValueChanged: {
+                console.log(key)
+                switch (key) {
+                case "app_theme":
+                    appSettings.themeColor = value;
+                    console.log(appSettings.themeColor)
+                    break;
+                case "app_accent":
+                    appSettings.accentColor = value;
+                    break;
+                case "app_primary":
+                    appSettings.primaryColor = value;
+                    break;
+                case "night_mode":
+                    appSettings.appTheme = (value ? Material.Dark : Material.Light)
+                }
+            }
+        }
+        delegate: Rectangle {
+            width: parent.width
+            height: appSettings.rowHeight
+            color: appSettings.componentColor
+            BottomBorder {
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    settingsGroup.modelRef.setGroup(model.group)
+                    settingsGroup.modelRef.setItems(model.settings)
+                    mainView.push(settingsGroup);
+                }
+            }
+            RowLayout {
+                anchors.fill: parent
+                anchors.leftMargin: appSettings.margin
+                anchors.rightMargin: appSettings.margin
+                StyledText {
+                    text: model.group
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                }
+            }
+        }
+    }
 }

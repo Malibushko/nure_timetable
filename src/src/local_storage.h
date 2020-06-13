@@ -22,9 +22,6 @@ public:
             SavedTimetable timetable = qvariant_cast<SavedTimetable>(data);
             instance.Save(type,timetable);
         }
-        else {
-            // ...
-        }
     }
     Q_INVOKABLE void transactionSave(TableType type,const QVariantList& data) {
         using namespace internal;
@@ -52,8 +49,6 @@ public:
         case TableType::SAVED_TIMETABLE:
             instance.Get<SavedTimetable>(type,callback);
             break;
-        default:
-            break;
         }
         waiter.exec();
         return data;
@@ -73,6 +68,12 @@ public:
             timetable.lessons.push_back(qvariant_cast<Lesson>(it));
         }
         return QVariant::fromValue(timetable);
+    }
+    Q_INVOKABLE void beginTransaction() {
+        Database::instance().beginTransaction();
+    }
+    Q_INVOKABLE void endTransaction() {
+        Database::instance().endTransaction();
     }
 signals:
     void error(const QString& message);

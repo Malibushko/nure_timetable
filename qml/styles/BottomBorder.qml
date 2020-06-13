@@ -4,4 +4,5 @@ Rectangle {
     anchors.bottom: parent.bottom
     width: parent.width
     height: 1
+    color: appSettings.accentColor
 }

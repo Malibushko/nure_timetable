@@ -74,10 +74,10 @@ Page {
         }
         delegate: Rectangle {
             id: tableDelegate
-            color: model.color ? model.color : "transparent"
-            border.color: Material.color(Material.LightGreen)
+            color: (model.color && appSettings.isLight) ? model.color : "transparent"
+            border.color: appSettings.accentColor
             border.width: 1
-            Text {
+            StyledText {
                 anchors.centerIn: parent
                 text: auditory + "\n" + subject + "\n" + type
             }
@@ -96,10 +96,10 @@ Page {
                     Text {
                         text: modelData
                         anchors.centerIn: parent
-                        color: "white"
+                        color: (!appSettings.isLight ? appSettings.darkLight : "white")
                     }
                     verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
-                    background: Rectangle { color: Material.color(Material.Green) }
+                    background: Rectangle { color: appSettings.themeColor }
                 }
             }
         }
@@ -119,10 +119,10 @@ Page {
                         id: text
                         text: modelData
                         anchors.centerIn: parent
-                        color: "white"
+                        color: (!appSettings.isLight ? appSettings.darkLight : "white")
                     }
                     verticalAlignment: Text.AlignVCenter
-                    background: Rectangle { color: Material.color(Material.Green)  }
+                    background: Rectangle { color: appSettings.themeColor  }
                 }
             }
         }

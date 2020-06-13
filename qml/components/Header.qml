@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Controls.Material 2.12
+import QtGraphicalEffects 1.0
 import "../styles"
 
 ToolBar {
@@ -26,6 +28,9 @@ ToolBar {
                 Layout.alignment: Qt.AlignLeft
                 icon.source: "qrc:///qml/icons/settings.svg"
                 ToolTip.text: qsTr("Application settings")
+                onClicked: {
+                    mainView.push(settingsPage)
+                }
             }
         }
         RowLayout {
@@ -43,7 +48,7 @@ ToolBar {
             }
             HeaderButton {
                 id: findButton
-                visible: mainView.currentItem != findPage
+                visible: mainView.currentItem !== findPage
                 icon.source: "qrc:///qml/icons/search.svg"
                 ToolTip.text: qsTr("Search for a timetable")
                 onClicked: {

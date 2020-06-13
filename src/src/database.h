@@ -41,11 +41,15 @@ private:
     static QString connect() {
         // create dir with information
         QDir dir{QStandardPaths::writableLocation(QStandardPaths::DataLocation)};
+        dir.cd("storage");
+        if (!dir.exists())
+            dir.mkpath(".");
         auto connection = QSqlDatabase::addDatabase("QSQLITE");
         connection.setDatabaseName(dir.path() + QDir::separator() + "storage");
         if (!connection.open()) {
             qDebug() << "Unable to create database;\n Error: \"" << connection.lastError().text()
                      << "\"";
+            qDebug() << dir.path();
             return "";
         } else {
             qDebug() << dir.path();

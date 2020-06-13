@@ -34,10 +34,10 @@ Item {
             }
             delegate: Rectangle {
                 width: parent.width
+                color: appSettings.componentColor
                 height: appSettings.rowHeight * (model.visible ? 1 : 0)
                 visible: model.visible
                 BottomBorder {
-                    color: Material.color(Material.LightGreen)
                 }
                 MouseArea {
                     anchors.fill: parent

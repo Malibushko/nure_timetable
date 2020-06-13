@@ -5,7 +5,7 @@ import QtQuick.Controls.Material 2.12
 Button {
     icon.height: appSettings.rowHeight/2
     icon.width: appSettings.rowHeight/2
-    icon.color: Material.color(!hovered ? Material.Grey : Material.BlueGrey)
+    icon.color: appSettings.iconRowButtonColor
 
     ToolTip.visible: pressed
     ToolTip.delay: Qt.styleHints.mousePressAndHoldInterval

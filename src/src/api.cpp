@@ -242,6 +242,7 @@ void ApiJSON::groups() {
         }
         internal::UniversityWrapper response = internal::JsonParser::i().
                 fromJson<internal::UniversityWrapper>(details::decode1251(r->readAll().data()).data());
+        emit transferingStarted();
         for (const auto & faculty : response.university.faculties) {
             for (const auto & direction : faculty.directions) {
                 for (const auto & group : direction.groups) {
@@ -254,6 +255,7 @@ void ApiJSON::groups() {
                 }
             }
         }
+        emit transferingFinished();
     });
 }
 void ApiJSON::teachers() {
@@ -266,12 +268,15 @@ void ApiJSON::teachers() {
         }
         internal::UniversityWrapper response = internal::JsonParser::i().
                 fromJson<internal::UniversityWrapper>(details::decode1251(r->readAll().data()).data());
+        emit transferingStarted();
         for (const auto & faculty : response.university.faculties) {
             for (const auto & department : faculty.departments) {
                 for (const auto & teacher : department.teachers)
                     emit teacherResponse(QVariant::fromValue(internal::Timetable{teacher.id,teacher.short_name}));
             }
         }
+
+        emit transferingFinished();
     });
 }
 }
