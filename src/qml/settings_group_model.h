@@ -52,7 +52,7 @@ public:
                 if (name.second.canConvert<bool>())
                     return name.second.toString() == "true";
                 return name.second;
-        case Qt::UserRole+2: {
+            case Qt::UserRole+2: {
                 if (name.second.canConvert<bool>()) {
                     return "slider";
                 }

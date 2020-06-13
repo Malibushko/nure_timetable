@@ -12,11 +12,9 @@ Page {
         model: SettingsModel {
             id: settingsModel
             onValueChanged: {
-                console.log(key)
                 switch (key) {
                 case "app_theme":
                     appSettings.themeColor = value;
-                    console.log(appSettings.themeColor)
                     break;
                 case "app_accent":
                     appSettings.accentColor = value;
@@ -26,6 +24,7 @@ Page {
                     break;
                 case "night_mode":
                     appSettings.appTheme = (value ? Material.Dark : Material.Light)
+                    break;
                 }
             }
         }

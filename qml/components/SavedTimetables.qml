@@ -9,6 +9,23 @@ import lib 1.0
 Page {
     id: root_
     property alias modelRef: saveModel
+    Transition {
+        id: removeAnimation
+                SequentialAnimation {
+                    ColorAnimation {
+                        property: "color"
+                        to: appSettings.primaryColor
+                        duration: 1000
+                    }
+                    NumberAnimation {
+                        property: "y";
+                        to: -appSettings.rowHeight
+                        duration: 1000
+                        easing.type: Easing.OutQuad
+                    }
+                }
+    }
+
     ListView {
         clip: true
         boundsBehavior: Flickable.OvershootBounds
@@ -19,6 +36,7 @@ Page {
                 setItems(localStorage.get(TableType.SAVED_TIMETABLE))
             }
         }
+        remove: appSettings.animationsEnabled ? removeAnimation : null
 
         delegate: Rectangle {
             width: parent.width
@@ -64,16 +82,30 @@ Page {
                         Layout.alignment: Qt.AlignRight
                         icon.source: "qrc:///qml/icons/refresh.svg"
                         ToolTip.text: qsTr("Update timetable")
+
+                        RotationAnimator {
+                            id: rotationAnimation
+                            target: updateButton;
+                            from: 0;
+                            to: 360;
+                            duration: 10000
+                            loops: Animation.Infinite
+                        }
                         onClicked: {
+                            if (appSettings.animationsEnabled) {
+                                rotationAnimation.start();
+                            }
                             var newTimetable = localStorage.createTimetable(model.id,
                                                                             model.title,
                                                                             model.isTeacher,
                                                                             api.scheduleSync(model.id,
                                                                                              model.isTeacher))
-                            console.log(model.isTeacher)
                             localStorage.save(TableType.SAVED_TIMETABLE,newTimetable);
                             saveModel.replaceItem(newTimetable);
-                            console.log(newTimetable)
+
+                            if (appSettings.animationsEnabled) {
+                                rotationAnimation.stop();
+                            }
                         }
                     }
                     RowButton {
@@ -92,5 +124,6 @@ Page {
                 color: appSettings.accentColor
             }
         }
+
     }
 }

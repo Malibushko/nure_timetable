@@ -27,4 +27,6 @@ Item {
     property color utilityColor: Material.color(Material.Grey)
     property color componentColor: (isLight ? "white" : Material.backgroundColor)
     property color textColor: (isLight ?  "black" : darkLight)
+
+    property bool animationsEnabled: true
 }
