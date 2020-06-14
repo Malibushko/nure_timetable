@@ -27,7 +27,7 @@ Page {
     }
     Rectangle {
         anchors.centerIn: parent
-        visible: saveModel.rowCount() === 0
+        visible: mainListView.count === 0
         width: parent.width/2
         height: appSettings.rowHeight
         color: "transparent"
@@ -43,7 +43,6 @@ Page {
         clip: true
         boundsBehavior: Flickable.OvershootBounds
         anchors.fill: parent
-
         model: SaveModel {
             id: saveModel
             Component.onCompleted: {

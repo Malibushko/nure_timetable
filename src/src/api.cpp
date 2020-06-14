@@ -183,8 +183,10 @@ void ApiJSON::schedule(int id,bool isTeacher) {
         }
         QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
         // remove header
-        if (rows.empty()) {
+        if (rows.size() <= 1) {
             qDebug() << "No data";
+            emit error(tr("This timetable does not contain any information. Try later or "
+                       "ask API maintainers about your timetable."));
             return;
         }
         rows.pop_front();
@@ -215,8 +217,10 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
         return {};
     }
     QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
-    if (rows.empty()) {
+    if (rows.size() <= 1) {
         qDebug() << "No data";
+        emit error(tr("This timetable does not contain any information. Try later or "
+                   "ask API maintainers about your timetable."));
         return {};
     }
     // remove header

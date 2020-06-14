@@ -23,7 +23,7 @@ Page {
     Component {
         id: cellDelegate
         Rectangle {
-            color: (color && appSettings.isLight) ? color : "transparent"
+            color: (color_ && appSettings.isLight) ? color_ : "transparent"
             border.color: appSettings.accentColor
             border.width: 1
             StyledText {
@@ -116,13 +116,15 @@ Page {
             onVerticalHeaderFinished: {
                 tableView.verticalHeader = tableModel.verticalHeaderData()
             }
-
+            onTimetableCompleted: {
+                mainView.push(timetablePage)
+            }
         }
         delegate: Loader {
             property var auditory: model.auditory
             property var subject: model.subject
             property var type: model.type
-            property var color: model.color
+            property var color_: model.color
             property var row_: row
             property var column_: column
             sourceComponent: (row == tableView.rows - 1 ? headerDelegate : cellDelegate)

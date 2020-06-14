@@ -9,7 +9,7 @@ Button {
     visible: mainView.currentItem !== this
     ToolTip.visible: pressed
     ToolTip.delay: Qt.styleHints.mousePressAndHoldInterval
-
+    hoverEnabled: true
     background: Rectangle {
         color: "transparent"
     }

@@ -24,6 +24,11 @@ ApplicationWindow {
     Material.theme: appSettings.appTheme
     Material.accent: appSettings.accentColor
     Material.primary: appSettings.primaryColor
+
+    MessageDialog {
+        id: dialog
+    }
+
     Api {
         id: api
         onNewLesson: {
@@ -37,7 +42,6 @@ ApplicationWindow {
             localStorage.save(TableType.SEARCH_GROUP,group)
             findPage.addGroup(group);
         }
-
         // @disable-check M16
         onTeacherResponse: {
             localStorage.save(TableType.SEARCH_TEACHER,teacher)
@@ -49,6 +53,11 @@ ApplicationWindow {
         onTransferingStarted: {
             localStorage.beginTransaction();
         }
+        // @disable-check M16
+        onError: {
+            dialog.setData("Error",description)
+        }
+
         Component.onCompleted: {
             if (!findPage.groupInitialized()) {
                 var cacheResult = localStorage.get(TableType.SEARCH_GROUP);

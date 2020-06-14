@@ -11,7 +11,8 @@ class TableModel : public QAbstractTableModel {
     static inline const QHash<QString,QString> colors {
        {"Зал","#C2A0B8",},
         {"Пз","#DAE9D9",},
-        {"Лк","#FEFEEA"}
+        {"Лк","#FEFEEA"},
+        {"Лб","#CDCCFF"}
     };
     QString m_title;
     QHash<uint64_t,internal::Lesson> lessons;

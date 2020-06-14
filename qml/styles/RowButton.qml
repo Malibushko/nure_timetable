@@ -11,6 +11,10 @@ Button {
 
     hoverEnabled: true
 
+    onHoveredChanged: {
+        icon.color = hovered ? appSettings.accentColor : appSettings.iconRowButtonColor
+    }
+
     background: Rectangle {
         color: "transparent"
     }

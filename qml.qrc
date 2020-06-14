@@ -24,5 +24,6 @@
         <file>qml/icons/save</file>
         <file>qml/components/SettingsPage.qml</file>
         <file>qml/components/SettingsGroupPage.qml</file>
+        <file>qml/components/MessageDialog.qml</file>
     </qresource>
 </RCC>
