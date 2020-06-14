@@ -25,11 +25,25 @@ Page {
                     }
                 }
     }
-
+    Rectangle {
+        anchors.centerIn: parent
+        visible: saveModel.rowCount() === 0
+        width: parent.width/2
+        height: appSettings.rowHeight
+        color: "transparent"
+        StyledText {
+            anchors.centerIn: parent
+            color: appSettings.utilityColor
+            text: qsTr("Saved timetables will be displayed here")
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        }
+    }
     ListView {
+        id: mainListView
         clip: true
         boundsBehavior: Flickable.OvershootBounds
         anchors.fill: parent
+
         model: SaveModel {
             id: saveModel
             Component.onCompleted: {
@@ -44,6 +58,12 @@ Page {
             color: appSettings.componentColor
             MouseArea {
                 anchors.fill: parent
+                hoverEnabled: appSettings.animationsEnabled
+                onHoveredChanged: {
+                    parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05) : appSettings.componentColor;
+                    parent.border.color = containsMouse ? appSettings.accentColor : "transparent"
+                    parent.border.width = containsMouse
+                }
                 onClicked: {
                     var lessons = model.lessons;
                     console.log(lessons)
@@ -126,4 +146,5 @@ Page {
         }
 
     }
+
 }

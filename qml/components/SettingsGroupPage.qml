@@ -69,6 +69,7 @@ Page {
             width: parent.width
             height: appSettings.rowHeight
             color: appSettings.componentColor
+
             BottomBorder {
             }
             RowLayout {

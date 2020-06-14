@@ -78,6 +78,13 @@ ApplicationWindow {
     Storage {
         id: localStorage
     }
+    SettingsPage {
+        id: settingsPage
+    }
+    SettingsGroupPage {
+        id: settingsGroup
+    }
+
     StackView {
         id: mainView
         anchors.fill: parent
@@ -89,12 +96,6 @@ ApplicationWindow {
         }
         TimetableTable {
             id: timetablePage
-        }
-        SettingsPage {
-            id: settingsPage
-        }
-        SettingsGroupPage {
-            id: settingsGroup
         }
     }
 }

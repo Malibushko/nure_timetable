@@ -7,16 +7,6 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-    onWidthChanged: {
-        tableView.forceLayout()
-        rowsHeader.forceLayout();
-        columnsHeader.forceLayout();
-    }
-    onHeightChanged: {
-        tableView.forceLayout()
-        rowsHeader.forceLayout();
-        columnsHeader.forceLayout();
-    }
     function resetOffset() {
         tableView.contentX = 0;
     }
@@ -50,15 +40,22 @@ Page {
         rowSpacing: 1
         columnSpacing: 1
         bottomMargin: columnsHeader.height
-        rowHeightProvider: function(row) {return (height-bottomMargin-(columnSpacing*rows-1))/rows;}
-        columnWidthProvider: function(column) {return width/4;}
+        property var cell_height : (height-bottomMargin-(columnSpacing*rows-1))/rows
+        property var cell_width: width/4
+        rowHeightProvider: function(row) {return 180;}
+        columnWidthProvider: function(column) {return 200;}
+        onWidthChanged: {
+            forceLayout();
+        }
+        onHeightChanged: {
+            forceLayout();
+        }
 
         model: TableModel {
             id: tableModel
             // @disable-check M16
             onHorizontalHeaderFinished: {
                 columnsHeaderModel.model = tableModel.horizontalHeaderData()
-                console.log(tableView.columnWidthProvider(1),tableModel.currentColumn())
                 tableView.contentX = (tableView.columnWidthProvider(1)-0.5) * tableModel.currentColumn()
                 tableView.forceLayout()
             }
@@ -88,6 +85,13 @@ Page {
             z: 2
             spacing: tableView.columnSpacing
             anchors.top: parent.bottom
+            onWidthChanged: {
+                forceLayout();
+            }
+            onHeightChanged: {
+                forceLayout();
+            }
+
             Repeater {
                 id: columnsHeaderModel
                 Label {
@@ -110,6 +114,13 @@ Page {
             spacing: tableView.rowSpacing
             anchors.top: parent.top
             z: 2
+            onWidthChanged: {
+                forceLayout();
+            }
+            onHeightChanged: {
+                forceLayout();
+            }
+
             Repeater {
                 id: rowsHeaderModel
                 Label {
