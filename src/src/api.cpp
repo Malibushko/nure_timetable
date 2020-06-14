@@ -215,12 +215,11 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
         return {};
     }
     QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
-    // remove header
-    qDebug() << rows;
     if (rows.empty()) {
         qDebug() << "No data";
         return {};
     }
+    // remove header
     rows.pop_front();
     QVariantList result;
     result.reserve(rows.size());

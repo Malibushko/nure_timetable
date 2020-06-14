@@ -43,8 +43,10 @@ Item {
                     anchors.fill: parent
                     hoverEnabled: appSettings.animationsEnabled
                     onHoveredChanged: {
-                        parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05) : appSettings.componentColor;
-                        parent.border.color = containsMouse ? appSettings.accentColor : "transparent"
+                        parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05)
+                                                     : appSettings.componentColor;
+                        parent.border.color = containsMouse ? appSettings.accentColor
+                                                            : "transparent"
                         parent.border.width = containsMouse
                     }
 

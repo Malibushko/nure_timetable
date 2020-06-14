@@ -96,19 +96,20 @@ public:
         return headerData;
     }
     int rowCount(const QModelIndex& = {}) const override{
-        return m_verticalHeaderData.size();
+        return m_verticalHeaderData.size()+1;
     }
     int columnCount(const QModelIndex& = {}) const override {
         return m_horizontalHeaderData.size();
     }
-    QVariant data([[maybe_unused]]const QModelIndex& index, int role = Qt::UserRole) const override {
-        if (!index.isValid())
+    QVariant data(const QModelIndex& index, int role = Qt::UserRole) const override {
+        if (!index.isValid() || index.row() < 0 || index.row() >= m_verticalHeaderData.size())
             return {""};
         QDateTime modelIndex;
         modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],"dd.MM.yyyy"));
         auto iter = m_verticalHeaderData.begin();
         std::advance(iter,index.row());
         modelIndex.setTime(QTime::fromString(*iter,"hh:mm"));
+
         if (lessons.find(modelIndex.toMSecsSinceEpoch()) == lessons.end()) {
             return "";
         }

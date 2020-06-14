@@ -7,9 +7,32 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-    function resetOffset() {
-        tableView.contentX = 0;
+
+    Component {
+        id: headerDelegate
+        Label {
+            Text {
+                text: tableView.horizontalHeader[column_]
+                anchors.centerIn: parent
+                color: (!appSettings.isLight ? appSettings.darkLight : "white")
+            }
+            verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
+            background: Rectangle { color: appSettings.themeColor }
+        }
     }
+    Component {
+        id: cellDelegate
+        Rectangle {
+            color: (color && appSettings.isLight) ? color : "transparent"
+            border.color: appSettings.accentColor
+            border.width: 1
+            StyledText {
+                anchors.centerIn: parent
+                text: auditory + "\n" + subject + "\n" + type;
+            }
+        }
+    }
+
     HeaderButton {
         parent: mainHeader
         anchors.right: parent.right
@@ -32,110 +55,77 @@ Page {
         }
     }
 
+    Column {
+        id: rowsHeader
+        spacing: tableView.rowSpacing
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        z: 2
+        Repeater {
+            id: rowsHeaderModel
+            model: tableView.verticalHeader
+            Label {
+                width: text.width*1.5
+                height: tableView.rowHeightProvider(index)
+                StyledText {
+                    id: text
+                    text: modelData
+                    anchors.centerIn: parent
+                    color: (!appSettings.isLight ? appSettings.darkLight : "white")
+                }
+                BottomBorder {
+                    color: appSettings.accentColor
+                }
+                verticalAlignment: Text.AlignVCenter
+                background: Rectangle { color: appSettings.themeColor  }
+            }
+        }
+    }
+
     TableView {
         id: tableView
-        anchors.fill: parent
-        clip: true
+        width: parent.width
+        height: parent.height
         boundsBehavior: Flickable.StopAtBounds
-        rowSpacing: 1
         columnSpacing: 1
-        bottomMargin: columnsHeader.height
-        property var cell_height : (height-bottomMargin-(columnSpacing*rows-1))/rows
-        property var cell_width: width/4
-        rowHeightProvider: function(row) {return 180;}
-        columnWidthProvider: function(column) {return 200;}
+        property var horizontalHeader
+        property var verticalHeader
+        property var columnsPerScreen: 4
+        rowHeightProvider: function (row) {
+            if (row === rows-1)
+                return 50;
+            return (height-rowHeightProvider(rows-1))/(rows-1)
+        }
+        columnWidthProvider: function(column) {
+            return width/columnsPerScreen;
+        }
         onWidthChanged: {
-            forceLayout();
+            forceLayout()
         }
         onHeightChanged: {
-            forceLayout();
+            contentHeight = height
+            forceLayout()
         }
 
         model: TableModel {
             id: tableModel
-            // @disable-check M16
             onHorizontalHeaderFinished: {
-                columnsHeaderModel.model = tableModel.horizontalHeaderData()
-                tableView.contentX = (tableView.columnWidthProvider(1)-0.5) * tableModel.currentColumn()
-                tableView.forceLayout()
+                tableView.horizontalHeader = tableModel.horizontalHeaderData()
             }
-            // @disable-check M16
             onVerticalHeaderFinished: {
-                rowsHeaderModel.model = tableModel.verticalHeaderData()
-                tableView.forceLayout()
-            }
-            // @disable-check M16
-            onTimetableCompleted: {
-                mainView.push(timetablePage)
-            }
-        }
-        delegate: Rectangle {
-            id: tableDelegate
-            color: (model.color && appSettings.isLight) ? model.color : "transparent"
-            border.color: appSettings.accentColor
-            border.width: 1
-            StyledText {
-                anchors.centerIn: parent
-                text: auditory + "\n" + subject + "\n" + type
-            }
-        }
-        Row {
-            id: columnsHeader
-            y: tableView.contentY
-            z: 2
-            spacing: tableView.columnSpacing
-            anchors.top: parent.bottom
-            onWidthChanged: {
-                forceLayout();
-            }
-            onHeightChanged: {
-                forceLayout();
+                tableView.verticalHeader = tableModel.verticalHeaderData()
             }
 
-            Repeater {
-                id: columnsHeaderModel
-                Label {
-                    width: tableView.columnWidthProvider(1)
-                    height: 35
-                    Text {
-                        text: modelData
-                        anchors.centerIn: parent
-                        color: (!appSettings.isLight ? appSettings.darkLight : "white")
-                    }
-                    verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
-                    background: Rectangle { color: appSettings.themeColor }
-                }
-            }
         }
-
-        Column {
-            id: rowsHeader
-            x: tableView.contentX
-            spacing: tableView.rowSpacing
-            anchors.top: parent.top
-            z: 2
-            onWidthChanged: {
-                forceLayout();
-            }
-            onHeightChanged: {
-                forceLayout();
-            }
-
-            Repeater {
-                id: rowsHeaderModel
-                Label {
-                    width: Math.max(tableView.columnWidthProvider(1)/4,text.width*1.5)
-                    height: Math.max(tableView.rowHeightProvider(1),text.height*1.5)
-                    StyledText {
-                        id: text
-                        text: modelData
-                        anchors.centerIn: parent
-                        color: (!appSettings.isLight ? appSettings.darkLight : "white")
-                    }
-                    verticalAlignment: Text.AlignVCenter
-                    background: Rectangle { color: appSettings.themeColor  }
-                }
-            }
+        delegate: Loader {
+            property var auditory: model.auditory
+            property var subject: model.subject
+            property var type: model.type
+            property var color: model.color
+            property var row_: row
+            property var column_: column
+            sourceComponent: (row == tableView.rows - 1 ? headerDelegate : cellDelegate)
         }
     }
 }

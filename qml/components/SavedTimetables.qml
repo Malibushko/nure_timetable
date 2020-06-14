@@ -66,7 +66,6 @@ Page {
                 }
                 onClicked: {
                     var lessons = model.lessons;
-                    console.log(lessons)
                     timetablePage.modelRef.prepareForNewTimetable(lessons.length)
                     for (var i in lessons)
                         timetablePage.modelRef.addLesson(model.id,lessons[i])
