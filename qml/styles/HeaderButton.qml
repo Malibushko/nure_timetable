@@ -13,4 +13,10 @@ Button {
     background: Rectangle {
         color: "transparent"
     }
+    onPressed: {
+        scale = 1.2
+    }
+    onReleased: {
+        scale = 1
+    }
 }

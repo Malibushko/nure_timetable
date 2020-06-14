@@ -45,7 +45,11 @@ Page {
         }
         icon.source: "qrc:///qml/icons/save"
         ToolTip.text: qsTr("Save timetable")
+
         onClicked: {
+
+            dialog.setData(qsTr("Success"),qsTr("Timetable saved!"));
+
             var timetable = localStorage.createTimetable(findPage.timetableId,
                                                          findPage.timetableTitle,
                                                          findPage.isTeacher,
@@ -111,6 +115,7 @@ Page {
         model: TableModel {
             id: tableModel
             onHorizontalHeaderFinished: {
+                tableView.contentX = (tableView.columnWidthProvider(1)-0.5) * tableModel.currentColumn()
                 tableView.horizontalHeader = tableModel.horizontalHeaderData()
             }
             onVerticalHeaderFinished: {
