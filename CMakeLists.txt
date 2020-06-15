@@ -39,7 +39,6 @@ conan_cmake_run(REQUIRES
                 BASIC_SETUP
                 BUILD missing)
 
-
 find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/api.h

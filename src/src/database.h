@@ -14,7 +14,6 @@ enum TableType {
     SETTINGS        = 1 << 0,
     SEARCH_TEACHER  = 1 << 1,
     SEARCH_GROUP    = 1 << 2,
-    SAVED_REF       = 1 << 3,
     SAVED_TIMETABLE = 1 << 4
 };
 Q_ENUM_NS(TableType);
