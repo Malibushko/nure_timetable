@@ -24,22 +24,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-# Download automatically, you can also just copy the conan.cmake file
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-   file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
-                 "${CMAKE_BINARY_DIR}/conan.cmake")
-endif()
-
-include(${CMAKE_BINARY_DIR}/conan.cmake)
-
-conan_cmake_run(REQUIRES
-                rapidjson/1.1.0
-                magic_get/1.0
-                BASIC_SETUP
-                BUILD missing)
-
 find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
+
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/api.h
             ${CMAKE_SOURCE_DIR}/src/internal/api_structs.h
@@ -56,6 +42,7 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/internal/material.h
             ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.h
             ${CMAKE_SOURCE_DIR}/src/internal/executor.h)
+
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
              ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
              main.cpp)
@@ -76,5 +63,22 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/src)
 
 target_compile_definitions(Timetable2
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+
+# Download automatically, you can also just copy the conan.cmake file
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+   file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
+                 "${CMAKE_BINARY_DIR}/conan.cmake")
+endif()
+
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+conan_cmake_run(REQUIRES
+                rapidjson/1.1.0
+                magic_get/1.0
+                BASIC_SETUP
+                BUILD missing)
+
+
 target_link_libraries(Timetable2
   PRIVATE Qt5::Core Qt5::Quick Qt5::Sql ${CONAN_LIBS})
