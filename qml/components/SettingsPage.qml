@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls.Material 2.12
 import "../styles"
 import lib 1.0
+import Qt.labs.qmlmodels 1.0
+
 Page {
     property alias modelRef: settingsModel
 
@@ -39,14 +41,14 @@ Page {
                 hoverEnabled: appSettings.animationsEnabled
                 onHoveredChanged: {
                     parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05) :
-                                                                    appSettings.componentColor;
+                                                   appSettings.componentColor;
                     parent.border.color = containsMouse ? appSettings.accentColor : "transparent"
                     parent.border.width = containsMouse
                 }
                 onClicked: {
-                    settingsGroup.modelRef.setGroup(model.group)
-                    settingsGroup.modelRef.setItems(model.settings)
-                    mainView.push(settingsGroup);
+                        settingsGroup.modelRef.setGroup(model.group)
+                        settingsGroup.modelRef.setItems(model.settings)
+                        mainView.push(settingsGroup);
                 }
             }
             RowLayout {

@@ -9,39 +9,47 @@ namespace timetable {
 class SettingsModel : public QAbstractListModel {
     Q_OBJECT
     mutable QSettings settings;
+private:
+    void setIfNotExist(const QString& key,const QVariant& value,bool forceDefault = false) {
+        if (forceDefault || settings.value(key) == QVariant{}) {
+            settings.setValue(key,value);
+        }
+    }
 public:
     SettingsModel(QObject* /* parent */= nullptr) {
         qDebug() << settings.fileName();
-        if (settings.value("initialized",false) == false) {
-            defaultSettings();
-        }
+        loadSettings();
     }
-    Q_INVOKABLE void defaultSettings() {
-        settings.beginGroup(tr("styling"));
-        settings.setValue(tr("app_theme"),Material::color(Material::Green));
-        settings.setValue(tr("app_accent"),Material::color(Material::Green));
-        settings.setValue(tr("app_primary"),Material::color(Material::Green));
-        settings.setValue(tr("night_mode"),false);
+    Q_INVOKABLE void loadSettings(bool forceDefault = false) {
+        settings.beginGroup("styling");
+        setIfNotExist("app_theme",Material::color(Material::Green),forceDefault);
+        setIfNotExist("app_accent",Material::color(Material::Green),forceDefault);
+        setIfNotExist("app_primary",Material::color(Material::Green),forceDefault);
+        setIfNotExist("night_mode",false,forceDefault);
         settings.endGroup();
 
-        settings.beginGroup(tr("timetable_styling"));
-        settings.setValue(tr("zal_color"),QColor("#C2A0B8"));
-        settings.setValue(tr("lb_color"),QColor("#CDCCFF"));
-        settings.setValue(tr("lc_color"),QColor("#FEFEEA"));
-        settings.setValue(tr("pz_color"),QColor("#DAED9D"));
+        settings.beginGroup("timetable_styling");
+        setIfNotExist("zal_color",QColor("#C2A0B8"),forceDefault);
+        setIfNotExist("lb_color",QColor("#CDCCFF"),forceDefault);
+        setIfNotExist("lc_color",QColor("#FEFEEA"),forceDefault);
+        setIfNotExist("pz_color",QColor("#DAED9D"),forceDefault);
         settings.endGroup();
 
         settings.beginGroup(tr("graphics"));
-        settings.setValue(tr("animations"),true);
-        settings.setValue(tr("caching"),true);
+        setIfNotExist("animations",true,forceDefault);
+        setIfNotExist("caching",true,forceDefault);
         settings.endGroup();
 
-        settings.beginGroup(tr("miscellaneous"));
-        settings.setValue(tr("language"),"eng");
-        settings.setValue(tr("autoupdating"),false);
+        settings.beginGroup("miscellaneous");
+        setIfNotExist("language","eng",forceDefault);
+        setIfNotExist("autoupdating",false,forceDefault);
         settings.endGroup();
 
-        settings.setValue("initialized",true);
+        settings.beginGroup("button_callbacks");
+        setIfNotExist("clear_cache_btn","clear_cache");
+        setIfNotExist("restore_default_btn","restore_default");
+        settings.endGroup();
+
         settings.sync();
     }
     Q_INVOKABLE QVariant value(const QString& group,
@@ -74,20 +82,26 @@ public:
         }
         QString groups = settings.childGroups()[index.row()];
         switch (role) {
-            case Qt::UserRole:
-                return groups;
-            case Qt::UserRole+1:
-                settings.beginGroup(groups);
-                QVariant keys = settings.childKeys();
-                settings.endGroup();
-                return keys;
+        case Qt::UserRole: {
+            return groups;
+        }
+        case Qt::UserRole+1: {
+            settings.beginGroup(groups);
+            QVariant keys = settings.childKeys();
+            settings.endGroup();
+            return keys;
+        }
+        case Qt::UserRole+2: {
+            return groups == "button_callbacks";
+        }
         }
         return {};
     }
     QHash<int,QByteArray> roleNames() const override {
         QHash<int,QByteArray> roles {
             {Qt::UserRole,"group"},
-            {Qt::UserRole+1,"settings"}
+            {Qt::UserRole+1,"settings"},
+            {Qt::UserRole+2,"is_functional"}
         };
         return roles;
     }

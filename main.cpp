@@ -9,6 +9,7 @@
 #include "src/qml/settings_model.h"
 #include "src/qml/settings_group_model.h"
 #include "src/src/local_storage.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc,argv);

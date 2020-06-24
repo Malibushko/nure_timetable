@@ -29,6 +29,8 @@ Page {
             StyledText {
                 anchors.centerIn: parent
                 text: auditory + "\n" + subject + "\n" + type;
+                clip: true
+                fontSizeMode: Text.Fit
             }
         }
     }
@@ -38,7 +40,7 @@ Page {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: appSettings.margin
-        visible: mainView.currentItem == timetablePage
+        visible: mainView.currentItem === timetablePage
         background: Rectangle {
             anchors.fill: parent
             color: mainHeader.background.color
