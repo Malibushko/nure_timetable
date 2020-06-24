@@ -148,13 +148,32 @@ Page {
             }
         }
         delegate: Loader {
+            id: loader
             property var auditory: model.auditory
             property var subject: model.subject
             property var type: model.type
-            property var color_: model.color
+            property var color_
             property var row_: row
             property var column_: column
             sourceComponent: (row == tableView.rows - 1 ? headerDelegate : cellDelegate)
+            onTypeChanged: {
+                switch (model.type) {
+                case "Пз":
+                    color_ =  settingsPage.modelRef.value("timetable_styling","pz_color");
+                    break;
+                case "Лк":
+                    color_ =  settingsPage.modelRef.value("timetable_styling","lc_color");
+                    break;
+                case "Лб":
+                    color_ =  settingsPage.modelRef.value("timetable_styling","lb_color");
+                    break;
+                case "Зал":
+                    color_ =  settingsPage.modelRef.value("timetable_styling","zal_color");
+                    break;
+                default:
+                    color_ = "transparent";
+                }
+            }
         }
     }
 }

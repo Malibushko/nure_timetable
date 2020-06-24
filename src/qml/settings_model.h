@@ -24,6 +24,13 @@ public:
         settings.setValue(tr("night_mode"),false);
         settings.endGroup();
 
+        settings.beginGroup(tr("timetable_styling"));
+        settings.setValue(tr("zal_color"),QColor("#C2A0B8"));
+        settings.setValue(tr("lb_color"),QColor("#CDCCFF"));
+        settings.setValue(tr("lc_color"),QColor("#FEFEEA"));
+        settings.setValue(tr("pz_color"),QColor("#DAED9D"));
+        settings.endGroup();
+
         settings.beginGroup(tr("graphics"));
         settings.setValue(tr("animations"),true);
         settings.setValue(tr("caching"),true);

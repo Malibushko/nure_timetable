@@ -8,12 +8,6 @@
 namespace timetable {
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
-    static inline const QHash<QString,QString> colors {
-       {"Зал","#C2A0B8",},
-        {"Пз","#DAE9D9",},
-        {"Лк","#FEFEEA"},
-        {"Лб","#CDCCFF"}
-    };
     QString m_title;
     QHash<uint64_t,internal::Lesson> lessons;
     QStringList m_horizontalHeaderData;
@@ -156,16 +150,13 @@ public:
                 return lesson.type;
             case Qt::UserRole+2:
                 return lesson.auditory;
-            case Qt::UserRole+3:
-                return colors[lesson.type];
         }
         return "";
     }
     QHash<int,QByteArray> roleNames() const override {
         return {{Qt::UserRole,"subject"},
             {Qt::UserRole+1,"type"},
-            {Qt::UserRole+2,"auditory"},
-            {Qt::UserRole+3,"color"}};
+            {Qt::UserRole+2,"auditory"}};
     }
 signals:
     void timetableCompleted();
