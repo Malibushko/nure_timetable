@@ -81,6 +81,7 @@ public:
             return QVariant::fromValue(q.lastInsertId());
         }).then(cb);
     }
+
     template<class Resource,class Callback = DefaultCallback>
     void Get(TableType type,Callback&& cb = {}) {
         using namespace  internal;

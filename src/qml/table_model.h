@@ -18,6 +18,7 @@ class TableModel : public QAbstractTableModel {
     QHash<uint64_t,internal::Lesson> lessons;
     QStringList m_horizontalHeaderData;
     std::set<QString> m_verticalHeaderData;
+    std::pair<QTime,int> currentLesson;
     int timetableId = -1;
     int totalRows;
 private:
@@ -61,8 +62,39 @@ public:
                 emit timetableCompleted();
         }
     }
+    Q_INVOKABLE int lessonDuration() const {
+        if (m_verticalHeaderData.size() < 2)
+            return 0;
+        else
+            return QTime::fromString(*m_verticalHeaderData.begin(),"hh:mm").secsTo(
+                        QTime::fromString(*std::next(m_verticalHeaderData.begin()),"hh:mm"));
+    }
+    Q_INVOKABLE int rowProgress(int row) {
+        if (currentLesson.first.isNull() || currentLesson.first.secsTo(QTime::currentTime()) >= lessonDuration()) {
+            decltype (auto) it = m_verticalHeaderData.begin();
+            QTime currentTime = QTime::currentTime();
+            for ( ;it != m_verticalHeaderData.end();++it) {
+                QTime timeStart = QTime::fromString(*it,"hh:mm");
+                if (timeStart.secsTo(currentTime) < lessonDuration()) {
+                    currentLesson.first = timeStart;
+                    currentLesson.second = std::distance(m_verticalHeaderData.begin(),it);
+                    break;
+                }
+            }
+            if (it != m_verticalHeaderData.end()) {
+                if (std::distance(m_verticalHeaderData.begin(),it) != row)
+                    return 0;
+            } else
+                return 0;
+        }
+        if (currentLesson.second != row)
+            return 0;
+        return lessonDuration() - currentLesson.first.secsTo(QTime::currentTime());
+    }
     Q_INVOKABLE void prepareForNewTimetable(int rowCount) {
+        // remove the last table
         clear();
+
         lessons.reserve(rowCount);
         totalRows = rowCount;
     }
@@ -72,6 +104,7 @@ public:
         lessons.clear();
         m_verticalHeaderData.clear();
         m_horizontalHeaderData.clear();
+        currentLesson = {};
         endResetModel();
     }
     Q_INVOKABLE QVariantList getModel() const {

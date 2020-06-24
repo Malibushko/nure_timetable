@@ -72,6 +72,9 @@ Page {
             Label {
                 width: text.width*1.5
                 height: tableView.rowHeightProvider(index)
+                onHeightChanged: {
+                    fillAnimationAnimation.restart()
+                }
                 StyledText {
                     id: text
                     text: modelData
@@ -80,6 +83,25 @@ Page {
                 }
                 BottomBorder {
                     color: appSettings.accentColor
+                }
+                Rectangle {
+                    id: fillAnimationRect
+                    anchors.right: parent.right
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    PropertyAnimation {
+                        id: fillAnimationAnimation
+                        target: fillAnimationRect
+                        property: "height"
+                        from: (tableModel.rowProgress(index)/tableModel.lessonDuration())*tableView.rowHeightProvider(index)
+                        to: from === 0 ? 0 : tableView.rowHeightProvider(index)
+                        duration: tableModel.rowProgress(index)*1000
+                        running: true
+                        Component.onCompleted: {
+                        }
+                    }
+                    color: appSettings.accentColor
+                    opacity: 0.5
                 }
                 verticalAlignment: Text.AlignVCenter
                 background: Rectangle { color: appSettings.themeColor  }

@@ -24,7 +24,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Sql Svg REQUIRED)
 
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/api.h
@@ -79,6 +79,5 @@ conan_cmake_run(REQUIRES
                 BASIC_SETUP
                 BUILD missing)
 
-
 target_link_libraries(Timetable2
-  PRIVATE Qt5::Core Qt5::Quick Qt5::Sql ${CONAN_LIBS})
+  PRIVATE Qt5::Core Qt5::Quick Qt5::Sql Qt5::Svg ${CONAN_LIBS})
