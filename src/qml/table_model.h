@@ -56,6 +56,9 @@ public:
                 emit timetableCompleted();
         }
     }
+    Q_INVOKABLE int id() const noexcept {
+        return timetableId;
+    }
     Q_INVOKABLE int lessonDuration() const {
         if (m_verticalHeaderData.size() < 2)
             return 0;

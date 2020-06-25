@@ -19,12 +19,12 @@ Page {
                     ColorAnimation {
                         property: "color"
                         to: appSettings.primaryColor
-                        duration: 1000
+                        duration: 200
                     }
                     NumberAnimation {
                         property: "y";
                         to: -appSettings.rowHeight
-                        duration: 1000
+                        duration: 300
                         easing.type: Easing.OutQuad
                     }
                 }

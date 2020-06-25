@@ -40,7 +40,7 @@ Page {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: appSettings.margin
-        visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(findPage.timetableId) < 0
+        visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(tableModel.id()) < 0
         background: Rectangle {
             anchors.fill: parent
             color: mainHeader.background.color
