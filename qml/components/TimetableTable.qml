@@ -47,10 +47,6 @@ Page {
         }
         icon.source: "qrc:///qml/icons/save"
         ToolTip.text: qsTr("Save timetable")
-        Component.onCompleted: {
-            console.log(findPage.timetableId,savedTimetables.modelRef.find(findPage.timetableId))
-        }
-
         onClicked: {
 
             dialog.setData(qsTr("Success"),qsTr("Timetable saved!"));

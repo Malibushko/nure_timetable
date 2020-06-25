@@ -65,13 +65,6 @@ Item {
                         Layout.alignment: Qt.AlignLeft
                         text: title
                     }
-                    RowButton {
-                        id: addButton
-                        Layout.alignment: Qt.AlignRight
-                        Layout.rightMargin: appSettings.margin
-                        icon.source: "qrc:///qml/icons/plus.svg"
-                        ToolTip.text: qsTr("Save timetable")
-                    }
                 }
             }
         }
