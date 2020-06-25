@@ -121,7 +121,7 @@ Page {
         property var columnsPerScreen: 4
         rowHeightProvider: function (row) {
             if (row === rows-1)
-                return 50;
+                return appSettings.rowHeight/4;
             return (height-rowHeightProvider(rows-1))/(rows-1)
         }
         columnWidthProvider: function(column) {

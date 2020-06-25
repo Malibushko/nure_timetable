@@ -7,10 +7,6 @@ import "../styles"
 
 ToolBar {
     height: appSettings.rowHeight
-    function updateIcons() {
-        savedTimetableButton.visible = mainView.find(function(item,index){return item === savedTimetables;}) === null
-    }
-
     RowLayout {
         anchors.fill: parent
         RowLayout {
@@ -41,15 +37,6 @@ ToolBar {
             Layout.alignment: Qt.AlignRight
             Layout.rightMargin: appSettings.margin
             spacing: appSettings.margin
-            HeaderButton {
-                id: savedTimetableButton
-                visible: mainView.currentItem !== savedTimetables
-                icon.source: "qrc:///qml/icons/calendar.svg"
-                ToolTip.text: qsTr("Saved timetables")
-                onClicked: {
-                    mainView.push(savedTimetables)
-                }
-            }
             HeaderButton {
                 id: findButton
                 visible: mainView.currentItem !== findPage

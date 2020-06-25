@@ -107,8 +107,5 @@ ApplicationWindow {
         id: mainView
         anchors.fill: parent
         initialItem: savedTimetables
-        onCurrentItemChanged: {
-            mainHeader.updateIcons()
-        }
     }
 }
