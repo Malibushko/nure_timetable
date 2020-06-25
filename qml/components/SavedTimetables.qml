@@ -110,7 +110,7 @@ Page {
                             target: updateButton;
                             from: 0;
                             to: 360;
-                            duration: 10000
+                            duration: 1000
                             loops: Animation.Infinite
                         }
                         onClicked: {

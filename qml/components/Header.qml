@@ -7,6 +7,10 @@ import "../styles"
 
 ToolBar {
     height: appSettings.rowHeight
+    function updateIcons() {
+        savedTimetableButton.visible = mainView.find(function(item,index){return item === savedTimetables;}) === null
+    }
+
     RowLayout {
         anchors.fill: parent
         RowLayout {

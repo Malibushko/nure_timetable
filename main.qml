@@ -93,18 +93,22 @@ ApplicationWindow {
     SettingsGroupPage {
         id: settingsGroup
     }
+    FindPage {
+        id: findPage
+    }
+    TimetableTable {
+        id: timetablePage
+    }
+    SavedTimetables {
+        id: savedTimetables
+    }
 
     StackView {
         id: mainView
         anchors.fill: parent
-        initialItem: SavedTimetables {
-            id: savedTimetables
-        }
-        FindPage {
-            id: findPage
-        }
-        TimetableTable {
-            id: timetablePage
+        initialItem: savedTimetables
+        onCurrentItemChanged: {
+            mainHeader.updateIcons()
         }
     }
 }

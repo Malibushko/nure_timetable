@@ -40,13 +40,16 @@ Page {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: appSettings.margin
-        visible: mainView.currentItem === timetablePage
+        visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(findPage.timetableId) < 0
         background: Rectangle {
             anchors.fill: parent
             color: mainHeader.background.color
         }
         icon.source: "qrc:///qml/icons/save"
         ToolTip.text: qsTr("Save timetable")
+        Component.onCompleted: {
+            console.log(findPage.timetableId,savedTimetables.modelRef.find(findPage.timetableId))
+        }
 
         onClicked: {
 

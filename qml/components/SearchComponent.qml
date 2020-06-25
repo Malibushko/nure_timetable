@@ -33,7 +33,7 @@ Item {
                 id: listModel_
             }
             delegate: Rectangle {
-                width: parent.width
+                width: appSettings.rowWidth
                 color: appSettings.componentColor
                 height: appSettings.rowHeight * (model.visible ? 1 : 0)
                 visible: model.visible

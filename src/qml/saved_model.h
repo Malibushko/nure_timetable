@@ -19,6 +19,12 @@ public:
         timetables.clear();
         endResetModel();
     }
+    Q_INVOKABLE int find(int timetableId) {
+        auto iter = std::find_if(timetables.begin(),timetables.end(),[=](const auto& it){
+            return it.id == timetableId;
+        });
+        return iter != timetables.end() ? std::distance(timetables.begin(),iter) : -1;
+    }
     Q_INVOKABLE void setItems(const QVariantList& items) {
         beginResetModel();
         timetables.reserve(items.size());
