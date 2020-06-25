@@ -29,7 +29,7 @@ public:
         instance.beginTransaction();
         for (const QVariant& item : data)
             save(type,item);
-        instance.endTransaction();
+        instance.commit();
     }
     Q_INVOKABLE QVariantList get(TableType type) {
         using namespace internal;
@@ -73,7 +73,10 @@ public:
         Database::instance().beginTransaction();
     }
     Q_INVOKABLE void endTransaction() {
-        Database::instance().endTransaction();
+        Database::instance().commit();
+    }
+    Q_INVOKABLE void clearStorage() {
+        Database::instance().clearDatabase();
     }
 signals:
     void error(const QString& message);

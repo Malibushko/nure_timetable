@@ -136,9 +136,26 @@ public:
             return QVariant::fromValue(QSqlDatabase::database().transaction());
         });
     }
-    void endTransaction() {
+    void commit() {
         se.submit([]{
             return QVariant::fromValue(QSqlDatabase::database().commit());
+        }).then(DefaultCallback{});
+    }
+    void rollback() {
+        se.submit([]{
+            return QVariant::fromValue(QSqlDatabase::database().rollback());
+        }).then(DefaultCallback{});
+    }
+    void clearDatabase() {
+        se.submit([&]{
+            QSqlQuery q("DROP TABLE kvalue");
+            if (q.lastError().type() != QSqlError::NoError) {
+                qDebug() << q.lastError().text();
+            } else {
+                qDebug() << q.lastQuery();
+                this->connect();
+            }
+            return QVariant{};
         }).then(DefaultCallback{});
     }
 signals:

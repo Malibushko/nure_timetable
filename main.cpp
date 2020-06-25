@@ -3,12 +3,12 @@
 #include <QDebug>
 
 #include "src/api.h"
-#include "src/qml/search_model.h"
 #include "src/qml/table_model.h"
 #include "src/qml/saved_model.h"
+#include "src/qml/search_model.h"
+#include "src/src/local_storage.h"
 #include "src/qml/settings_model.h"
 #include "src/qml/settings_group_model.h"
-#include "src/src/local_storage.h"
 
 int main(int argc, char *argv[])
 {

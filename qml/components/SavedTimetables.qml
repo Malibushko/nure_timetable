@@ -9,6 +9,10 @@ import lib 1.0
 Page {
     id: root_
     property alias modelRef: saveModel
+    function forceLayout() {
+        saveModel.clear()
+    }
+
     Transition {
         id: removeAnimation
                 SequentialAnimation {

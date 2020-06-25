@@ -25,5 +25,6 @@
         <file>qml/components/SettingsPage.qml</file>
         <file>qml/components/SettingsGroupPage.qml</file>
         <file>qml/components/MessageDialog.qml</file>
+        <file>qml/icons/security.svg</file>
     </qresource>
 </RCC>

@@ -46,8 +46,8 @@ public:
         settings.endGroup();
 
         settings.beginGroup("button_callbacks");
-        setIfNotExist("clear_cache_btn","clear_cache");
-        setIfNotExist("restore_default_btn","restore_default");
+        setIfNotExist("clear_cache_btn","btn");
+        setIfNotExist("restore_default_btn","btn");
         settings.endGroup();
 
         settings.sync();

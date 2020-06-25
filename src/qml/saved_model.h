@@ -13,6 +13,12 @@ class SavedTimetableModel : public QAbstractListModel {
 public:
     SavedTimetableModel(QObject* /* parent */= nullptr) {
     }
+    Q_INVOKABLE void clear() {
+        beginResetModel();
+        qDebug() << "Clearing";
+        timetables.clear();
+        endResetModel();
+    }
     Q_INVOKABLE void setItems(const QVariantList& items) {
         beginResetModel();
         timetables.reserve(items.size());

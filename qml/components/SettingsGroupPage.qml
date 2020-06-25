@@ -59,6 +59,29 @@ Page {
             }
         }
     }
+    Component {
+        id: btnDelegate
+        RowButton {
+            id: pressButton
+            Layout.alignment: Qt.AlignRight
+            Layout.rightMargin: appSettings.margin
+            icon.source: "qrc:///qml/icons/security.svg"
+            onClicked: {
+                console.log(modelName)
+                switch (modelName) {
+                    case "restore_default_btn":
+                        settingsPage.modelRef.loadSettings(true)
+                        dialog.setData(qsTr("Success"),qsTr("Settings has been succesfully restored to default."));
+                        break;
+                    case "clear_cache_btn":
+                        localStorage.clearStorage();
+                        savedTimetables.modelRef.clear()
+                        dialog.setData(qsTr("Success"),qsTr("Local storage has been succesfully cleared"));
+                        break;
+                }
+            }
+        }
+    }
 
     ListView {
         anchors.fill: parent
@@ -69,7 +92,6 @@ Page {
             width: parent.width
             height: appSettings.rowHeight
             color: appSettings.componentColor
-
             BottomBorder {
             }
             RowLayout {
@@ -87,22 +109,31 @@ Page {
                     height: width
                     property bool initialized: false
                     property var modelData: model.value
+                    property var modelName: model.name
                     Component.onCompleted: {
-                        if (type == "slider")
+                        switch (type)  {
+                        case "slider":
                             sourceComponent = switchDelegate;
-                        else if (type == "color")
-                            sourceComponent = colorDelegate
-                        else if (type == "number")
+                            break;
+                        case "color":
+                            sourceComponent = colorDelegate;
+                            break;
+                        case "number":
                             sourceComponent = numberDelegate;
-                        else if (type == "list")
-                            sourceComponent = listDelegate
+                            break;
+                        case "list":
+                            sourceComponent = listDelegate;
+                            break;
+                        case "btn":
+                            sourceComponent = btnDelegate;
+                            break;
+                        }
                     }
                     onModelDataChanged: {
                         if (initialized) {
                             settingsPage.modelRef.updateSetting(settingsModel.getGroup(),
                                                                 name,modelData)
                         }
-
                         initialized = true
                     }
                 }
