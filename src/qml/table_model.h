@@ -86,7 +86,7 @@ public:
         }
         if (currentLesson.second != row)
             return 0;
-        return lessonDuration() - currentLesson.first.secsTo(QTime::currentTime());
+        return currentLesson.first.secsTo(QTime::currentTime());
     }
     Q_INVOKABLE void prepareForNewTimetable(int rowCount) {
         // remove the last table

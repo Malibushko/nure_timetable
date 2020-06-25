@@ -8,8 +8,8 @@
 #include "src/qml/search_model.h"
 #include "src/src/local_storage.h"
 #include "src/qml/settings_model.h"
+#include "src/qml/search_filter_model.h"
 #include "src/qml/settings_group_model.h"
-
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc,argv);
@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<timetable::SettingsModel>("lib",1,0,"SettingsModel");
     qmlRegisterType<timetable::SettingsGroupModel>("lib",1,0,"SettingsGroupModel");
     qmlRegisterType<timetable::SavedTimetableModel>("lib",1,0,"SaveModel");
+    qmlRegisterType<timetable::SortFilterModel>("lib",1,0,"SearchFilterModel");
     qRegisterMetaType<timetable::TableType>("TableType");
 
     qmlRegisterUncreatableMetaObject(

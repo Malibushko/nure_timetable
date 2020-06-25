@@ -22,21 +22,20 @@ Item {
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
             onTextEdited: {
-                listModel_.setFilter(searchInput.text)
+                listModel_.setFilterString(searchInput.text)
             }
         }
         ListView {
             Layout.fillHeight: true
             Layout.fillWidth: true
             clip: true
-            model:  BaseSearchModel {
+            model: SearchFilterModel {
                 id: listModel_
             }
             delegate: Rectangle {
                 width: appSettings.rowWidth
                 color: appSettings.componentColor
-                height: appSettings.rowHeight * (model.visible ? 1 : 0)
-                visible: model.visible
+                height: appSettings.rowHeight
                 BottomBorder {
                 }
                 MouseArea {

@@ -1,6 +1,5 @@
 #pragma once
 #include <QObject>
-#include <QDebug>
 #include <QAbstractListModel>
 #include <QSettings>
 #include "../internal/api_structs.h"

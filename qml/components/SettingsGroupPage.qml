@@ -67,7 +67,6 @@ Page {
             Layout.rightMargin: appSettings.margin
             icon.source: "qrc:///qml/icons/security.svg"
             onClicked: {
-                console.log(modelName)
                 switch (modelName) {
                     case "restore_default_btn":
                         settingsPage.modelRef.loadSettings(true)

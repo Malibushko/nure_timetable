@@ -13,16 +13,16 @@ Page {
     property bool isTeacher
 
     function addGroup(group) {
-        groupTab.modelRef.addItem(group)
+        groupTab.modelRef.sourceModel.addItem(group)
     }
     function addTeacher(teacher) {
-        teachersTab.modelRef.addItem(teacher)
+        teachersTab.modelRef.sourceModel.addItem(teacher)
     }
     function groupInitialized() {
-        return groupTab.modelRef.initialized();
+        return groupTab.modelRef.sourceModel.initialized();
     }
     function teachersInitialized() {
-        return teachersTab.modelRef.initialized();
+        return teachersTab.modelRef.sourceModel.initialized();
     }
 
     StackLayout {

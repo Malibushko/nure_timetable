@@ -96,10 +96,8 @@ Page {
                         property: "height"
                         from: (tableModel.rowProgress(index)/tableModel.lessonDuration())*tableView.rowHeightProvider(index)
                         to: from === 0 ? 0 : tableView.rowHeightProvider(index)
-                        duration: tableModel.rowProgress(index)*1000
+                        duration: (tableModel.lessonDuration()-tableModel.rowProgress(index))*1000
                         running: true
-                        Component.onCompleted: {
-                        }
                     }
                     color: appSettings.accentColor
                     opacity: 0.5
@@ -119,6 +117,14 @@ Page {
         property var horizontalHeader
         property var verticalHeader
         property var columnsPerScreen: 4
+        Item {
+            id: colorPalette
+            property color pz_color: settingsPage.modelRef.value("timetable_styling","pz_color");
+            property color lc_color: settingsPage.modelRef.value("timetable_styling","lc_color");
+            property color lb_color: settingsPage.modelRef.value("timetable_styling","lb_color");
+            property color zal_color: settingsPage.modelRef.value("timetable_styling","zal_color");
+        }
+
         rowHeightProvider: function (row) {
             if (row === rows-1)
                 return appSettings.rowHeight/4;
@@ -160,16 +166,16 @@ Page {
             onTypeChanged: {
                 switch (model.type) {
                 case "Пз":
-                    color_ =  settingsPage.modelRef.value("timetable_styling","pz_color");
+                    color_ =  colorPalette.pz_color
                     break;
                 case "Лк":
-                    color_ =  settingsPage.modelRef.value("timetable_styling","lc_color");
+                    color_ =  colorPalette.lc_color
                     break;
                 case "Лб":
-                    color_ =  settingsPage.modelRef.value("timetable_styling","lb_color");
+                    color_ =  colorPalette.lb_color
                     break;
                 case "Зал":
-                    color_ =  settingsPage.modelRef.value("timetable_styling","zal_color");
+                    color_ =  colorPalette.zal_color
                     break;
                 default:
                     color_ = "transparent";

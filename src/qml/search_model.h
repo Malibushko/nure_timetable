@@ -13,16 +13,10 @@ private:
     QRegularExpression filter;
 public:
     SearchItemModel(QObject* /* parent */= nullptr) {
-
     }
     Q_INVOKABLE bool initialized() const {
         return mTimetables.size();
     }
-    Q_INVOKABLE void setFilter(const QString & s) {
-        filter.setPattern(s);
-        emit dataChanged(createIndex(0,0),createIndex(mTimetables.size(),0),{Qt::UserRole+2});
-    }
-
     Q_INVOKABLE void setItems(const QVariantList& items) {
         beginResetModel();
 
@@ -57,16 +51,13 @@ public:
                 return item.id;
             case Qt::UserRole+1:
                 return item.title;
-            case Qt::UserRole+2:
-                return filter.match(item.title).hasMatch();
         }
         return {};
     }
     QHash<int,QByteArray> roleNames() const override {
         QHash<int,QByteArray> roles {
             {Qt::UserRole,"timetable_id"},
-            {Qt::UserRole+1,"title"},
-            {Qt::UserRole+2,"visible"}
+            {Qt::UserRole+1,"title"}
         };
         return roles;
     }
