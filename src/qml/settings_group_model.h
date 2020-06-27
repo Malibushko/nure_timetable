@@ -22,12 +22,12 @@ public:
     Q_INVOKABLE QString getGroup() const {
         return settings.group();
     }
-    Q_INVOKABLE void setItems(const QVariantList& settings) {
+    Q_INVOKABLE void setItems(const QVariantList& otherSettings) {
         beginResetModel();
         settingTitles.clear();
-        settingTitles.reserve(settings.size());
+        settingTitles.reserve(otherSettings.size());
 
-        for (const QVariant& item : settings) {
+        for (const QVariant& item : otherSettings) {
             QString key = qvariant_cast<QString>(item);
             QVariant  value = this->settings.value(key);
             settingTitles.push_back({key,value});
@@ -45,7 +45,6 @@ public:
             return {};
         }
         const auto& name = settingTitles[index.row()];
-        qDebug() << name;
         switch (role) {
             case Qt::UserRole:
                 return name.first;
@@ -74,6 +73,8 @@ public:
                 }
                 return "none";
             }
+            default:
+                break;
         }
         return {};
     }

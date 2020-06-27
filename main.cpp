@@ -13,10 +13,11 @@
 #include "src/qml/settings_group_model.h"
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     QGuiApplication app(argc,argv);
-    QCoreApplication::setOrganizationName("Timetable");
-    QCoreApplication::setApplicationName("Timetable");
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication::setOrganizationName("Timetable");
+    QGuiApplication::setApplicationName("Timetable");
     QQmlApplicationEngine engine;
     qRegisterMetaType<Promise>();
     qmlRegisterType<timetable::ApiJSON>("lib",1,0,"Api");

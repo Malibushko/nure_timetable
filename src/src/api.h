@@ -34,13 +34,8 @@ public:
     Q_INVOKABLE QVariantList scheduleSync(int id,bool isTeacher);
     Q_INVOKABLE void schedule(int id,bool isTeacher);
 
-    Q_INVOKABLE void faculties() override;
     Q_INVOKABLE void groups() override;
     Q_INVOKABLE void teachers() override;
-    Q_INVOKABLE void teachers(int p_id_department) override;
-    Q_INVOKABLE void departments(int p_id_faculty) override;
-    Q_INVOKABLE void specialities(int p_id_faculty, int p_id_department) override;
-    Q_INVOKABLE void directions(int p_id_faculty) override;
 signals:
     void newLesson(int id,const QVariant& lesson);
     void transferingFinished();

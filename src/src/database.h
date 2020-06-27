@@ -11,12 +11,11 @@
 namespace timetable {
 Q_NAMESPACE
 enum TableType {
-    SETTINGS        = 1 << 0,
     SEARCH_TEACHER  = 1 << 1,
     SEARCH_GROUP    = 1 << 2,
     SAVED_TIMETABLE = 1 << 4
 };
-Q_ENUM_NS(TableType);
+Q_ENUM_NS(TableType)
 
 
 using DefaultCallback = std::function<void(QVariant)>;

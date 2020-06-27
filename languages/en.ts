@@ -119,8 +119,8 @@
 <context>
     <name>timetable::ApiJSON</name>
     <message>
-        <location filename="../src/src/api.cpp" line="188"/>
-        <location filename="../src/src/api.cpp" line="222"/>
+        <location filename="../src/src/api.cpp" line="98"/>
+        <location filename="../src/src/api.cpp" line="132"/>
         <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -138,7 +138,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/saved_model.h" line="93"/>
+        <location filename="../src/qml/saved_model.h" line="95"/>
         <source> at </source>
         <translation type="unfinished"></translation>
     </message>
@@ -151,97 +151,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="109"/>
+        <location filename="../src/qml/settings_model.h" line="110"/>
         <source>Styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="110"/>
+        <location filename="../src/qml/settings_model.h" line="111"/>
         <source>Theme color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="111"/>
+        <location filename="../src/qml/settings_model.h" line="112"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="112"/>
+        <location filename="../src/qml/settings_model.h" line="113"/>
         <source>Primary color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="113"/>
+        <location filename="../src/qml/settings_model.h" line="114"/>
         <source>Night mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="114"/>
+        <location filename="../src/qml/settings_model.h" line="115"/>
         <source>Timetable styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="115"/>
+        <location filename="../src/qml/settings_model.h" line="116"/>
         <source>Credit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="116"/>
+        <location filename="../src/qml/settings_model.h" line="117"/>
         <source>Laboratory work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="117"/>
+        <location filename="../src/qml/settings_model.h" line="118"/>
         <source>Lecture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="118"/>
+        <location filename="../src/qml/settings_model.h" line="119"/>
         <source>Practical work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="119"/>
+        <location filename="../src/qml/settings_model.h" line="120"/>
         <source>Perfomance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="120"/>
+        <location filename="../src/qml/settings_model.h" line="121"/>
         <source>Animations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="121"/>
+        <location filename="../src/qml/settings_model.h" line="122"/>
         <source>Caching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="122"/>
+        <location filename="../src/qml/settings_model.h" line="123"/>
         <source>Miscellaneous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="123"/>
+        <location filename="../src/qml/settings_model.h" line="124"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="124"/>
+        <location filename="../src/qml/settings_model.h" line="125"/>
         <source>Autoupdating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="125"/>
+        <location filename="../src/qml/settings_model.h" line="126"/>
         <source>Restoring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="126"/>
+        <location filename="../src/qml/settings_model.h" line="127"/>
         <source>Clear cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="127"/>
+        <location filename="../src/qml/settings_model.h" line="128"/>
         <source>Reset settings</source>
         <translation type="unfinished"></translation>
     </message>

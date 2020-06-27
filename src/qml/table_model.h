@@ -9,7 +9,7 @@ namespace timetable {
 class TableModel : public QAbstractTableModel {
     Q_OBJECT
     QString m_title;
-    QHash<uint64_t,internal::Lesson> lessons;
+    QHash<qint64,internal::Lesson> lessons;
     QStringList m_horizontalHeaderData;
     std::set<QString> m_verticalHeaderData;
     std::pair<QTime,int> currentLesson;
@@ -95,7 +95,7 @@ public:
         lessons.reserve(rowCount);
         totalRows = rowCount;
     }
-    Q_INVOKABLE QString secondsToString(int seconds) {
+    Q_INVOKABLE QString secondsToString(uint seconds) {
         return QDateTime::fromTime_t(seconds).toUTC().toString("hh:mm:ss");
     }
     Q_INVOKABLE void clear() {
@@ -136,7 +136,7 @@ public:
         return m_horizontalHeaderData.size();
     }
     QVariant data(const QModelIndex& index, int role = Qt::UserRole) const override {
-        if (!index.isValid() || index.row() < 0 || index.row() >= m_verticalHeaderData.size())
+        if (!index.isValid() || index.row() < 0 || index.row() >= static_cast<int32_t>(m_verticalHeaderData.size()))
             return {""};
         QDateTime modelIndex;
         modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],"dd.MM.yyyy"));
@@ -156,6 +156,8 @@ public:
                 return lesson.type;
             case Qt::UserRole+2:
                 return lesson.auditory;
+            default:
+                break;
         }
         return "";
     }

@@ -63,7 +63,7 @@ Page {
             width: parent.width*0.75
             fontSizeMode: Text.Fit
             color: appSettings.iconColor
-            font.family:  if (digitalFont.status === FontLoader.Ready) digitalFont.name
+            font.family:  digitalFont.status === FontLoader.Ready ?  digitalFont.name : "Arial"
         }
     }
 

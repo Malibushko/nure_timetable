@@ -56,8 +56,8 @@ inline namespace details {
             return "WEB_IAS_TT_GNR_RASP.GEN_TEACHER_KAF_RASP";
         case API_TYPES::P_API_GROUP_REQUEST:
             return "WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP";
-
         }
+       return {};
     }
     QByteArray decode1251(const char* data) {
         QTextCodec * codec = QTextCodec::codecForName("WINDOWS-1251");
@@ -72,96 +72,6 @@ QString ApiJSON::getRoot() const {
 }
 void ApiJSON::setRoot(const QString& root) {
     API_ROOT = root;
-}
-
-void ApiJSON::faculties() {
-    QUrl request(API_ROOT+map(API_TYPES::P_API_FACULTIES_JSON));
-    QNetworkReply * r = mng->get(QNetworkRequest{request});
-    connect(mng,&QNetworkAccessManager::finished,[=](QNetworkReply*){
-        if (r->error() != QNetworkReply::NoError) {
-            emit error(r->errorString());
-            return;
-        }
-        internal::UniversityWrapper response = internal::JsonParser::i().
-                fromJson<internal::UniversityWrapper>(details::decode1251(r->readAll().data()).data());
-        emit facultiesResponse(response.university.faculties);
-    });
-};
-void  ApiJSON::teachers(int p_id_department) {
-    QUrl request(API_ROOT+map(API_TYPES::P_API_TEACHERS_JSON));
-    QUrlQuery q;
-    q.addQueryItem("p_id_department",QString::number(p_id_department));
-    request.setQuery(q);
-
-    connect(mng,&QNetworkAccessManager::finished,[this](QNetworkReply* r){
-        if (r->error() != QNetworkReply::NoError) {
-            emit error(r->errorString());
-            return;
-        }
-
-        internal::DepartmentWrapper department = internal::JsonParser::i().
-                fromJson<internal::DepartmentWrapper>(details::decode1251(r->readAll().data()).data());
-        emit teachersResponse(department.department.teachers);
-    });
-    mng->get(QNetworkRequest{request});
-}
-void ApiJSON::departments(int p_id_faculty) {
-    QUrl request(API_ROOT+map(API_TYPES::P_API_DEPARTMENTS_JSON));
-    QUrlQuery q;
-    q.addQueryItem("p_id_faculty",QString::number(p_id_faculty));
-    request.setQuery(q);
-
-    connect(mng,&QNetworkAccessManager::finished,[this](QNetworkReply* r){
-        if (r->error() != QNetworkReply::NoError) {
-            emit error(r->errorString());
-            return;
-        }
-        internal::FacultyWrapper faculty = internal::JsonParser::i().
-                fromJson<internal::FacultyWrapper>(details::decode1251(r->readAll().data()).data());
-
-        emit departmentsResponse(faculty.faculty.departments);
-    });
-    mng->get(QNetworkRequest{request});
-}
-void ApiJSON::specialities(int p_id_faculty, int p_id_direction) {
-    QUrl request(API_ROOT+map(API_TYPES::P_API_SPECIALITIES_JSON));
-    QUrlQuery q;
-    q.addQueryItem("p_id_faculty",QString::number(p_id_faculty));
-    q.addQueryItem("p_id_direction",QString::number(p_id_direction));
-    request.setQuery(q);
-
-    connect(mng,&QNetworkAccessManager::finished,[this,p_id_direction](QNetworkReply* r){
-        if (r->error() != QNetworkReply::NoError) {
-            emit error(r->errorString());
-            return;
-        }
-        internal::FacultyWrapper faculty = internal::JsonParser::i().
-                fromJson<internal::FacultyWrapper>(details::decode1251(r->readAll().data()).data());
-        for (auto & it : faculty.faculty.directions)
-            if (it.id == p_id_direction) {
-                emit specialitiesResponse(it.specialities);
-                break;
-            }
-    });
-    mng->get(QNetworkRequest{request});
-}
-void ApiJSON::directions(int p_id_faculty) {
-    QUrl request(API_ROOT+map(API_TYPES::P_API_DIRECTIONS_JSON));
-    QUrlQuery q;
-    q.addQueryItem("p_id_faculty",QString::number(p_id_faculty));
-    request.setQuery(q);
-
-    connect(mng,&QNetworkAccessManager::finished,[this](QNetworkReply* r){
-        if (r->error() != QNetworkReply::NoError) {
-            emit error(r->errorString());
-            return;
-        }
-        internal::FacultyWrapper faculty = internal::JsonParser::i().
-                fromJson<internal::FacultyWrapper>(details::decode1251(r->readAll().data()).data());
-
-        emit directionsResponse(faculty.faculty.directions);
-    });
-    mng->get(QNetworkRequest{request});
 }
 
 void ApiJSON::schedule(int id,bool isTeacher) {

@@ -21,6 +21,10 @@ ApplicationWindow {
         id: mainHeader
     }
 
+    function dp(number) {
+        return Math.round(number * Screen.pixelDensity / 160);
+    }
+
     Material.theme: appSettings.appTheme
     Material.accent: appSettings.accentColor
     Material.primary: appSettings.primaryColor

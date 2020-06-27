@@ -48,7 +48,6 @@ Item {
                                                             : "transparent"
                         parent.border.width = containsMouse
                     }
-
                     onClicked: {
                         api.schedule(timetable_id,isTeacher);
                         findPage.timetableId = model.timetable_id;

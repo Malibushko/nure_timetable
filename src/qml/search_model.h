@@ -51,6 +51,8 @@ public:
                 return item.id;
             case Qt::UserRole+1:
                 return item.title;
+            default:
+                break;
         }
         return {};
     }

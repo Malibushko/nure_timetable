@@ -91,12 +91,13 @@ public:
             settings.setValue("chosen_language","ru");
         }
         language.load(settings.value("chosen_language").toString());
+        qDebug() << settings.value("chosen_language").toString();
     }
     Q_INVOKABLE QString getLanguage() const {
-        QString language = settings.value("chosen_language").toString();
-        if (language == "eng")
+        QString lng = settings.value("chosen_language").toString();
+        if (lng == "eng")
             return "English";
-        else if (language == "ru")
+        else if (lng == "ru")
             return "Русский";
         else
             return "undefined";
@@ -146,6 +147,8 @@ public:
         case Qt::UserRole+2: {
             return groups == "button_callbacks";
         }
+        default:
+            break;
         }
         return {};
     }

@@ -70,7 +70,7 @@ struct University {
     declare_field(container_t<Faculty>,faculties);
 };
 struct Group {
-    declare_struct(Group);
+    declare_struct(Group)
     declare_field(int_t,id);
     declare_field(string_t,name);
 };
@@ -101,7 +101,7 @@ struct DepartmentWrapper {
     declare_field(Department,department);
 };
 struct FacultyWrapper {
-    declare_struct(FacultyWrapper);
+    declare_struct(FacultyWrapper)
     declare_field(Faculty,faculty);
 };
 struct Timetable {
@@ -111,7 +111,7 @@ struct Timetable {
 };
 
 struct Lesson {
-    declare_struct(Lesson);
+    declare_struct(Lesson)
     declare_field(QDate,date);
     declare_field(QString,subject);
     declare_field(QString,type);
@@ -121,7 +121,7 @@ struct Lesson {
     Lesson() = default;
     static Lesson fromCSV(const QString & csvLine) {
         QString editText;
-        QStringList innerList = csvLine.split('\"',QString::SplitBehavior::SkipEmptyParts);
+        QStringList innerList = csvLine.split('\"',Qt::SkipEmptyParts);
         if (innerList.size() < 4)
             return {};
         innerList.erase(std::remove_if(innerList.begin(),innerList.end(),[](QString string){
@@ -157,7 +157,7 @@ struct Lesson {
     }
 };
 struct SavedTimetable {
-    declare_struct(SavedTimetable);
+    declare_struct(SavedTimetable)
     declare_field(int,id);
     declare_field(string_t,title);
     declare_field(string_t,lastUpdate);

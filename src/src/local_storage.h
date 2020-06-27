@@ -49,6 +49,8 @@ public:
         case TableType::SAVED_TIMETABLE:
             instance.Get<SavedTimetable>(type,callback);
             break;
+        default:
+            break;
         }
         waiter.exec();
         return data;
@@ -63,7 +65,7 @@ public:
         timetable.title = title;
         timetable.isTeacher = isTeacher;
         timetable.lastUpdate = QDateTime::currentDateTime().toString();
-        timetable.lessons.reserve(lessons.size());
+        timetable.lessons.reserve(static_cast<uint>(lessons.size()));
         for (const auto& it : lessons) {
             timetable.lessons.push_back(qvariant_cast<Lesson>(it));
         }

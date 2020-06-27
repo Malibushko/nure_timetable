@@ -89,6 +89,8 @@ public:
                     case 1:
                      day = tr("Yesterday");
                     break;
+                default:
+                    break;
                 }
                 day += tr(" at ") +  updateDate.time().toString("hh:mm");
                 return day;
@@ -105,6 +107,8 @@ public:
         case Qt::UserRole+4: {
             return item.isTeacher;
         }
+        default:
+            break;
         }
         return {};
     }
