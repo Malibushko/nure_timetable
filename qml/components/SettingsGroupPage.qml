@@ -107,7 +107,7 @@ Page {
                 anchors.leftMargin: appSettings.margin
                 anchors.rightMargin: appSettings.margin
                 StyledText {
-                    text: name
+                    text: settingsPage.modelRef.mapSettings(name)
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
                 Loader {

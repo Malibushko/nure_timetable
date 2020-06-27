@@ -150,5 +150,104 @@
         <source>graphics</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="109"/>
+        <source>Styling</source>
+        <translation>Стилизация</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="110"/>
+        <source>Theme color</source>
+        <translation>Основной цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="111"/>
+        <source>Accent color</source>
+        <translation>Цвет акцентирования</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="112"/>
+        <source>Primary color</source>
+        <translation>Дополнительный цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="113"/>
+        <source>Night mode</source>
+        <translation>Ночной режим</translation>
+    </message>
+    <message>
+        <source>Timetable Styling</source>
+        <translation type="vanished">Стилизация расписания</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="114"/>
+        <source>Timetable styling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="115"/>
+        <source>Credit</source>
+        <translation>Зачёт</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="116"/>
+        <source>Laboratory work</source>
+        <translation>Лабораторная работа</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="117"/>
+        <source>Lecture</source>
+        <translation>Лекция</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="118"/>
+        <source>Practical work</source>
+        <translation>Практическое занятие</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="119"/>
+        <source>Perfomance</source>
+        <translation>Производительность</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="120"/>
+        <source>Animations</source>
+        <translation>Анимации</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="121"/>
+        <source>Caching</source>
+        <translation>Кэширование</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="122"/>
+        <source>Miscellaneous</source>
+        <translation>Разное</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="123"/>
+        <source>Language</source>
+        <translation>Язык</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="124"/>
+        <source>Autoupdating</source>
+        <translation>Автообновление</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="125"/>
+        <source>Restoring</source>
+        <translation>Восстановление</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="126"/>
+        <source>Clear cache</source>
+        <translation>Очистить кэш</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="127"/>
+        <source>Reset settings</source>
+        <translation>Сбросить настройки</translation>
+    </message>
 </context>
 </TS>

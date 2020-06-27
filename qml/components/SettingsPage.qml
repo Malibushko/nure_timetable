@@ -56,7 +56,7 @@ Page {
                 anchors.leftMargin: appSettings.margin
                 anchors.rightMargin: appSettings.margin
                 StyledText {
-                    text: model.group
+                    text: settingsModel.mapSettings(model.group)
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
             }
