@@ -95,6 +95,9 @@ public:
         lessons.reserve(rowCount);
         totalRows = rowCount;
     }
+    Q_INVOKABLE QString secondsToString(int seconds) {
+        return QDateTime::fromTime_t(seconds).toUTC().toString("hh:mm:ss");
+    }
     Q_INVOKABLE void clear() {
         beginResetModel();
         timetableId = -1;

@@ -24,7 +24,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick Sql Svg REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Sql Svg LinguistTools REQUIRED)
 
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
             ${CMAKE_SOURCE_DIR}/src/src/api.h
@@ -47,15 +47,26 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
              ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
              main.cpp)
+
+set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)
+
+set (TRANSLATIONS ${CMAKE_SOURCE_DIR}/languages/ru.ts
+                  ${CMAKE_SOURCE_DIR}/languages/en.ts)
+qt5_create_translation(GENERATED_TR ${HEADERS} ${SOURCES} ${RESOURCES} ${TRANSLATIONS})
+
 if(ANDROID)
     add_library(Timetable2 SHARED
-      ${HEADERS} ${SOURCES}
-      qml.qrc
+      ${HEADERS}
+      ${SOURCES}
+      ${RESOURCES}
+      ${GENERATED_TR}
     )
 else()
     add_executable(Timetable2
-      ${HEADERS} ${SOURCES}
-      qml.qrc
+      ${HEADERS}
+      ${SOURCES}
+      ${RESOURCES}
+      ${GENERATED_TR}
     )
 endif()
 

@@ -7,7 +7,7 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-
+    FontLoader { id: digitalFont; source: "https://ff.static.1001fonts.net/d/i/digital-7.regular.ttf" }
     Component {
         id: headerDelegate
         Label {
@@ -32,6 +32,36 @@ Page {
                 clip: true
                 fontSizeMode: Text.Fit
             }
+        }
+    }
+    HeaderButton {
+        parent: mainHeader
+        height: parent.height
+        width: parent.width/2
+        anchors.margins: appSettings.margin
+        visible: mainView.currentItem == root_
+        anchors.centerIn: parent
+        Timer {
+            property int value
+            running: value !== 0
+            id: countdownTimer
+            onTriggered: {
+                timeDisplay.text = tableModel.secondsToString(--value);
+            }
+            function setTime(count) {
+                value = count;
+                countdownTimer.start();
+            }
+        }
+        Text {
+            id: timeDisplay
+            visible: countdownTimer.running
+            anchors.centerIn: parent
+            font.pixelSize: parent.height*0.5
+            width: parent.width*0.75
+            fontSizeMode: Text.Fit
+            color: appSettings.iconColor
+            font.family:  if (digitalFont.status === FontLoader.Ready) digitalFont.name
         }
     }
 
@@ -98,6 +128,10 @@ Page {
                         to: from === 0 ? 0 : tableView.rowHeightProvider(index)
                         duration: (tableModel.lessonDuration()-tableModel.rowProgress(index))*1000
                         running: true
+                        onStarted: {
+                             if (tableModel.rowProgress(index) !== 0)
+                                countdownTimer.setTime(duration/1000);
+                        }
                     }
                     color: appSettings.accentColor
                     opacity: 0.5
