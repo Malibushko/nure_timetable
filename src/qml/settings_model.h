@@ -3,12 +3,15 @@
 #include <QDebug>
 #include <QAbstractListModel>
 #include <QSettings>
+#include <QTranslator>
+#include <QApplication>
 #include "../internal/api_structs.h"
 #include "../internal/material.h"
 namespace timetable {
 class SettingsModel : public QAbstractListModel {
     Q_OBJECT
     mutable QSettings settings;
+    QTranslator language;
 private:
     void setIfNotExist(const QString& key,const QVariant& value,bool forceDefault = false) {
         if (forceDefault || settings.value(key) == QVariant{}) {
@@ -19,6 +22,8 @@ public:
     SettingsModel(QObject* /* parent */= nullptr) {
         qDebug() << settings.fileName();
         loadSettings();
+        qApp->installTranslator(&language);
+        setLanguage("");
     }
     Q_INVOKABLE void loadSettings(bool forceDefault = false) {
         settings.beginGroup("styling");
@@ -41,7 +46,7 @@ public:
         settings.endGroup();
 
         settings.beginGroup("miscellaneous");
-        setIfNotExist("language","eng",forceDefault);
+        setIfNotExist("language","English;Русский",forceDefault);
         setIfNotExist("autoupdating",false,forceDefault);
         settings.endGroup();
 
@@ -50,7 +55,9 @@ public:
         setIfNotExist("restore_default_btn","btn");
         settings.endGroup();
 
+        setIfNotExist("chosen_language","ru");
         settings.sync();
+
     }
     Q_INVOKABLE QVariant value(const QString& group,
                                const QString& key,
@@ -75,6 +82,27 @@ public:
         settings.endGroup();
         settings.sync();
         emit valueChanged(group,name,value);
+    }
+    Q_INVOKABLE void setLanguage(const QString& lang) {
+        if (lang == "English") {
+            settings.setValue("chosen_language","eng");
+        }
+        else if (lang == "Русский") {
+            settings.setValue("chosen_language","ru");
+        }
+        language.load(settings.value("chosen_language").toString());
+    }
+    Q_INVOKABLE QString getLanguage() const {
+        QString language = settings.value("chosen_language").toString();
+        if (language == "eng")
+            return "English";
+        else if (language == "ru")
+            return "Русский";
+        else
+            return "undefined";
+    }
+    Q_INVOKABLE QVariant value(const QString& key) const {
+        return settings.value(key);
     }
     QVariant data(const QModelIndex& index,int role = Qt::UserRole) const override {
         if (index.row() < 0 || index.row() >= settings.childGroups().size()) {

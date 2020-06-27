@@ -68,18 +68,24 @@
         <translation>Пожалуйста, выберите цвет</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="73"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="78"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="66"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="82"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="87"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="73"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="66"/>
+        <source>The changes will take effect when the application is rebooted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="82"/>
         <source>Settings has been succesfully restored to default.</source>
         <translation>Настройки были успешно сброшены к изначальным.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="78"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="87"/>
         <source>Local storage has been succesfully cleared</source>
         <translation>Локальное хранилище было успешно очищено</translation>
     </message>
@@ -87,17 +93,17 @@
 <context>
     <name>TimetableTable</name>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="79"/>
+        <location filename="../qml/components/TimetableTable.qml" line="81"/>
         <source>Save timetable</source>
         <translation>Сохранить расписание</translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="82"/>
+        <location filename="../qml/components/TimetableTable.qml" line="84"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="82"/>
+        <location filename="../qml/components/TimetableTable.qml" line="84"/>
         <source>Timetable saved!</source>
         <translation>Расписание сохранено!</translation>
     </message>
@@ -140,7 +146,7 @@
 <context>
     <name>timetable::SettingsModel</name>
     <message>
-        <location filename="../src/qml/settings_model.h" line="38"/>
+        <location filename="../src/qml/settings_model.h" line="43"/>
         <source>graphics</source>
         <translation></translation>
     </message>

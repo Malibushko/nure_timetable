@@ -7,7 +7,9 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-    FontLoader { id: digitalFont; source: "https://ff.static.1001fonts.net/d/i/digital-7.regular.ttf" }
+    FontLoader {
+        id: digitalFont; source: "https://ff.static.1001fonts.net/d/i/digital-7.regular.ttf"
+    }
     Component {
         id: headerDelegate
         Label {

@@ -1,6 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QAbstractListModel>
+#include <QDebug>
 #include <QSettings>
 #include "../internal/api_structs.h"
 #include "../internal/material.h"
@@ -44,16 +45,23 @@ public:
             return {};
         }
         const auto& name = settingTitles[index.row()];
+        qDebug() << name;
         switch (role) {
             case Qt::UserRole:
                 return name.first;
             case Qt::UserRole+1:
+                if (name.second.canConvert<QString>() && name.second.toString().contains(';'))
+                    return name.second.toString();
                 if (name.second.canConvert<bool>())
                     return name.second.toString() == "true";
                 return name.second;
             case Qt::UserRole+2: {
                 if (name.second.toString() == "btn") {
                     return "btn";
+                }
+                if (name.second.canConvert<QString>()
+                        && name.second.toString().contains(';')) {
+                    return "list";
                 }
                 if (name.second.canConvert<bool>()) {
                     return "slider";
@@ -63,9 +71,6 @@ public:
                 }
                 if (name.second.canConvert<QColor>()) {
                     return "color";
-                }
-                if (name.second.canConvert<QStringList>()) {
-                    return "list";
                 }
                 return "none";
             }

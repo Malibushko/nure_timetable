@@ -52,10 +52,19 @@ Page {
     }
     Component {
         id: listDelegate
-        ComboBox {
-            model: modelData
-            onActivated:  {
-                modelData = currentText
+        Rectangle {
+            anchors.fill: parent
+            color: "transparent"
+            ComboBox {
+                clip: true
+                model: modelData.split(';')
+                anchors.fill: parent
+                displayText: settingsPage.modelRef.getLanguage()
+                onActivated:  {
+                    settingsPage.modelRef.setLanguage(currentText)
+                    displayText = settingsPage.modelRef.getLanguage()
+                    dialog.setData(qsTr("Success"),qsTr("The changes will take effect when the application is rebooted."));
+                }
             }
         }
     }

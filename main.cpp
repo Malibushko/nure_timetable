@@ -18,9 +18,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Timetable");
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QQmlApplicationEngine engine;
-    QTranslator translator;
-    translator.load("ru");
-    app.installTranslator(&translator);
     qRegisterMetaType<Promise>();
     qmlRegisterType<timetable::ApiJSON>("lib",1,0,"Api");
     qmlRegisterType<timetable::SearchItemModel>("lib",1,0,"BaseSearchModel");
