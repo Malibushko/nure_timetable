@@ -52,6 +52,7 @@ set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)
 
 set (TRANSLATIONS ${CMAKE_SOURCE_DIR}/languages/ru.ts
                   ${CMAKE_SOURCE_DIR}/languages/en.ts)
+
 qt5_create_translation(GENERATED_TR ${HEADERS} ${SOURCES} ${RESOURCES} ${TRANSLATIONS})
 
 if(ANDROID)
