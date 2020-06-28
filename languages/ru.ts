@@ -45,19 +45,16 @@
 <context>
     <name>SavedTimetableModel</name>
     <message>
-        <location filename="../src/src/saved_model.cpp" line="95"/>
         <source>Today</source>
-        <translation>Сегодня</translation>
+        <translation type="vanished">Сегодня</translation>
     </message>
     <message>
-        <location filename="../src/src/saved_model.cpp" line="98"/>
         <source>Yesterday</source>
-        <translation>Вчера</translation>
+        <translation type="vanished">Вчера</translation>
     </message>
     <message>
-        <location filename="../src/src/saved_model.cpp" line="103"/>
         <source> at </source>
-        <translation> в </translation>
+        <translation type="vanished"> в </translation>
     </message>
 </context>
 <context>
@@ -111,158 +108,10 @@
 <context>
     <name>SettingsModel</name>
     <message>
-        <location filename="../src/src/settings_model.cpp" line="34"/>
+        <location filename="../src/src/settings_model.cpp" line="32"/>
         <source>graphics</source>
         <translation></translation>
     </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="113"/>
-        <source>Styling</source>
-        <translation>Стилизация</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="114"/>
-        <source>Theme color</source>
-        <translation>Основной цвет</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="115"/>
-        <source>Accent color</source>
-        <translation>Цвет акцентирования</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="116"/>
-        <source>Primary color</source>
-        <translation>Дополнительный цвет</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="117"/>
-        <source>Night mode</source>
-        <translation>Ночной режим</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="118"/>
-        <source>Timetable styling</source>
-        <translation>Стилизация расписания</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="119"/>
-        <source>Credit</source>
-        <translation>Зачёт</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="120"/>
-        <source>Laboratory work</source>
-        <translation>Лабораторная работа</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="121"/>
-        <source>Lecture</source>
-        <translation>Лекция</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="122"/>
-        <source>Practical work</source>
-        <translation>Практическое занятие</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="123"/>
-        <source>Perfomance</source>
-        <translation>Производительность</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="124"/>
-        <source>Animations</source>
-        <translation>Анимации</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="125"/>
-        <source>Caching</source>
-        <translation>Кэширование</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="126"/>
-        <source>Miscellaneous</source>
-        <translation>Разное</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="127"/>
-        <source>Language</source>
-        <translation>Язык</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="128"/>
-        <source>Autoupdating</source>
-        <translation>Автообновление</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="129"/>
-        <source>Restoring</source>
-        <translation>Восстановление</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="130"/>
-        <source>Clear cache</source>
-        <translation>Очистить кэш</translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="131"/>
-        <source>Reset settings</source>
-        <translation>Сбросить настройки</translation>
-    </message>
-</context>
-<context>
-    <name>TimetableTable</name>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="81"/>
-        <source>Save timetable</source>
-        <translation>Сохранить расписание</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="84"/>
-        <source>Success</source>
-        <translation>Успешно</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="84"/>
-        <source>Timetable saved!</source>
-        <translation>Расписание сохранено!</translation>
-    </message>
-</context>
-<context>
-    <name>main</name>
-    <message>
-        <location filename="../main.qml" line="15"/>
-        <source>TimeTable</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>timetable::ApiJSON</name>
-    <message>
-        <location filename="../src/src/api.cpp" line="98"/>
-        <location filename="../src/src/api.cpp" line="132"/>
-        <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
-        <translation>Выбранное расписание не содержит какой-либо информации. Возможно, на данный момент оно не доступно. Попробуйте позже. Если вы уверены, что произошла ошибка, свяжитесь с разработчиком программы.</translation>
-    </message>
-</context>
-<context>
-    <name>timetable::SavedTimetableModel</name>
-    <message>
-        <source>Today</source>
-        <translation type="vanished">Сегодня</translation>
-    </message>
-    <message>
-        <source>Yesterday</source>
-        <translation type="vanished">Вчера</translation>
-    </message>
-    <message>
-        <source> at </source>
-        <translation type="vanished"> в </translation>
-    </message>
-</context>
-<context>
-    <name>timetable::SettingsModel</name>
     <message>
         <source>Styling</source>
         <translation type="vanished">Стилизация</translation>
@@ -284,7 +133,7 @@
         <translation type="vanished">Ночной режим</translation>
     </message>
     <message>
-        <source>Timetable Styling</source>
+        <source>Timetable styling</source>
         <translation type="vanished">Стилизация расписания</translation>
     </message>
     <message>
@@ -338,6 +187,161 @@
     <message>
         <source>Reset settings</source>
         <translation type="vanished">Сбросить настройки</translation>
+    </message>
+</context>
+<context>
+    <name>TimetableTable</name>
+    <message>
+        <location filename="../qml/components/TimetableTable.qml" line="81"/>
+        <source>Save timetable</source>
+        <translation>Сохранить расписание</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/TimetableTable.qml" line="84"/>
+        <source>Success</source>
+        <translation>Успешно</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/TimetableTable.qml" line="84"/>
+        <source>Timetable saved!</source>
+        <translation>Расписание сохранено!</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../main.qml" line="15"/>
+        <source>TimeTable</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>timetable::ApiJSON</name>
+    <message>
+        <location filename="../src/src/api.cpp" line="98"/>
+        <location filename="../src/src/api.cpp" line="132"/>
+        <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
+        <translation>Выбранное расписание не содержит какой-либо информации. Возможно, на данный момент оно не доступно. Попробуйте позже. Если вы уверены, что произошла ошибка, свяжитесь с разработчиком программы.</translation>
+    </message>
+</context>
+<context>
+    <name>timetable::SavedTimetableModel</name>
+    <message>
+        <location filename="../src/qml/saved_model.h" line="27"/>
+        <source>Today</source>
+        <translation>Сегодня</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/saved_model.h" line="30"/>
+        <source>Yesterday</source>
+        <translation>Вчера</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/saved_model.h" line="35"/>
+        <source> at </source>
+        <translation> в </translation>
+    </message>
+</context>
+<context>
+    <name>timetable::SettingsModel</name>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="34"/>
+        <source>Styling</source>
+        <translation>Стилизация</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="35"/>
+        <source>Theme color</source>
+        <translation>Основной цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="36"/>
+        <source>Accent color</source>
+        <translation>Цвет акцентирования</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="37"/>
+        <source>Primary color</source>
+        <translation>Дополнительный цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="38"/>
+        <source>Night mode</source>
+        <translation>Ночной режим</translation>
+    </message>
+    <message>
+        <source>Timetable Styling</source>
+        <translation type="vanished">Стилизация расписания</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="39"/>
+        <source>Timetable styling</source>
+        <translation>Стилизация расписания</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="40"/>
+        <source>Credit</source>
+        <translation>Зачёт</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="41"/>
+        <source>Laboratory work</source>
+        <translation>Лабораторная работа</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="42"/>
+        <source>Lecture</source>
+        <translation>Лекция</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="43"/>
+        <source>Practical work</source>
+        <translation>Практическое занятие</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="44"/>
+        <source>Perfomance</source>
+        <translation>Производительность</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="45"/>
+        <source>Animations</source>
+        <translation>Анимации</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="46"/>
+        <source>Caching</source>
+        <translation>Кэширование</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="47"/>
+        <source>Miscellaneous</source>
+        <translation>Разное</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="48"/>
+        <source>Language</source>
+        <translation>Язык</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="49"/>
+        <source>Autoupdating</source>
+        <translation>Автообновление</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="50"/>
+        <source>Restoring</source>
+        <translation>Восстановление</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="51"/>
+        <source>Clear cache</source>
+        <translation>Очистить кэш</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/settings_model.h" line="52"/>
+        <source>Reset settings</source>
+        <translation>Сбросить настройки</translation>
     </message>
 </context>
 </TS>

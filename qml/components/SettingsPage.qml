@@ -57,6 +57,10 @@ Page {
                 anchors.rightMargin: appSettings.margin
                 StyledText {
                     text: settingsModel.mapSettings(model.group)
+                    Component.onCompleted: {
+                        console.log(settingsModel.mapSettings(model.group))
+                    }
+
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
             }

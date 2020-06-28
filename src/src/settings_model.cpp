@@ -10,10 +10,9 @@ void SettingsModel::setIfNotExist(const QString &key, const QVariant &value, boo
 
 SettingsModel::SettingsModel(QObject *) {
     loadSettings();
-    setLanguage("");
+    language.load("ru");
     qApp->installTranslator(&language);
 }
-
 
 void SettingsModel::loadSettings(bool forceDefault) {
     settings.beginGroup("styling");
@@ -97,34 +96,6 @@ QString SettingsModel::getLanguage() const {
     else
         return "undefined";
 }
-
-
-
-QString SettingsModel::mapSettings(const QString &name) const {
-    const QMap<QString,QString> settingsMapper{
-        {"styling",tr("Styling")},
-        {"app_theme",tr("Theme color")},
-        {"app_accent",tr("Accent color")},
-        {"app_primary",tr("Primary color")},
-        {"night_mode",tr("Night mode")},
-        {"timetable_styling",tr("Timetable styling")},
-        {"zal_color",tr("Credit")},
-        {"lb_color",tr("Laboratory work")},
-        {"lc_color",tr("Lecture")},
-        {"pz_color",tr("Practical work")},
-        {"graphics",tr("Perfomance")},
-        {"animations",tr("Animations")},
-        {"caching",tr("Caching")},
-        {"miscellaneous",tr("Miscellaneous")},
-        {"language",tr("Language")},
-        {"autoupdating",tr("Autoupdating")},
-        {"button_callbacks",tr("Restoring")},
-        {"clear_cache_btn",tr("Clear cache")},
-        {"restore_default_btn",tr("Reset settings")}
-    };
-    return settingsMapper[name];
-}
-
 
 QVariant SettingsModel::data(const QModelIndex &index, int role) const {
     if (index.row() < 0 || index.row() >= settings.childGroups().size()) {

@@ -83,28 +83,14 @@ QVariant SavedTimetableModel::data(const QModelIndex &index, int role) const {
         return item.id;
     case Qt::UserRole+1:
         return item.title;
-    case Qt::UserRole+2:
-    {
+    case Qt::UserRole+2: {
         auto today = QDateTime::currentDateTime();
         if (auto updateDate = QDateTime::fromString(item.lastUpdate);
                 updateDate.daysTo(today) < 2) {
-            QString day;
-            int dayDifference = updateDate.daysTo(today);
-            switch (dayDifference) {
-            case 0:
-                day = tr("Today");
-                break;
-            case 1:
-                day = tr("Yesterday");
-                break;
-            default:
-                break;
-            }
-            day += tr(" at ") +  updateDate.time().toString("hh:mm");
-            return day;
-        }
+            return dayToString(updateDate);
+        } else
+            return item.lastUpdate;
     }
-        return item.lastUpdate;
     case Qt::UserRole+3: {
         QVariantList list;
         list.reserve(item.lessons.size());
