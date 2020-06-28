@@ -17,6 +17,16 @@ private:
     QString dateEnd;
 public:
     ApiJSON() : mng{new QNetworkAccessManager(this)} {
+        /**
+          This part looks really strange, doesn`t it? It looks like that to me too.
+          NURE hid this (it had 3 API`s last year) API 6 month ago and there is no documentation
+          about this part at all.
+          I found this source in my previous app and copy-paste it there, because it is the
+          only way to get timetable for group/teacher now. This dates ("01.01", "01.08", etc)
+          are magical constants, that have never been documented in API (I found out them myself)
+          so I prefer not to change this, in order not to broke this and lost the only API
+          I have.
+          */
         if (QDate::currentDate().month() < 8 ) {
             dateStart = QString("01.01." + QString::number(QDate::currentDate().year()));
             dateEnd = QString("31.07."+ QString::number(QDate::currentDate().year()));

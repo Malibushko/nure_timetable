@@ -46,6 +46,15 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
 
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/saved_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/search_filter_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/search_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/settings_group_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/settings_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/table_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/local_storage.cpp
+    ${CMAKE_SOURCE_DIR}/src/internal/query_builder.cpp
+    ${CMAKE_SOURCE_DIR}/src/internal/executor.cpp
     main.cpp)
 
 set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)
