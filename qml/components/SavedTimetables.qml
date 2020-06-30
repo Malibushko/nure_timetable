@@ -112,6 +112,16 @@ Page {
                             to: 360;
                             duration: 500
                             loops: Animation.Infinite
+                            onStopped: {
+                                backAnimator.start();
+                            }
+                        }
+                        RotationAnimator {
+                            id: backAnimator
+                            target: rotationAnimation.target
+                            from: updateButton.rotation
+                            to: 360
+                            duration: ((360-updateButton.rotation)/360)*rotationAnimation.duration
                         }
                         onClicked: {
                             if (appSettings.animationsEnabled) {
