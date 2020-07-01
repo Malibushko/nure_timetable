@@ -8,6 +8,7 @@ import lib 1.0
 
 Page {
     property alias modelRef: settingsModel
+
     Component {
         id: switchDelegate
         Switch {
@@ -59,10 +60,14 @@ Page {
                 clip: true
                 model: modelData.split(';')
                 anchors.fill: parent
-                displayText: settingsPage.modelRef.getLanguage()
+                displayText: lang.getLanguage()
                 onActivated:  {
-                    settingsPage.modelRef.setLanguage(currentText)
-                    displayText = settingsPage.modelRef.getLanguage()
+                    console.log(currentText)
+                    mainSettings.update(-1,
+                                        SETTINGS_TYPE.CHOSEN_LANGUAGE,
+                                        currentText)
+                    lang.setLanguage(currentText);
+                    displayText = lang.getLanguage()
                     dialog.setData(qsTr("Success"),qsTr("The changes will take effect when the application is rebooted."));
                 }
             }
@@ -107,7 +112,7 @@ Page {
                 anchors.leftMargin: appSettings.margin
                 anchors.rightMargin: appSettings.margin
                 StyledText {
-                    text: settingsPage.modelRef.mapSettings(name)
+                    text: mainSettings.stringify(name)
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
                 Loader {
@@ -120,27 +125,26 @@ Page {
                     property var modelName: model.name
                     Component.onCompleted: {
                         switch (type)  {
-                        case "slider":
+                        case CONTROL.SWITCH:
                             sourceComponent = switchDelegate;
                             break;
-                        case "color":
+                        case CONTROL.COLOR:
                             sourceComponent = colorDelegate;
                             break;
-                        case "number":
+                        case CONTROL.NUMBER:
                             sourceComponent = numberDelegate;
                             break;
-                        case "list":
+                        case CONTROL.LIST:
                             sourceComponent = listDelegate;
                             break;
-                        case "btn":
+                        case CONTROL.BTN:
                             sourceComponent = btnDelegate;
                             break;
                         }
                     }
                     onModelDataChanged: {
                         if (initialized) {
-                            settingsPage.modelRef.updateSetting(settingsModel.getGroup(),
-                                                                name,modelData)
+                            mainSettings.update(settingsPage.currentGroup,name,modelData)
                         }
                         initialized = true
                     }

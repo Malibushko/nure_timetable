@@ -7,29 +7,12 @@ import lib 1.0
 import Qt.labs.qmlmodels 1.0
 
 Page {
-    property alias modelRef: settingsModel
-
+    id: root_
+    property var currentGroup: -1
     ListView {
+        id: mainList
         anchors.fill: parent
-        model: SettingsModel {
-            id: settingsModel
-            onValueChanged: {
-                switch (key) {
-                case "app_theme":
-                    appSettings.themeColor = value;
-                    break;
-                case "app_accent":
-                    appSettings.accentColor = value;
-                    break;
-                case "app_primary":
-                    appSettings.primaryColor = value;
-                    break;
-                case "night_mode":
-                    appSettings.appTheme = (value ? Material.Dark : Material.Light)
-                    break;
-                }
-            }
-        }
+        model: mainSettings.groups()
         delegate: Rectangle {
             width: parent.width
             height: appSettings.rowHeight
@@ -46,9 +29,9 @@ Page {
                     parent.border.width = containsMouse
                 }
                 onClicked: {
-                        settingsGroup.modelRef.setGroup(model.group)
-                        settingsGroup.modelRef.setItems(model.settings)
-                        mainView.push(settingsGroup);
+                    root_.currentGroup = mainList.model[index];
+                    settingsGroup.modelRef.setItems(mainSettings.groupKeys(mainList.model[index]))
+                    mainView.push(settingsGroup);
                 }
             }
             RowLayout {
@@ -56,11 +39,7 @@ Page {
                 anchors.leftMargin: appSettings.margin
                 anchors.rightMargin: appSettings.margin
                 StyledText {
-                    text: settingsModel.mapSettings(model.group)
-                    Component.onCompleted: {
-                        console.log(settingsModel.mapSettings(model.group))
-                    }
-
+                    text: mainSettings.stringify(mainList.model[index])
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
             }

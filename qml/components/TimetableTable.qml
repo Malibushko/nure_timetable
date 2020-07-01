@@ -155,10 +155,10 @@ Page {
         property var columnsPerScreen: 4
         Item {
             id: colorPalette
-            property color pz_color: settingsPage.modelRef.value("timetable_styling","pz_color");
-            property color lc_color: settingsPage.modelRef.value("timetable_styling","lc_color");
-            property color lb_color: settingsPage.modelRef.value("timetable_styling","lb_color");
-            property color zal_color: settingsPage.modelRef.value("timetable_styling","zal_color");
+            property color pz_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.PZ_COLOR);
+            property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
+            property color lb_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LB_COLOR);
+            property color zal_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.ZAL_COLOR);
         }
 
         rowHeightProvider: function (row) {

@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.0
+import QtQml 2.12
 import lib 1.0
 import "./qml/components"
 
@@ -14,9 +15,22 @@ ApplicationWindow {
 
     title: qsTr("TimeTable")
 
-    Settings {
+    StyleSettings {
         id: appSettings
     }
+
+    Settings {
+        id: mainSettings
+    }
+    LanguageSwitcher {
+        id: lang
+        Component.onCompleted: {
+            console.log(mainSettings.value("",SETTINGS_TYPE.CHOSEN_LANGUAGE))
+            lang.setLanguage(mainSettings.value("",SETTINGS_TYPE.CHOSEN_LANGUAGE))
+        }
+    }
+
+
     header: Header {
         id: mainHeader
     }
@@ -59,14 +73,13 @@ ApplicationWindow {
         }
         // @disable-check M16
         onError: {
-            dialog.setData("Error",description)
+            dialog.setData(qsTr("Error"),description)
         }
 
         Component.onCompleted: {
-            if (!findPage.groupInitialized()) {
+            if (!findPage.groupInitialized() && appSettings.cachingEnabled) {
                 var cacheResult = localStorage.get(TableType.SEARCH_GROUP);
                 if (cacheResult.length > 0) {
-                    console.log("Cache hit groups");
                     for (var group in cacheResult) {
                         findPage.addGroup(cacheResult[group])
                     }
@@ -74,17 +87,15 @@ ApplicationWindow {
                 else
                     groups();
             }
-            if(!findPage.teachersInitialized()) {
+            if(!findPage.teachersInitialized() && appSettings.cachingEnabled) {
                 var cacheTeacherResult = localStorage.get(TableType.SEARCH_TEACHER);
                 if (cacheTeacherResult.length > 0) {
-                    console.log("Cache hit teachers")
                     for (var teacher in cacheTeacherResult) {
                         findPage.addTeacher(cacheTeacherResult[teacher])
                     }
                 }
                 else
                     teachers();
-
             }
         }
     }

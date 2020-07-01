@@ -1,30 +1,20 @@
 #include "qml/settings_group_model.h"
+#include "src/settings.h"
 namespace timetable {
 
 SettingsGroupModel::SettingsGroupModel(QObject *) {
 
 }
-void SettingsGroupModel::setGroup(const QString &s){
-    settings.endGroup();
-    settings.beginGroup(s);
-}
-
-
-QString SettingsGroupModel::getGroup() const {
-    return settings.group();
-}
-
 
 void SettingsGroupModel::setItems(const QVariantList &otherSettings) {
     beginResetModel();
+    qDebug() << "Old :" << settingTitles;
     settingTitles.clear();
     settingTitles.reserve(otherSettings.size());
-
     for (const QVariant& item : otherSettings) {
-        QString key = qvariant_cast<QString>(item);
-        QVariant  value = this->settings.value(key);
-        settingTitles.push_back({key,value});
+        settingTitles.push_back(qvariant_cast<QPair<int,QVariant>>(item));
     }
+    qDebug() << "New:" << settingTitles;
     endResetModel();
 }
 
@@ -55,20 +45,20 @@ QVariant SettingsGroupModel::data(const QModelIndex &index, int role) const {
         return name.second;
     case Qt::UserRole+2: {
         if (name.second.toString() == "btn") {
-            return "btn";
+            return CONTROL_TYPE::CONTROL::BTN;
         }
         if (name.second.canConvert<QString>()
                 && name.second.toString().contains(';')) {
-            return "list";
+            return CONTROL_TYPE::CONTROL::LIST;
         }
         if (name.second.canConvert<bool>()) {
-            return "slider";
+            return CONTROL_TYPE::CONTROL::SWITCH;
         }
         if (name.second.canConvert<int>()) {
-            return "number";
+            return CONTROL_TYPE::CONTROL::NUMBER;
         }
         if (name.second.canConvert<QColor>()) {
-            return "color";
+            return CONTROL_TYPE::CONTROL::COLOR;
         }
         return "none";
     }

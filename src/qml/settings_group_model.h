@@ -9,12 +9,9 @@
 namespace timetable {
 class SettingsGroupModel : public QAbstractListModel {
     Q_OBJECT
-    mutable QSettings settings;
-    QVector<QPair<QString,QVariant>> settingTitles;
+    QVector<QPair<int,QVariant>> settingTitles;
 public:
     SettingsGroupModel(QObject* /* parent */= nullptr);
-    Q_INVOKABLE void setGroup(const QString& s);
-    Q_INVOKABLE QString getGroup() const;
     Q_INVOKABLE void setItems(const QVariantList& otherSettings);
     int columnCount(const QModelIndex & /* parent */) const override;
     int rowCount(const QModelIndex& = /* parent */{}) const override;

@@ -70,7 +70,7 @@
         <translation>Обновить расписание</translation>
     </message>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="138"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="147"/>
         <source>Remove timetable</source>
         <translation>Удалить расписание</translation>
     </message>
@@ -78,40 +78,35 @@
 <context>
     <name>SettingsGroupPage</name>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="33"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="34"/>
         <source>Please, select a color</source>
         <translation>Пожалуйста, выберите цвет</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="66"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="82"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="71"/>
         <location filename="../qml/components/SettingsGroupPage.qml" line="87"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="92"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="66"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="71"/>
         <source>The changes will take effect when the application is rebooted.</source>
         <translation>Изменения будут активированы после перезагрузки приложения.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="82"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="87"/>
         <source>Settings has been succesfully restored to default.</source>
         <translation>Настройки были успешно сброшены к изначальным.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="87"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="92"/>
         <source>Local storage has been succesfully cleared</source>
         <translation>Локальное хранилище было успешно очищено</translation>
     </message>
 </context>
 <context>
     <name>SettingsModel</name>
-    <message>
-        <location filename="../src/src/settings_model.cpp" line="32"/>
-        <source>graphics</source>
-        <translation></translation>
-    </message>
     <message>
         <source>Styling</source>
         <translation type="vanished">Стилизация</translation>
@@ -210,9 +205,14 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="15"/>
+        <location filename="../main.qml" line="16"/>
         <source>TimeTable</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="76"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -243,105 +243,194 @@
     </message>
 </context>
 <context>
+    <name>timetable::Settings</name>
+    <message>
+        <location filename="../src/src/settings.h" line="144"/>
+        <source>Undefined type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="145"/>
+        <source>Undefined group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="146"/>
+        <source>Styling</source>
+        <translation type="unfinished">Стилизация</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="147"/>
+        <source>Theme color</source>
+        <translation type="unfinished">Основной цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="148"/>
+        <source>Accent color</source>
+        <translation type="unfinished">Цвет акцентирования</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="149"/>
+        <source>Primary color</source>
+        <translation type="unfinished">Дополнительный цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="150"/>
+        <source>Night mode</source>
+        <translation type="unfinished">Ночной режим</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="151"/>
+        <source>Timetable styling</source>
+        <translation type="unfinished">Стилизация расписания</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="152"/>
+        <source>Credit</source>
+        <translation type="unfinished">Зачёт</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="153"/>
+        <source>Laboratory work</source>
+        <translation type="unfinished">Лабораторная работа</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="154"/>
+        <source>Lecture</source>
+        <translation type="unfinished">Лекция</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="155"/>
+        <source>Practical work</source>
+        <translation type="unfinished">Практическое занятие</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="156"/>
+        <source>Perfomance</source>
+        <translation type="unfinished">Производительность</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="157"/>
+        <source>Animations</source>
+        <translation type="unfinished">Анимации</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="158"/>
+        <source>Caching</source>
+        <translation type="unfinished">Кэширование</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="159"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished">Разное</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="160"/>
+        <source>Language</source>
+        <translation type="unfinished">Язык</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="161"/>
+        <source>Autoupdating</source>
+        <translation type="unfinished">Автообновление</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="162"/>
+        <source>Restoring</source>
+        <translation type="unfinished">Восстановление</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="163"/>
+        <source>Clear cache</source>
+        <translation type="unfinished">Очистить кэш</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="164"/>
+        <source>Reset settings</source>
+        <translation type="unfinished">Сбросить настройки</translation>
+    </message>
+</context>
+<context>
     <name>timetable::SettingsModel</name>
     <message>
-        <location filename="../src/qml/settings_model.h" line="55"/>
         <source>Styling</source>
-        <translation>Стилизация</translation>
+        <translation type="vanished">Стилизация</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="56"/>
         <source>Theme color</source>
-        <translation>Основной цвет</translation>
+        <translation type="vanished">Основной цвет</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="57"/>
         <source>Accent color</source>
-        <translation>Цвет акцентирования</translation>
+        <translation type="vanished">Цвет акцентирования</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="58"/>
         <source>Primary color</source>
-        <translation>Дополнительный цвет</translation>
+        <translation type="vanished">Дополнительный цвет</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="59"/>
         <source>Night mode</source>
-        <translation>Ночной режим</translation>
+        <translation type="vanished">Ночной режим</translation>
     </message>
     <message>
         <source>Timetable Styling</source>
         <translation type="vanished">Стилизация расписания</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="60"/>
         <source>Timetable styling</source>
-        <translation>Стилизация расписания</translation>
+        <translation type="vanished">Стилизация расписания</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="61"/>
         <source>Credit</source>
-        <translation>Зачёт</translation>
+        <translation type="vanished">Зачёт</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="62"/>
         <source>Laboratory work</source>
-        <translation>Лабораторная работа</translation>
+        <translation type="vanished">Лабораторная работа</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="63"/>
         <source>Lecture</source>
-        <translation>Лекция</translation>
+        <translation type="vanished">Лекция</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="64"/>
         <source>Practical work</source>
-        <translation>Практическое занятие</translation>
+        <translation type="vanished">Практическое занятие</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="65"/>
         <source>Perfomance</source>
-        <translation>Производительность</translation>
+        <translation type="vanished">Производительность</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="66"/>
         <source>Animations</source>
-        <translation>Анимации</translation>
+        <translation type="vanished">Анимации</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="67"/>
         <source>Caching</source>
-        <translation>Кэширование</translation>
+        <translation type="vanished">Кэширование</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="68"/>
         <source>Miscellaneous</source>
-        <translation>Разное</translation>
+        <translation type="vanished">Разное</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="69"/>
         <source>Language</source>
-        <translation>Язык</translation>
+        <translation type="vanished">Язык</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="70"/>
         <source>Autoupdating</source>
-        <translation>Автообновление</translation>
+        <translation type="vanished">Автообновление</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="71"/>
         <source>Restoring</source>
-        <translation>Восстановление</translation>
+        <translation type="vanished">Восстановление</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="72"/>
         <source>Clear cache</source>
-        <translation>Очистить кэш</translation>
+        <translation type="vanished">Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../src/qml/settings_model.h" line="73"/>
         <source>Reset settings</source>
-        <translation>Сбросить настройки</translation>
+        <translation type="vanished">Сбросить настройки</translation>
     </message>
 </context>
 </TS>

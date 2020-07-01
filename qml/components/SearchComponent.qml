@@ -55,7 +55,6 @@ Item {
                         findPage.isTeacher = isTeacher;
                     }
                 }
-
                 RowLayout {
                     anchors.fill: parent
                     StyledText {
