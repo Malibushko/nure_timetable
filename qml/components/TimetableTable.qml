@@ -25,12 +25,16 @@ Page {
     Component {
         id: cellDelegate
         Rectangle {
+            anchors.fill: parent
             color: (color_ && styles.isLight) ? color_ : "transparent"
             border.color: styles.accentColor
             border.width: 1
             StyledText {
-                anchors.centerIn: parent
-                text: auditory + "\n" + subject + "\n" + type;
+                anchors.fill: parent
+                StyledText {
+                    anchors.centerIn: parent
+                    text: auditory + "\n" + subject + "\n" + type;
+                }
                 clip: true
                 fontSizeMode: Text.Fit
             }
@@ -39,8 +43,7 @@ Page {
     HeaderButton {
         parent: mainHeader
         height: parent.height
-        width: parent.width/2
-        anchors.margins: styles.margin
+        width: height*2
         visible: mainView.currentItem == root_
         anchors.centerIn: parent
         Timer {

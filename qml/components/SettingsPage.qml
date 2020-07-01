@@ -42,6 +42,12 @@ Page {
                     text: mainSettings.stringify(mainList.model[index])
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
+                RowButton {
+                    Layout.alignment: Qt.AlignRight
+                    icon.source: "qrc:///qml/icons/back.svg"
+                    icon.color: styles.iconRowButtonColor
+                    rotation: 180
+                }
             }
         }
     }

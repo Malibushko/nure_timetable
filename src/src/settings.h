@@ -177,9 +177,9 @@ public:
                 return tr("Autoupdating");
             case SETTINGS_GROUP::BTN_CALLBACKS:
                 return tr("Restoring");
-            case SETTINGS_TYPE::CLEAR_CACHE_BTN:
-                return tr("Clear cache");
             case SETTINGS_TYPE::RESTORE_DEFAULT_BTN:
+                return tr("Clear cache");
+            case SETTINGS_TYPE::CLEAR_CACHE_BTN:
                 return tr("Reset settings");
             default:
                 return "";

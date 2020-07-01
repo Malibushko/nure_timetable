@@ -7,8 +7,7 @@ Dialog {
     modal: true
     standardButtons: Dialog.Ok
     anchors.centerIn: parent
-    width: root.width * 0.9
-    height: (messageText.lineCount+1) * styles.rowHeight
+    margins: width * 0.1
     StyledText {
         id: messageText
         anchors.fill: parent

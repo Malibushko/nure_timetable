@@ -24,8 +24,7 @@ Page {
     Component {
         id: colorDelegate
         Rectangle {
-            width: styles.rowHeight * 0.75
-            height: width
+            radius: width
             color: modelData
             MouseArea {
                 anchors.fill: parent
@@ -104,24 +103,27 @@ Page {
             width: root_.width
             height: styles.rowHeight
             color: styles.componentColor
-            BottomBorder {
-            }
+            BottomBorder {}
+
             RowLayout {
                 anchors.fill: parent
                 anchors.leftMargin: styles.margin
                 anchors.rightMargin: styles.margin
                 StyledText {
+                    id: settingsName
                     text: mainSettings.stringify(name)
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 }
                 Loader {
                     id: loaderDelegate
                     Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                    width: styles.rowHeight * 0.75
-                    height: width
+                    Layout.preferredWidth: styles.rowHeight * 0.75
+                    Layout.preferredHeight: styles.rowHeight * 0.75
+
                     property bool initialized: false
                     property var modelData: model.value
                     property var modelName: model.name
+
                     Component.onCompleted: {
                         switch (type)  {
                         case CONTROL.SWITCH:
