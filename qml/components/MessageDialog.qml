@@ -8,7 +8,7 @@ Dialog {
     standardButtons: Dialog.Ok
     anchors.centerIn: parent
     width: root.width * 0.9
-    height: (messageText.lineCount+1) * appSettings.rowHeight
+    height: (messageText.lineCount+1) * styles.rowHeight
     StyledText {
         id: messageText
         anchors.fill: parent

@@ -70,9 +70,7 @@ inline namespace details {
 QString ApiJSON::getRoot() const {
     return API_ROOT;
 }
-void ApiJSON::setRoot(const QString& root) {
-    API_ROOT = root;
-}
+
 
 void ApiJSON::schedule(int id,bool isTeacher) {
     QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)

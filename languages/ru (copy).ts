@@ -116,7 +116,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="75"/>
+        <location filename="../main.qml" line="76"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../src/qml/saved_model.h" line="35"/>
         <source> at </source>
-        <translation> в </translation>
+        <translation>в</translation>
     </message>
 </context>
 <context>
@@ -156,102 +156,102 @@
         <translation>Неизвестное значение</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="145"/>
+        <location filename="../src/src/settings.h" line="144"/>
         <source>Undefined group</source>
         <translation>Неизвестная группа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="147"/>
+        <location filename="../src/src/settings.h" line="145"/>
         <source>Styling</source>
         <translation>Стилизация</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="149"/>
+        <location filename="../src/src/settings.h" line="146"/>
         <source>Theme color</source>
         <translation>Основной цвет</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
+        <location filename="../src/src/settings.h" line="147"/>
         <source>Accent color</source>
         <translation>Цвет акценирования</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="153"/>
+        <location filename="../src/src/settings.h" line="148"/>
         <source>Primary color</source>
         <translation>Дополнительный цвет</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="149"/>
         <source>Night mode</source>
         <translation>Ночной режим</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="157"/>
+        <location filename="../src/src/settings.h" line="150"/>
         <source>Timetable styling</source>
         <translation>Стилизация таблицы расписания</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="159"/>
+        <location filename="../src/src/settings.h" line="151"/>
         <source>Credit</source>
         <translation>Зачёт</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="161"/>
+        <location filename="../src/src/settings.h" line="152"/>
         <source>Laboratory work</source>
         <translation>Лабораторная работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="163"/>
+        <location filename="../src/src/settings.h" line="153"/>
         <source>Lecture</source>
         <translation>Лекция</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="165"/>
+        <location filename="../src/src/settings.h" line="154"/>
         <source>Practical work</source>
         <translation>Практическая работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="167"/>
+        <location filename="../src/src/settings.h" line="155"/>
         <source>Perfomance</source>
         <translation>Производительность</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="169"/>
+        <location filename="../src/src/settings.h" line="156"/>
         <source>Animations</source>
         <translation>Анимации</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="171"/>
+        <location filename="../src/src/settings.h" line="157"/>
         <source>Caching</source>
         <translation>Кэширование</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="173"/>
+        <location filename="../src/src/settings.h" line="158"/>
         <source>Miscellaneous</source>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="175"/>
+        <location filename="../src/src/settings.h" line="159"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="177"/>
+        <location filename="../src/src/settings.h" line="160"/>
         <source>Autoupdating</source>
         <translation>Автообновление расписаний</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="179"/>
+        <location filename="../src/src/settings.h" line="161"/>
         <source>Restoring</source>
         <translation>Восстановление</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="181"/>
+        <location filename="../src/src/settings.h" line="162"/>
         <source>Clear cache</source>
         <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="183"/>
+        <location filename="../src/src/settings.h" line="163"/>
         <source>Reset settings</source>
         <translation>Сбросить настройки</translation>
     </message>

@@ -62,7 +62,6 @@ private:
     }
 public:
     Settings(QObject * parent = nullptr) : QObject{parent} {
-        qDebug() << "Settings path: " << settings.fileName();
         load();
         settings.sync();
     }
@@ -132,7 +131,6 @@ public:
             settings.beginGroup(QString::number(group));
 
         settings.setValue(QString::number(name),value);
-        qDebug() << "Value changed in group #" << group << "; Value/key: {" << name << value << "}";
 
         if (group != -1)
             settings.endGroup();
@@ -140,30 +138,52 @@ public:
         emit valueChanged(group,name,value);
     }
     Q_INVOKABLE QString  stringify(int type) const {
-        static const QMap<int,QString> settingsMapper{
-            {SETTINGS_TYPE::UNDEFINED,tr("Undefined type")},
-            {SETTINGS_GROUP::UNDEFINED,tr("Undefined group")},
-            {SETTINGS_GROUP::STYLING,tr("Styling")},
-            {SETTINGS_TYPE::APP_THEME,tr("Theme color")},
-            {SETTINGS_TYPE::APP_ACCENT,tr("Accent color")},
-            {SETTINGS_TYPE::APP_PRIMARY,tr("Primary color")},
-            {SETTINGS_TYPE::NIGHT_MODE,tr("Night mode")},
-            {SETTINGS_GROUP::TIMETABLE_STYLING,tr("Timetable styling")},
-            {SETTINGS_TYPE::ZAL_COLOR,tr("Credit")},
-            {SETTINGS_TYPE::LB_COLOR,tr("Laboratory work")},
-            {SETTINGS_TYPE::LC_COLOR,tr("Lecture")},
-            {SETTINGS_TYPE::PZ_COLOR,tr("Practical work")},
-            {SETTINGS_GROUP::GRAPHICS,tr("Perfomance")},
-            {SETTINGS_TYPE::ANIMATIONS,tr("Animations")},
-            {SETTINGS_TYPE::CACHING,tr("Caching")},
-            {SETTINGS_GROUP::MISCELLANEOUS,tr("Miscellaneous")},
-            {SETTINGS_TYPE::LANGUAGE,tr("Language")},
-            {SETTINGS_TYPE::AUTOUPDATING,tr("Autoupdating")},
-            {SETTINGS_GROUP::BTN_CALLBACKS,tr("Restoring")},
-            {SETTINGS_TYPE::CLEAR_CACHE_BTN,tr("Clear cache")},
-            {SETTINGS_TYPE::RESTORE_DEFAULT_BTN,tr("Reset settings")}
+        switch (type) {
+            case SETTINGS_TYPE::UNDEFINED:
+                return tr("Undefined type");
+            case SETTINGS_GROUP::UNDEFINED:
+                return tr("Undefined group");
+            case SETTINGS_GROUP::STYLING:
+                return tr("Styling");
+            case SETTINGS_TYPE::APP_THEME:
+                return tr("Theme color");
+            case SETTINGS_TYPE::APP_ACCENT:
+                return tr("Accent color");
+            case SETTINGS_TYPE::APP_PRIMARY:
+                return tr("Primary color");
+            case SETTINGS_TYPE::NIGHT_MODE:
+                return tr("Night mode");
+            case SETTINGS_GROUP::TIMETABLE_STYLING:
+                return tr("Timetable styling");
+            case SETTINGS_TYPE::ZAL_COLOR:
+                return tr("Credit");
+            case SETTINGS_TYPE::LB_COLOR:
+                return tr("Laboratory work");
+            case SETTINGS_TYPE::LC_COLOR:
+                return tr("Lecture");
+            case SETTINGS_TYPE::PZ_COLOR:
+                return tr("Practical work");
+            case SETTINGS_GROUP::GRAPHICS:
+                return tr("Perfomance");
+            case SETTINGS_TYPE::ANIMATIONS:
+                return tr("Animations");
+            case SETTINGS_TYPE::CACHING:
+                return tr("Caching");
+            case SETTINGS_GROUP::MISCELLANEOUS:
+                return tr("Miscellaneous");
+            case SETTINGS_TYPE::LANGUAGE:
+                return tr("Language");
+            case SETTINGS_TYPE::AUTOUPDATING:
+                return tr("Autoupdating");
+            case SETTINGS_GROUP::BTN_CALLBACKS:
+                return tr("Restoring");
+            case SETTINGS_TYPE::CLEAR_CACHE_BTN:
+                return tr("Clear cache");
+            case SETTINGS_TYPE::RESTORE_DEFAULT_BTN:
+                return tr("Reset settings");
+            default:
+                return "";
         };
-        return settingsMapper[type];
     }
     Q_INVOKABLE QString stringify(const QString& type) const {
         return stringify(type.toInt());

@@ -35,11 +35,8 @@ public:
             dateEnd = QString("01.01."+ QString::number(QDate::currentDate().year()+1));
         }
     };
-    ApiJSON(const QString& root) : ApiJSON{} {
-        API_ROOT = root;
-    }
+
     Q_INVOKABLE QString getRoot() const;
-    Q_INVOKABLE void    setRoot(const QString& root);
 
     Q_INVOKABLE QVariantList scheduleSync(int id,bool isTeacher);
     Q_INVOKABLE void schedule(int id,bool isTeacher);

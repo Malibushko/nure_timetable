@@ -16,9 +16,9 @@ Item {
         anchors.fill: parent
         TextField {
             id: searchInput
-            leftPadding: appSettings.margin
+            leftPadding: styles.margin
             bottomPadding: 5
-            Layout.preferredHeight: appSettings.rowHeight
+            Layout.preferredHeight: styles.rowHeight
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
             onTextEdited: {
@@ -33,18 +33,18 @@ Item {
                 id: listModel_
             }
             delegate: Rectangle {
-                width: appSettings.rowWidth
-                color: appSettings.componentColor
-                height: appSettings.rowHeight
+                width: styles.rowWidth
+                color: styles.componentColor
+                height: styles.rowHeight
                 BottomBorder {
                 }
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: appSettings.animationsEnabled
+                    hoverEnabled: styles.animationsEnabled
                     onHoveredChanged: {
-                        parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05)
-                                                     : appSettings.componentColor;
-                        parent.border.color = containsMouse ? appSettings.accentColor
+                        parent.color = containsMouse ? Qt.darker(styles.componentColor,1.05)
+                                                     : styles.componentColor;
+                        parent.border.color = containsMouse ? styles.accentColor
                                                             : "transparent"
                         parent.border.width = containsMouse
                     }
@@ -58,7 +58,7 @@ Item {
                 RowLayout {
                     anchors.fill: parent
                     StyledText {
-                        Layout.leftMargin: appSettings.margin
+                        Layout.leftMargin: styles.margin
                         Layout.alignment: Qt.AlignLeft
                         text: title
                     }

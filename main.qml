@@ -14,9 +14,13 @@ ApplicationWindow {
     height: Screen.desktopAvailableHeight
 
     title: qsTr("TimeTable")
+    function forceRepaint() {
+        root.width += 1;
+        root.width -=1;
+    }
 
     StyleSettings {
-        id: appSettings
+        id: styles
     }
 
     Settings {
@@ -30,18 +34,13 @@ ApplicationWindow {
         }
     }
 
-
     header: Header {
         id: mainHeader
     }
 
-    function dp(number) {
-        return Math.round(number * Screen.pixelDensity / 160);
-    }
-
-    Material.theme: appSettings.appTheme
-    Material.accent: appSettings.accentColor
-    Material.primary: appSettings.primaryColor
+    Material.theme: styles.appTheme
+    Material.accent: styles.accentColor
+    Material.primary: styles.primaryColor
 
     MessageDialog {
         id: dialog
@@ -77,7 +76,7 @@ ApplicationWindow {
         }
 
         Component.onCompleted: {
-            if (!findPage.groupInitialized() && appSettings.cachingEnabled) {
+            if (!findPage.groupInitialized() && styles.cachingEnabled) {
                 var cacheResult = localStorage.get(TableType.SEARCH_GROUP);
                 if (cacheResult.length > 0) {
                     for (var group in cacheResult) {
@@ -87,7 +86,7 @@ ApplicationWindow {
                 else
                     groups();
             }
-            if(!findPage.teachersInitialized() && appSettings.cachingEnabled) {
+            if(!findPage.teachersInitialized() && styles.cachingEnabled) {
                 var cacheTeacherResult = localStorage.get(TableType.SEARCH_TEACHER);
                 if (cacheTeacherResult.length > 0) {
                     for (var teacher in cacheTeacherResult) {

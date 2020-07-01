@@ -18,12 +18,12 @@ Page {
                 SequentialAnimation {
                     ColorAnimation {
                         property: "color"
-                        to: appSettings.primaryColor
+                        to: styles.primaryColor
                         duration: 200
                     }
                     NumberAnimation {
                         property: "y";
-                        to: -appSettings.rowHeight
+                        to: -styles.rowHeight
                         duration: 300
                         easing.type: Easing.OutQuad
                     }
@@ -33,11 +33,11 @@ Page {
         anchors.centerIn: parent
         visible: mainListView.count === 0
         width: parent.width/2
-        height: appSettings.rowHeight
+        height: styles.rowHeight
         color: "transparent"
         StyledText {
             anchors.centerIn: parent
-            color: appSettings.utilityColor
+            color: styles.utilityColor
             text: qsTr("Saved timetables will be displayed here")
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
@@ -53,18 +53,18 @@ Page {
                 setItems(localStorage.get(TableType.SAVED_TIMETABLE))
             }
         }
-        remove: appSettings.animationsEnabled ? removeAnimation : null
+        remove: styles.animationsEnabled ? removeAnimation : null
 
         delegate: Rectangle {
             width: parent.width
-            height: appSettings.rowHeight
-            color: appSettings.componentColor
+            height: styles.rowHeight
+            color: styles.componentColor
             MouseArea {
                 anchors.fill: parent
-                hoverEnabled: appSettings.animationsEnabled
+                hoverEnabled: styles.animationsEnabled
                 onHoveredChanged: {
-                    parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05) : appSettings.componentColor;
-                    parent.border.color = containsMouse ? appSettings.accentColor : "transparent"
+                    parent.color = containsMouse ? Qt.darker(styles.componentColor,1.05) : styles.componentColor;
+                    parent.border.color = containsMouse ? styles.accentColor : "transparent"
                     parent.border.width = containsMouse
                 }
                 onClicked: {
@@ -82,23 +82,23 @@ Page {
                     Layout.preferredWidth: parent.width/2
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignLeft
-                    Layout.leftMargin: appSettings.margin
+                    Layout.leftMargin: styles.margin
                     StyledText {
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(title)
-                        color: appSettings.textColor
+                        color: styles.textColor
                     }
                     StyledText {
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(lastUpdate)
-                        color: appSettings.utilityColor
+                        color: styles.utilityColor
                     }
                 }
                 RowLayout {
-                    Layout.preferredWidth: appSettings.rowHeight * 3
+                    Layout.preferredWidth: styles.rowHeight * 3
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignRight
-                    Layout.rightMargin: appSettings.margin
+                    Layout.rightMargin: styles.margin
                     RowButton {
                         id: updateButton
                         Layout.alignment: Qt.AlignRight
@@ -124,7 +124,7 @@ Page {
                             duration: ((360-updateButton.rotation)/360)*rotationAnimation.duration
                         }
                         onClicked: {
-                            if (appSettings.animationsEnabled) {
+                            if (styles.animationsEnabled) {
                                 rotationAnimation.start();
                             }
                             var newTimetable = localStorage.createTimetable(model.id,
@@ -135,7 +135,7 @@ Page {
                             localStorage.save(TableType.SAVED_TIMETABLE,newTimetable);
                             saveModel.replaceItem(newTimetable);
 
-                            if (appSettings.animationsEnabled) {
+                            if (styles.animationsEnabled) {
                                 rotationAnimation.stop();
                             }
                         }
@@ -153,7 +153,7 @@ Page {
                 }
             }
             BottomBorder {
-                color: appSettings.accentColor
+                color: styles.accentColor
             }
         }
 

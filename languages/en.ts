@@ -116,7 +116,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="76"/>
+        <location filename="../main.qml" line="75"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -124,8 +124,8 @@
 <context>
     <name>timetable::ApiJSON</name>
     <message>
-        <location filename="../src/src/api.cpp" line="98"/>
-        <location filename="../src/src/api.cpp" line="132"/>
+        <location filename="../src/src/api.cpp" line="96"/>
+        <location filename="../src/src/api.cpp" line="130"/>
         <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -151,7 +151,7 @@
 <context>
     <name>timetable::Settings</name>
     <message>
-        <location filename="../src/src/settings.h" line="144"/>
+        <location filename="../src/src/settings.h" line="143"/>
         <source>Undefined type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -161,97 +161,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="146"/>
+        <location filename="../src/src/settings.h" line="147"/>
         <source>Styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="147"/>
+        <location filename="../src/src/settings.h" line="149"/>
         <source>Theme color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="148"/>
+        <location filename="../src/src/settings.h" line="151"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="149"/>
+        <location filename="../src/src/settings.h" line="153"/>
         <source>Primary color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="150"/>
+        <location filename="../src/src/settings.h" line="155"/>
         <source>Night mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
+        <location filename="../src/src/settings.h" line="157"/>
         <source>Timetable styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="152"/>
+        <location filename="../src/src/settings.h" line="159"/>
         <source>Credit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="153"/>
+        <location filename="../src/src/settings.h" line="161"/>
         <source>Laboratory work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="154"/>
+        <location filename="../src/src/settings.h" line="163"/>
         <source>Lecture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="165"/>
         <source>Practical work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="156"/>
+        <location filename="../src/src/settings.h" line="167"/>
         <source>Perfomance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="157"/>
+        <location filename="../src/src/settings.h" line="169"/>
         <source>Animations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="158"/>
+        <location filename="../src/src/settings.h" line="171"/>
         <source>Caching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="159"/>
+        <location filename="../src/src/settings.h" line="173"/>
         <source>Miscellaneous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="160"/>
+        <location filename="../src/src/settings.h" line="175"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="161"/>
+        <location filename="../src/src/settings.h" line="177"/>
         <source>Autoupdating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="162"/>
+        <location filename="../src/src/settings.h" line="179"/>
         <source>Restoring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="163"/>
+        <location filename="../src/src/settings.h" line="181"/>
         <source>Clear cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="164"/>
+        <location filename="../src/src/settings.h" line="183"/>
         <source>Reset settings</source>
         <translation type="unfinished"></translation>
     </message>

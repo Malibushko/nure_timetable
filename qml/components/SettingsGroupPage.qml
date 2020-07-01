@@ -2,13 +2,13 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.0
-import Qt.labs.settings 1.0
+
 import "../styles"
 import lib 1.0
 
 Page {
     property alias modelRef: settingsModel
-
+    id: root_
     Component {
         id: switchDelegate
         Switch {
@@ -24,7 +24,7 @@ Page {
     Component {
         id: colorDelegate
         Rectangle {
-            width: appSettings.rowHeight * 0.75
+            width: styles.rowHeight * 0.75
             height: width
             color: modelData
             MouseArea {
@@ -67,8 +67,7 @@ Page {
                                         SETTINGS_TYPE.CHOSEN_LANGUAGE,
                                         currentText)
                     lang.setLanguage(currentText);
-                    displayText = lang.getLanguage()
-                    dialog.setData(qsTr("Success"),qsTr("The changes will take effect when the application is rebooted."));
+                    displayText = currentText
                 }
             }
         }
@@ -78,15 +77,15 @@ Page {
         RowButton {
             id: pressButton
             Layout.alignment: Qt.AlignRight
-            Layout.rightMargin: appSettings.margin
+            Layout.rightMargin: styles.margin
             icon.source: "qrc:///qml/icons/security.svg"
             onClicked: {
                 switch (modelName) {
-                    case "restore_default_btn":
-                        settingsPage.modelRef.loadSettings(true)
+                    case SETTINGS_TYPE.CLEAR_CACHE_BTN:
+                        mainSettings.load(true)
                         dialog.setData(qsTr("Success"),qsTr("Settings has been succesfully restored to default."));
                         break;
-                    case "clear_cache_btn":
+                    case SETTINGS_TYPE.RESTORE_DEFAULT_BTN:
                         localStorage.clearStorage();
                         savedTimetables.modelRef.clear()
                         dialog.setData(qsTr("Success"),qsTr("Local storage has been succesfully cleared"));
@@ -102,15 +101,15 @@ Page {
             id: settingsModel
         }
         delegate: Rectangle {
-            width: parent.width
-            height: appSettings.rowHeight
-            color: appSettings.componentColor
+            width: root_.width
+            height: styles.rowHeight
+            color: styles.componentColor
             BottomBorder {
             }
             RowLayout {
                 anchors.fill: parent
-                anchors.leftMargin: appSettings.margin
-                anchors.rightMargin: appSettings.margin
+                anchors.leftMargin: styles.margin
+                anchors.rightMargin: styles.margin
                 StyledText {
                     text: mainSettings.stringify(name)
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
@@ -118,7 +117,7 @@ Page {
                 Loader {
                     id: loaderDelegate
                     Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                    width: appSettings.rowHeight * 0.75
+                    width: styles.rowHeight * 0.75
                     height: width
                     property bool initialized: false
                     property var modelData: model.value

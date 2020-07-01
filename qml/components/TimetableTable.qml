@@ -16,17 +16,17 @@ Page {
             Text {
                 text: tableView.horizontalHeader[column_]
                 anchors.centerIn: parent
-                color: (!appSettings.isLight ? appSettings.darkLight : "white")
+                color: (!styles.isLight ? styles.darkLight : "white")
             }
             verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
-            background: Rectangle { color: appSettings.themeColor }
+            background: Rectangle { color: styles.themeColor }
         }
     }
     Component {
         id: cellDelegate
         Rectangle {
-            color: (color_ && appSettings.isLight) ? color_ : "transparent"
-            border.color: appSettings.accentColor
+            color: (color_ && styles.isLight) ? color_ : "transparent"
+            border.color: styles.accentColor
             border.width: 1
             StyledText {
                 anchors.centerIn: parent
@@ -40,7 +40,7 @@ Page {
         parent: mainHeader
         height: parent.height
         width: parent.width/2
-        anchors.margins: appSettings.margin
+        anchors.margins: styles.margin
         visible: mainView.currentItem == root_
         anchors.centerIn: parent
         Timer {
@@ -62,7 +62,7 @@ Page {
             font.pixelSize: parent.height*0.5
             width: parent.width*0.75
             fontSizeMode: Text.Fit
-            color: appSettings.iconColor
+            color: styles.iconColor
             font.family:  digitalFont.status === FontLoader.Ready ?  digitalFont.name : "Arial"
         }
     }
@@ -71,7 +71,7 @@ Page {
         parent: mainHeader
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: appSettings.margin
+        anchors.rightMargin: styles.margin
         visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(tableModel.id()) < 0
         background: Rectangle {
             anchors.fill: parent
@@ -112,10 +112,10 @@ Page {
                     id: text
                     text: modelData
                     anchors.centerIn: parent
-                    color: (!appSettings.isLight ? appSettings.darkLight : "white")
+                    color: (!styles.isLight ? styles.darkLight : "white")
                 }
                 BottomBorder {
-                    color: appSettings.accentColor
+                    color: styles.accentColor
                 }
                 Rectangle {
                     id: fillAnimationRect
@@ -135,11 +135,11 @@ Page {
                                 countdownTimer.setTime(duration/1000);
                         }
                     }
-                    color: appSettings.accentColor
+                    color: styles.accentColor
                     opacity: 0.5
                 }
                 verticalAlignment: Text.AlignVCenter
-                background: Rectangle { color: appSettings.themeColor  }
+                background: Rectangle { color: styles.themeColor  }
             }
         }
     }
@@ -153,17 +153,10 @@ Page {
         property var horizontalHeader
         property var verticalHeader
         property var columnsPerScreen: 4
-        Item {
-            id: colorPalette
-            property color pz_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.PZ_COLOR);
-            property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
-            property color lb_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LB_COLOR);
-            property color zal_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.ZAL_COLOR);
-        }
 
         rowHeightProvider: function (row) {
             if (row === rows-1)
-                return appSettings.rowHeight/4;
+                return styles.rowHeight/4;
             return (height-rowHeightProvider(rows-1))/(rows-1)
         }
         columnWidthProvider: function(column) {
@@ -202,16 +195,16 @@ Page {
             onTypeChanged: {
                 switch (model.type) {
                 case "Пз":
-                    color_ =  colorPalette.pz_color
+                    color_ =  styles.pz_color
                     break;
                 case "Лк":
-                    color_ =  colorPalette.lc_color
+                    color_ =  styles.lc_color
                     break;
                 case "Лб":
-                    color_ =  colorPalette.lb_color
+                    color_ =  styles.lb_color
                     break;
                 case "Зал":
-                    color_ =  colorPalette.zal_color
+                    color_ =  styles.zal_color
                     break;
                 default:
                     color_ = "transparent";

@@ -3,6 +3,8 @@
 #include <QApplication>
 #include <QObject>
 #include <QDebug>
+#include <QQmlEngine>
+#include <QQmlContext>
 namespace timetable {
 class LanguageSwitcher : public QObject {
     Q_OBJECT
@@ -18,10 +20,16 @@ public:
             language.load("en");
             langStr = "en";
         }
-        else if (lang == "Русский") {
+        else {
             language.load("ru");
             langStr = "ru";
         }
+        retranslate();
+    }
+    Q_INVOKABLE void retranslate() {
+        QQmlContext *currentContext = QQmlEngine::contextForObject(this);
+        QQmlEngine *engine = currentContext->engine();
+        engine->retranslate();
     }
     Q_INVOKABLE QString getLanguage() const {
         if (langStr == "en")
@@ -29,5 +37,7 @@ public:
         else
             return "Русский";
     }
+signals:
+    void languageChanged();
 };
 }

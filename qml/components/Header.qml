@@ -6,12 +6,12 @@ import QtGraphicalEffects 1.0
 import "../styles"
 
 ToolBar {
-    height: appSettings.rowHeight
+    height: styles.rowHeight
     RowLayout {
         anchors.fill: parent
         RowLayout {
             Layout.alignment: Qt.AlignLeft
-            Layout.leftMargin: appSettings.margin
+            Layout.leftMargin: styles.margin
             HeaderButton {
                 id: backButton
                 visible: mainView.depth > 1
@@ -35,8 +35,8 @@ ToolBar {
         }
         RowLayout {
             Layout.alignment: Qt.AlignRight
-            Layout.rightMargin: appSettings.margin
-            spacing: appSettings.margin
+            Layout.rightMargin: styles.margin
+            spacing: styles.margin
             HeaderButton {
                 id: findButton
                 visible: mainView.currentItem !== findPage

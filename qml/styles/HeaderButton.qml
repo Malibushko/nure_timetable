@@ -2,9 +2,9 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 Button {
-    icon.height: appSettings.rowHeight/2
-    icon.width: appSettings.rowHeight/2
-    icon.color: appSettings.iconColor
+    icon.height: styles.rowHeight/2
+    icon.width: styles.rowHeight/2
+    icon.color: styles.iconColor
 
     visible: mainView.currentItem !== this
     ToolTip.visible: pressed

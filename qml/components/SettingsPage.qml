@@ -14,18 +14,18 @@ Page {
         anchors.fill: parent
         model: mainSettings.groups()
         delegate: Rectangle {
-            width: parent.width
-            height: appSettings.rowHeight
-            color: appSettings.componentColor
+            width: root_.width
+            height: styles.rowHeight
+            color: styles.componentColor
             BottomBorder {
             }
             MouseArea {
                 anchors.fill: parent
-                hoverEnabled: appSettings.animationsEnabled
+                hoverEnabled: styles.animationsEnabled
                 onHoveredChanged: {
-                    parent.color = containsMouse ? Qt.darker(appSettings.componentColor,1.05) :
-                                                   appSettings.componentColor;
-                    parent.border.color = containsMouse ? appSettings.accentColor : "transparent"
+                    parent.color = containsMouse ? Qt.darker(styles.componentColor,1.05) :
+                                                   styles.componentColor;
+                    parent.border.color = containsMouse ? styles.accentColor : "transparent"
                     parent.border.width = containsMouse
                 }
                 onClicked: {
@@ -36,8 +36,8 @@ Page {
             }
             RowLayout {
                 anchors.fill: parent
-                anchors.leftMargin: appSettings.margin
-                anchors.rightMargin: appSettings.margin
+                anchors.leftMargin: styles.margin
+                anchors.rightMargin: styles.margin
                 StyledText {
                     text: mainSettings.stringify(mainList.model[index])
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
