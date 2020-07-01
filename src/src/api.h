@@ -11,7 +11,7 @@ namespace timetable {
 class ApiJSON : public internal::api::ApiBase {
     Q_OBJECT
 private:
-    QString API_ROOT{"http://cist.nure.ua/ias/app/tt/"};
+    static const inline QString API_ROOT{"http://cist.nure.ua/ias/app/tt/"};
     QNetworkAccessManager* mng;
     QString dateStart;
     QString dateEnd;
