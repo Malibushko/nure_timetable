@@ -30,6 +30,7 @@ Item {
 
     property bool animationsEnabled: mainSettings.value(SETTINGS_GROUP.GRAPHICS,SETTINGS_TYPE.ANIMATIONS)
     property bool cachingEnabled: mainSettings.value(SETTINGS_GROUP.GRAPHICS,SETTINGS_TYPE.ANIMATIONS)
+    property bool showTimer: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.SHOW_TIMER)
 
     property color pz_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.PZ_COLOR);
     property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
@@ -44,19 +45,15 @@ Item {
             case SETTINGS_GROUP.STYLING:
                 switch (key) {
                 case SETTINGS_TYPE.APP_THEME:
-                    console.log("Changed theme")
                     themeColor = value;
                     break;
                 case SETTINGS_TYPE.APP_PRIMARY:
-                    console.log("Changed primary")
                     primaryColor = value;
                     break;
                 case SETTINGS_TYPE.APP_ACCENT:
-                    console.log("Changed accent")
                     accentColor = value;
                     break;
                 case SETTINGS_TYPE.NIGHT_MODE:
-                    console.log("Changed night mode")
                     appTheme = (value === true ? Material.Dark : Material.Light);
                     break;
                 }
@@ -85,7 +82,9 @@ Item {
                 case SETTINGS_TYPE.ZAL_COLOR:
                     zal_color = value;
                     break;
-
+                case SETTINGS_TYPE.SHOW_TIMER:
+                    showTimer = value;
+                    break;
                 }
             }
         }

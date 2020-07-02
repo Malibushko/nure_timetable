@@ -21,7 +21,8 @@ enum SETTING_TYPE {
     AUTOUPDATING,
     CLEAR_CACHE_BTN,
     RESTORE_DEFAULT_BTN,
-    CHOSEN_LANGUAGE
+    CHOSEN_LANGUAGE,
+    SHOW_TIMER
 };
 Q_ENUM_NS(SETTING_TYPE)
 }
@@ -91,6 +92,7 @@ public:
         setIfNotExist(SETTINGS_TYPE::LB_COLOR,QColor("#CDCCFF"),forceDefault);
         setIfNotExist(SETTINGS_TYPE::LC_COLOR,QColor("#FEFEEA"),forceDefault);
         setIfNotExist(SETTINGS_TYPE::PZ_COLOR,QColor("#DAED9D"),forceDefault);
+        setIfNotExist(SETTINGS_TYPE::SHOW_TIMER,true,forceDefault);
         settings.endGroup();
 
         settings.beginGroup(QString::number(SETTINGS_GROUP::GRAPHICS));
@@ -181,6 +183,8 @@ public:
                 return tr("Clear cache");
             case SETTINGS_TYPE::CLEAR_CACHE_BTN:
                 return tr("Reset settings");
+            case SETTINGS_TYPE::SHOW_TIMER:
+                    return tr("Show timer");
             default:
                 return "";
         };

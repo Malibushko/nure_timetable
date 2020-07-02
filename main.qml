@@ -12,6 +12,7 @@ ApplicationWindow {
     visible: true
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
+    readonly property real dpi: Screen.pixelDensity*2.54
 
     title: qsTr("TimeTable")
     function forceRepaint() {
@@ -29,7 +30,6 @@ ApplicationWindow {
     LanguageSwitcher {
         id: lang
         Component.onCompleted: {
-            console.log(mainSettings.value("",SETTINGS_TYPE.CHOSEN_LANGUAGE))
             lang.setLanguage(mainSettings.value("",SETTINGS_TYPE.CHOSEN_LANGUAGE))
         }
     }

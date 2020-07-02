@@ -4,22 +4,22 @@
 <context>
     <name>FindPage</name>
     <message>
-        <location filename="../qml/components/FindPage.qml" line="35"/>
+        <location filename="../qml/components/FindPage.qml" line="34"/>
         <source>ITKH-18-9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/components/FindPage.qml" line="42"/>
+        <location filename="../qml/components/FindPage.qml" line="41"/>
         <source>Степан Андреевич Бандера</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/components/FindPage.qml" line="50"/>
+        <location filename="../qml/components/FindPage.qml" line="49"/>
         <source>Students</source>
         <translation>Студенты</translation>
     </message>
     <message>
-        <location filename="../qml/components/FindPage.qml" line="53"/>
+        <location filename="../qml/components/FindPage.qml" line="52"/>
         <source>Teachers</source>
         <translation>Преподаватели</translation>
     </message>
@@ -63,13 +63,13 @@
 <context>
     <name>SettingsGroupPage</name>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="34"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="33"/>
         <source>Please, select a color</source>
         <translation>Пожалуйста, выберите цвет</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="86"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="91"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="85"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="90"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
@@ -78,12 +78,12 @@
         <translation type="vanished">Настройки войдут в силу после перезапуска приложения.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="86"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="85"/>
         <source>Settings has been succesfully restored to default.</source>
         <translation>Настройки были успешно сброшены.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="91"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="90"/>
         <source>Local storage has been succesfully cleared</source>
         <translation>Локальное хранилище было успешно очищено</translation>
     </message>
@@ -91,17 +91,22 @@
 <context>
     <name>TimetableTable</name>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="84"/>
+        <location filename="../qml/components/TimetableTable.qml" line="91"/>
+        <source>Timer shows how much time left till the end of lesson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/TimetableTable.qml" line="106"/>
         <source>Save timetable</source>
         <translation>Сохранить расписание</translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="87"/>
+        <location filename="../qml/components/TimetableTable.qml" line="109"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="87"/>
+        <location filename="../qml/components/TimetableTable.qml" line="109"/>
         <source>Timetable saved!</source>
         <translation>Расписание сохранено!</translation>
     </message>
@@ -149,109 +154,114 @@
 <context>
     <name>timetable::Settings</name>
     <message>
-        <location filename="../src/src/settings.h" line="143"/>
+        <location filename="../src/src/settings.h" line="145"/>
         <source>Undefined type</source>
         <translation>Неизвестное значение</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="145"/>
+        <location filename="../src/src/settings.h" line="147"/>
         <source>Undefined group</source>
         <translation>Неизвестная группа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="147"/>
+        <location filename="../src/src/settings.h" line="149"/>
         <source>Styling</source>
         <translation>Стилизация</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="149"/>
+        <location filename="../src/src/settings.h" line="151"/>
         <source>Theme color</source>
         <translation>Основной цвет</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
+        <location filename="../src/src/settings.h" line="153"/>
         <source>Accent color</source>
         <translation>Цвет акценирования</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="153"/>
+        <location filename="../src/src/settings.h" line="155"/>
         <source>Primary color</source>
         <translation>Дополнительный цвет</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="157"/>
         <source>Night mode</source>
         <translation>Ночной режим</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="157"/>
+        <location filename="../src/src/settings.h" line="159"/>
         <source>Timetable styling</source>
         <translation>Стилизация таблицы расписания</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="159"/>
+        <location filename="../src/src/settings.h" line="161"/>
         <source>Credit</source>
         <translation>Зачёт</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="161"/>
+        <location filename="../src/src/settings.h" line="163"/>
         <source>Laboratory work</source>
         <translation>Лабораторная работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="163"/>
+        <location filename="../src/src/settings.h" line="165"/>
         <source>Lecture</source>
         <translation>Лекция</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="165"/>
+        <location filename="../src/src/settings.h" line="167"/>
         <source>Practical work</source>
         <translation>Практическая работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="167"/>
+        <location filename="../src/src/settings.h" line="169"/>
         <source>Perfomance</source>
         <translation>Производительность</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="169"/>
+        <location filename="../src/src/settings.h" line="171"/>
         <source>Animations</source>
         <translation>Анимации</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="171"/>
+        <location filename="../src/src/settings.h" line="173"/>
         <source>Caching</source>
         <translation>Кэширование</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="173"/>
+        <location filename="../src/src/settings.h" line="175"/>
         <source>Miscellaneous</source>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="175"/>
+        <location filename="../src/src/settings.h" line="177"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="177"/>
+        <location filename="../src/src/settings.h" line="179"/>
         <source>Autoupdating</source>
         <translation>Автообновление расписаний</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="179"/>
+        <location filename="../src/src/settings.h" line="181"/>
         <source>Restoring</source>
         <translation>Восстановление</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="181"/>
+        <location filename="../src/src/settings.h" line="183"/>
         <source>Clear cache</source>
         <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="183"/>
+        <location filename="../src/src/settings.h" line="185"/>
         <source>Reset settings</source>
         <translation>Сбросить настройки</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="187"/>
+        <source>Show timer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
