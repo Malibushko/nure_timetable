@@ -70,7 +70,7 @@ Next build the application as in XCode as usually
 
 ---
 
-## Plans for future  <a name="plans"></a>
+## Plans for future  <a name="plans"></a>  
 
  - Push notifications for Desktop and mobile platforms
  - Extending functionality for particular lessons (e.g showing all groups)
@@ -79,21 +79,21 @@ Next build the application as in XCode as usually
 
 ---
 
-## Prebuilt packages  <a name="packages"></a>
+## Prebuilt packages  <a name="packages"></a>  
 
-You can see the list of prebuilt packages <a href="https://github.com/Malibushko/yatgbotlib/releases/tag/1">here</a>  
+You can see the list of prebuilt packages <a href="https://github.com/Malibushko/nure_timetable/releases/tag/1">here</a>  
 More are coming in the future
 
 ---
 
-## Feedback  <a name="feedback"></a>
+## Feedback  <a name="feedback"></a>  
 
 I will accept any criticism and comments.  
 If you encounter a problem, leave the issue on the GitHub, or write to me in Telegram @Malbu0698  
 
 ---
 
-## License  <a name="license"></a>
+## License  <a name="license"></a>  
 
 I am using Qt so the license is LGPL
 
