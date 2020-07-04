@@ -98,6 +98,10 @@ Page {
         anchors.rightMargin: styles.margin
         enabled: true
         visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(tableModel.id()) < 0
+        onVisibleChanged: {
+            enabled = true
+        }
+
         background: Rectangle {
             anchors.fill: parent
             color: mainHeader.background.color

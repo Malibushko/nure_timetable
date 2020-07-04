@@ -10,8 +10,9 @@ import "./qml/components"
 ApplicationWindow {
     id: root
     visible: true
-    width: Screen.desktopAvailableWidth
-    height: Screen.desktopAvailableHeight
+    width: 2048
+    height: 2732
+
     readonly property real dpi: Screen.pixelDensity*2.54
 
     title: qsTr("TimeTable")

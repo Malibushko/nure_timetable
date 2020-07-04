@@ -92,17 +92,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="106"/>
+        <location filename="../qml/components/TimetableTable.qml" line="110"/>
         <source>Save timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="109"/>
+        <location filename="../qml/components/TimetableTable.qml" line="113"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="109"/>
+        <location filename="../qml/components/TimetableTable.qml" line="113"/>
         <source>Timetable saved!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -110,12 +110,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="16"/>
+        <location filename="../main.qml" line="18"/>
         <source>TimeTable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="75"/>
+        <location filename="../main.qml" line="76"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>

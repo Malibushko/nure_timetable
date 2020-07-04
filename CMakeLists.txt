@@ -11,19 +11,6 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
-# They need to be set before the find_package(Qt5 ...) call.
-
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
-
 find_package(Qt5 COMPONENTS Core Quick Sql Svg LinguistTools REQUIRED)
 
 set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
@@ -69,6 +56,7 @@ set (TRANSLATIONS ${CMAKE_SOURCE_DIR}/languages/ru.ts
 qt5_create_translation(GENERATED_TR ${HEADERS} ${SOURCES} ${RESOURCES} ${TRANSLATIONS})
 
 if(ANDROID)
+    message("Building for android")
     add_library(Timetable2 SHARED
         ${HEADERS}
         ${SOURCES}
@@ -76,6 +64,7 @@ if(ANDROID)
         ${GENERATED_TR}
         )
 else()
+    message("Building for another platform")
     add_executable(Timetable2
         ${HEADERS}
         ${SOURCES}

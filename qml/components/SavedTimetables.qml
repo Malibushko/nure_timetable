@@ -95,7 +95,7 @@ Page {
                     }
                 }
                 RowLayout {
-                    Layout.preferredWidth: styles.rowHeight * 3
+                    Layout.preferredWidth: styles.rowHeight * 2
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignRight
                     Layout.rightMargin: styles.margin

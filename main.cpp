@@ -14,6 +14,7 @@
 #include "src/src/language.h"
 int main(int argc, char *argv[])
 {
+    qDebug();
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc,argv);

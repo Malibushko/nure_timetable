@@ -6,7 +6,7 @@ Promise::Promise(std::function<QVariant ()> executor)
 
 void Promise::then(std::function<void (QVariant)> resolve) { m_state->resolve = resolve; }
 
-void Promise::then(std::function<void (QVariant)> resolve, std::function<void (std::__exception_ptr::exception_ptr)> reject)
+void Promise::then(std::function<void (QVariant)> resolve, std::function<void (std::exception_ptr)> reject)
 {
     m_state->resolve = resolve;
     m_state->reject = reject;
