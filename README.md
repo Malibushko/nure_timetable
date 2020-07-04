@@ -83,15 +83,20 @@ Next build the application as in XCode as usually
 
 You can see the list of prebuilt packages <a href="https://github.com/Malibushko/yatgbotlib/releases/tag/1">here</a>  
 More are coming in the future
+
 ---
 
 ## Feedback  <a name="feedback"></a>
 
 I will accept any criticism and comments.  
 If you encounter a problem, leave the issue on the GitHub, or write to me in Telegram @Malbu0698  
+
 ---
 
 ## License  <a name="license"></a>
+
 I am using Qt so the license is LGPL
 
 - **[LGPL ](http://opensource.org/licenses/mit-license.php)**
+
+---
