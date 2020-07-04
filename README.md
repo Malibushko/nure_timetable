@@ -3,7 +3,7 @@
 
 > Simple application for viewing timetable using NURE API and C++
 
-[Look of application](https://github.com/Malibushko/nure_timetable/blob/master/gitimg/preview.jpg)
+[![Look of application](https://github.com/Malibushko/nure_timetable/blob/master/gitimg/preview.jpg)]()
 
 ## Table of Contents
 
@@ -35,6 +35,7 @@ But there are steps for building by hands:
 ```
 conan remote add <some_name> https://api.bintray.com/conan/yehorka9991/magic_get  
 ```  
+
  2) Build application with CMake
 
 ### Desktop platforms
