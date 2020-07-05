@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../qml/components/FindPage.qml" line="41"/>
-        <source>Степан Андреевич Бандера</source>
+        <source>Бандера C. А.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -27,17 +27,17 @@
 <context>
     <name>Header</name>
     <message>
-        <location filename="../qml/components/Header.qml" line="22"/>
+        <location filename="../qml/components/Header.qml" line="25"/>
         <source>Return to the previous page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="32"/>
+        <location filename="../qml/components/Header.qml" line="33"/>
         <source>Application settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="46"/>
+        <location filename="../qml/components/Header.qml" line="47"/>
         <source>Search for a timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -63,23 +63,23 @@
 <context>
     <name>SettingsGroupPage</name>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="33"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="43"/>
         <source>Please, select a color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="85"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="90"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="100"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="85"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
         <source>Settings has been succesfully restored to default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="90"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="100"/>
         <source>Local storage has been succesfully cleared</source>
         <translation type="unfinished"></translation>
     </message>
@@ -110,12 +110,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="16"/>
+        <location filename="../main.qml" line="18"/>
         <source>TimeTable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="70"/>
+        <location filename="../main.qml" line="79"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>

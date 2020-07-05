@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc,argv);
+    app.setWindowIcon(QIcon(":/qml/icons/app_icon.svg"));
+
     QGuiApplication::setOrganizationName("Timetable");
     QGuiApplication::setApplicationName("Timetable");
     QQmlApplicationEngine engine;

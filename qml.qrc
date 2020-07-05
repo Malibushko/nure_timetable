@@ -24,5 +24,6 @@
         <file>qml/components/MessageDialog.qml</file>
         <file>qml/icons/security.svg</file>
         <file>qml/icons/save.svg</file>
+        <file>qml/icons/app_icon.svg</file>
     </qresource>
 </RCC>

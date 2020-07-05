@@ -21,6 +21,16 @@ Page {
             }
         }
     }
+
+    /*
+      There is a bug in Qt now (05.07.2020)
+      ColorDialog may not work on some platform because
+      of missing file (DefaultWindowDecoration.qml) in source
+      To fix this look for this in on Internet (it`s easy) and
+      add it to your sources to the following path:
+      ~/Qt/5.15.0/android/qml/QtQuick/Dialogs/
+      Everything should work fine
+     */
     Component {
         id: colorDelegate
         Rectangle {

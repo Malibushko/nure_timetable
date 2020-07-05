@@ -4,6 +4,8 @@ import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.0
 import QtQml 2.12
+import QtQuick.Dialogs 1.3
+
 import lib 1.0
 import "./qml/components"
 
