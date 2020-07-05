@@ -106,7 +106,9 @@ Page {
             anchors.fill: parent
             color: mainHeader.background.color
         }
-        icon.source: "qrc:///qml/icons/save"
+        icon.source: "qrc:///qml/icons/save.svg"
+        icon.color: enabled ? styles.iconColor : mainHeader.background.color
+
         ToolTip.text: qsTr("Save timetable")
         onClicked: {
             enabled = false

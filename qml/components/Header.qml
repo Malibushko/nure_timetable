@@ -8,6 +8,9 @@ import "../styles"
 ToolBar {
     id: root_
     height: styles.rowHeight*0.75
+    function backClick() {
+        mainView.pop()
+    }
 
     RowLayout {
         anchors.fill: parent
@@ -20,9 +23,7 @@ ToolBar {
                 Layout.alignment: Qt.AlignLeft
                 icon.source: "qrc:///qml/icons/back.svg"
                 ToolTip.text: qsTr("Return to the previous page")
-                onClicked: {
-                    mainView.pop()
-                }
+                onClicked: backClick()
             }
             HeaderButton {
                 id: settingsButton

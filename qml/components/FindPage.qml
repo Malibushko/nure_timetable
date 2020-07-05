@@ -38,7 +38,7 @@ Page {
             id: teachersTab
             isTeacher: true
             Component.onCompleted: {
-                teachersTab.textInputRef.placeholderText = qsTr("Степан Андреевич Бандера")
+                teachersTab.textInputRef.placeholderText = qsTr("Бандера C. А.")
             }
         }
     }

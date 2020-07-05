@@ -32,6 +32,13 @@ ApplicationWindow {
     header: Header {
         id: mainHeader
     }
+    onClosing: {
+        if (mainView.depth > 1) {
+            close.accepted = false;
+            mainHeader.backClick()
+        } else
+            close.accepted = true
+    }
 
     Material.theme: styles.appTheme
     Material.accent: styles.accentColor

@@ -18,8 +18,8 @@ Item {
     }
     property double iconSize: Math.max(rowHeight/4,25)
     property double rowWidth: screenWidth
-    property double iconScaleDefault: 1.2;
-    property double iconScalePressed: 1.4;
+    property double iconScaleDefault: 1;
+    property double iconScalePressed: 1.2;
 
     property color darkLight: Qt.darker("white",1.2);
 

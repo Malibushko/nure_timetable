@@ -92,17 +92,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="110"/>
+        <location filename="../qml/components/TimetableTable.qml" line="112"/>
         <source>Save timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="113"/>
+        <location filename="../qml/components/TimetableTable.qml" line="115"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/TimetableTable.qml" line="113"/>
+        <location filename="../qml/components/TimetableTable.qml" line="115"/>
         <source>Timetable saved!</source>
         <translation type="unfinished"></translation>
     </message>

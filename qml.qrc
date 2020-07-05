@@ -19,10 +19,10 @@
         <file>qml/components/SearchComponent.qml</file>
         <file>qml/icons/plus.svg</file>
         <file>qml/components/TimetableTable.qml</file>
-        <file>qml/icons/save</file>
         <file>qml/components/SettingsPage.qml</file>
         <file>qml/components/SettingsGroupPage.qml</file>
         <file>qml/components/MessageDialog.qml</file>
         <file>qml/icons/security.svg</file>
+        <file>qml/icons/save.svg</file>
     </qresource>
 </RCC>
