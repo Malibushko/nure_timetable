@@ -10,16 +10,10 @@ import "./qml/components"
 ApplicationWindow {
     id: root
     visible: true
-    width: 2048
-    height: 2732
-
-    readonly property real dpi: Screen.pixelDensity*2.54
+    width: 430
+    height: 760
 
     title: qsTr("TimeTable")
-    function forceRepaint() {
-        root.width += 1;
-        root.width -=1;
-    }
 
     StyleSettings {
         id: styles
@@ -37,6 +31,15 @@ ApplicationWindow {
 
     header: Header {
         id: mainHeader
+        Button {
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            onClicked: {
+                let temp = root.height
+                root.height = root.width
+                root.width = temp
+            }
+        }
     }
 
     Material.theme: styles.appTheme

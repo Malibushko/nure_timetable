@@ -2,9 +2,10 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 Button {
-    icon.height: styles.rowHeight/2
-    icon.width: styles.rowHeight/2
+    icon.height: styles.iconSize
+    icon.width: styles.iconSize
     icon.color: styles.iconColor
+    scale: styles.iconScaleDefault
 
     visible: mainView.currentItem !== this
     ToolTip.visible: pressed
@@ -14,9 +15,9 @@ Button {
         color: "transparent"
     }
     onPressed: {
-        scale = 1.2
+        scale = styles.iconScalePressed
     }
     onReleased: {
-        scale = 1
+        scale = styles.iconScaleDefault
     }
 }

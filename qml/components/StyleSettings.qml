@@ -2,17 +2,24 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 import lib 1.0
+
 Item {
     property bool isPortrait: root.width >= root.height
     property var appTheme:  (mainSettings.value(SETTINGS_GROUP.STYLING,SETTINGS_TYPE.NIGHT_MODE) === "true"?
                                  Material.Dark : Material.Light)
+
     property bool isLight: (appTheme === Material.Light)
     property int screenWidth: root.width
     property int screenHeight: root.height
-    property double margin: (isPortrait ? screenWidth : screenHeight) * 0.05
+    property double margin: Math.max((isPortrait ? screenWidth : screenHeight) * 0.05,5)
     property double padding: (isPortrait ? screenWidth : screenHeight) * 0.05
-    property double rowHeight: screenHeight * 0.1
+    property double rowHeight: {
+            return (!isPortrait? screenHeight : screenWidth) * 0.1;
+    }
+    property double iconSize: Math.max(rowHeight/4,25)
     property double rowWidth: screenWidth
+    property double iconScaleDefault: 1.2;
+    property double iconScalePressed: 1.4;
 
     property color darkLight: Qt.darker("white",1.2);
 
@@ -40,7 +47,6 @@ Item {
     Connections {
         target: mainSettings
         function onValueChanged(group,key,value) {
-            console.log("QML: ",group,key,value)
             switch (group) {
             case SETTINGS_GROUP.STYLING:
                 switch (key) {
@@ -86,6 +92,7 @@ Item {
                     showTimer = value;
                     break;
                 }
+                break;
             }
         }
     }

@@ -29,6 +29,7 @@ Page {
                     }
                 }
     }
+
     Rectangle {
         anchors.centerIn: parent
         visible: mainListView.count === 0
@@ -59,6 +60,10 @@ Page {
             width: parent.width
             height: styles.rowHeight
             color: styles.componentColor
+            onHeightChanged: {
+                console.log("Height changed:" + height)
+            }
+
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: styles.animationsEnabled
@@ -75,22 +80,29 @@ Page {
                     mainView.push(timetablePage);
                 }
             }
-
             RowLayout {
-                anchors.fill: parent
+                id: mainRowLayout
+                width: parent.width
+                anchors.centerIn: parent
                 ColumnLayout {
+                    id: textLayout
                     Layout.preferredWidth: parent.width/2
-                    Layout.fillHeight: true
                     Layout.alignment: Qt.AlignLeft
+                    Layout.preferredHeight: name.height+lastUpdate_.height
+
                     Layout.leftMargin: styles.margin
                     StyledText {
+                        id: name
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(title)
+                        height: lineHeight
                         color: styles.textColor
                     }
                     StyledText {
+                        id: lastUpdate_
                         Layout.alignment: Qt.AlignLeft
                         text: qsTr(lastUpdate)
+                        height: lineHeight
                         color: styles.utilityColor
                     }
                 }

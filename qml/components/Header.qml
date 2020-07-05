@@ -6,7 +6,9 @@ import QtGraphicalEffects 1.0
 import "../styles"
 
 ToolBar {
-    height: styles.rowHeight
+    id: root_
+    height: Math.min(styles.rowHeight,Math.max(styles.iconSize+styles.margin/2,styles.rowHeight*0.75))
+
     RowLayout {
         anchors.fill: parent
         RowLayout {

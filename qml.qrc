@@ -4,8 +4,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>qml/components/StyleSettings.qml</file>
         <file>qml/styles/StyledText.qml</file>
-        <file>qml/styles/StyledTextLarge.qml</file>
-        <file>qml/styles/StyledTextMedium.qml</file>
         <file>qml/components/Header.qml</file>
         <file>qml/icons/calendar.svg</file>
         <file>qml/icons/search.svg</file>
