@@ -19,10 +19,11 @@ Item {
             leftPadding: styles.margin
             bottomPadding: 5
             Layout.preferredHeight: styles.rowHeight
+            inputMethodHints: Qt.ImhNoPredictiveText |  Qt.ImhSensitiveData
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
-            onTextEdited: {
-                listModel_.setFilterString(searchInput.text)
+            onTextChanged: {
+                    listModel_.setFilterString(searchInput.text)
             }
         }
         ListView {

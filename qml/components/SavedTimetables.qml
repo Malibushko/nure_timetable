@@ -60,9 +60,6 @@ Page {
             width: parent.width
             height: styles.rowHeight
             color: styles.componentColor
-            onHeightChanged: {
-                console.log("Height changed:" + height)
-            }
 
             MouseArea {
                 anchors.fill: parent

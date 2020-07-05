@@ -8,13 +8,11 @@ SettingsGroupModel::SettingsGroupModel(QObject *) {
 
 void SettingsGroupModel::setItems(const QVariantList &otherSettings) {
     beginResetModel();
-    qDebug() << "Old :" << settingTitles;
     settingTitles.clear();
     settingTitles.reserve(otherSettings.size());
     for (const QVariant& item : otherSettings) {
         settingTitles.push_back(qvariant_cast<QPair<int,QVariant>>(item));
     }
-    qDebug() << "New:" << settingTitles;
     endResetModel();
 }
 

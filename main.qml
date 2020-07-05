@@ -31,15 +31,6 @@ ApplicationWindow {
 
     header: Header {
         id: mainHeader
-        Button {
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
-            onClicked: {
-                let temp = root.height
-                root.height = root.width
-                root.width = temp
-            }
-        }
     }
 
     Material.theme: styles.appTheme

@@ -27,17 +27,17 @@
 <context>
     <name>Header</name>
     <message>
-        <location filename="../qml/components/Header.qml" line="20"/>
+        <location filename="../qml/components/Header.qml" line="22"/>
         <source>Return to the previous page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="30"/>
+        <location filename="../qml/components/Header.qml" line="32"/>
         <source>Application settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="44"/>
+        <location filename="../qml/components/Header.qml" line="46"/>
         <source>Search for a timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -45,17 +45,17 @@
 <context>
     <name>SavedTimetables</name>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="41"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="42"/>
         <source>Saved timetables will be displayed here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="106"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="115"/>
         <source>Update timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="147"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="156"/>
         <source>Remove timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -110,12 +110,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="18"/>
+        <location filename="../main.qml" line="16"/>
         <source>TimeTable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="76"/>
+        <location filename="../main.qml" line="70"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
