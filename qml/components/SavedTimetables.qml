@@ -38,11 +38,12 @@ Page {
     Rectangle {
         anchors.centerIn: parent
         visible: mainListView.count === 0
-        width: parent.width/2
+        width: parent.width*0.85
         height: styles.rowHeight
         color: "transparent"
         StyledText {
-            anchors.centerIn: parent
+            anchors.fill: parent
+            horizontalAlignment: Qt.AlignCenter
             color: styles.utilityColor
             text: qsTr("Saved timetables will be displayed here")
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere

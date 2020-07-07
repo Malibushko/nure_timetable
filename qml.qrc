@@ -25,5 +25,6 @@
         <file>qml/icons/security.svg</file>
         <file>qml/icons/save.svg</file>
         <file>qml/icons/app_icon.svg</file>
+        <file>qml/fonts/digital.ttf</file>
     </qresource>
 </RCC>

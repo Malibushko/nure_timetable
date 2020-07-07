@@ -12,6 +12,7 @@
 #include "src/qml/settings_group_model.h"
 #include "src/src/settings.h"
 #include "src/src/language.h"
+
 int main(int argc, char *argv[])
 {
     qDebug();
@@ -33,6 +34,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<timetable::SortFilterModel>("lib",1,0,"SearchFilterModel");
     qmlRegisterType<timetable::Settings>("lib",1,0,"Settings");
     qmlRegisterType<timetable::LanguageSwitcher>("lib",1,0,"LanguageSwitcher");
+
     qRegisterMetaType<timetable::TableType>("TableType");
 
     qmlRegisterUncreatableMetaObject(

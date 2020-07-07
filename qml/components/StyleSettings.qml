@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.12
 import lib 1.0
 
 Item {
+    id: root_
     property bool isPortrait: root.width >= root.height
     property var appTheme:  (mainSettings.value(SETTINGS_GROUP.STYLING,SETTINGS_TYPE.NIGHT_MODE) === "true"?
                                  Material.Dark : Material.Light)
@@ -43,6 +44,9 @@ Item {
     property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
     property color lb_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LB_COLOR);
     property color zal_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.ZAL_COLOR);
+    function showProperty() {
+        appGeneral.restart()
+    }
 
     Connections {
         target: mainSettings

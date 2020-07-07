@@ -19,6 +19,7 @@ Item {
             leftPadding: styles.margin
             bottomPadding: 5
             Layout.preferredHeight: styles.rowHeight
+            // to fix QtBug when text changes to empty for some reasons
             inputMethodHints: Qt.ImhNoPredictiveText |  Qt.ImhSensitiveData
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop

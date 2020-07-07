@@ -27,17 +27,37 @@
 <context>
     <name>Header</name>
     <message>
-        <location filename="../qml/components/Header.qml" line="25"/>
+        <location filename="../qml/components/Header.qml" line="28"/>
         <source>Return to the previous page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="33"/>
+        <location filename="../qml/components/Header.qml" line="37"/>
         <source>Application settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="47"/>
+        <location filename="../qml/components/Header.qml" line="127"/>
+        <source>Save timetable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Header.qml" line="130"/>
+        <source>Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Header.qml" line="130"/>
+        <source>Timetable saved!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Header.qml" line="95"/>
+        <source>Timer shows how much time left till the end of lesson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Header.qml" line="104"/>
         <source>Search for a timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -45,17 +65,17 @@
 <context>
     <name>SavedTimetables</name>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="42"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="48"/>
         <source>Saved timetables will be displayed here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="115"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="122"/>
         <source>Update timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SavedTimetables.qml" line="156"/>
+        <location filename="../qml/components/SavedTimetables.qml" line="163"/>
         <source>Remove timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,41 +89,18 @@
     </message>
     <message>
         <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="100"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
-        <source>Settings has been succesfully restored to default.</source>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <source>Settings has been succesfully restored to default. Restart the app to come them into force</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="100"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
         <source>Local storage has been succesfully cleared</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TimetableTable</name>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="91"/>
-        <source>Timer shows how much time left till the end of lesson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="112"/>
-        <source>Save timetable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="115"/>
-        <source>Success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="115"/>
-        <source>Timetable saved!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -115,7 +112,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="79"/>
+        <location filename="../main.qml" line="83"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>

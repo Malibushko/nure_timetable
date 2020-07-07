@@ -29,7 +29,7 @@ Page {
       To fix this look for this in on Internet (it`s easy) and
       add it to your sources to the following path:
       ~/Qt/5.15.0/android/qml/QtQuick/Dialogs/
-      Everything should work fine
+      Everything should work fine then
      */
     Component {
         id: colorDelegate
@@ -92,7 +92,8 @@ Page {
                 switch (modelName) {
                     case SETTINGS_TYPE.CLEAR_CACHE_BTN:
                         mainSettings.load(true)
-                        dialog.setData(qsTr("Success"),qsTr("Settings has been succesfully restored to default."));
+                        dialog.setData(qsTr("Success"),
+                                       qsTr("Settings has been succesfully restored to default. Restart the app to come them into force"));
                         break;
                     case SETTINGS_TYPE.RESTORE_DEFAULT_BTN:
                         localStorage.clearStorage();

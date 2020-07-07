@@ -7,9 +7,6 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-    FontLoader {
-        id: digitalFont; source: "https://ff.static.1001fonts.net/d/i/digital-7.regular.ttf"
-    }
 
     Component {
         id: headerDelegate
@@ -39,87 +36,6 @@ Page {
                 clip: true
                 fontSizeMode: Text.Fit
             }
-        }
-    }
-    HeaderButton {
-        id: timetableTimer
-        anchors.centerIn: parent
-        parent: mainHeader
-        height: parent.height
-        width: height*2
-        visible: mainView.currentItem == root_
-        Connections {
-            target: mainSettings
-            function onValueChanged(group,key,value) {
-                if (group === SETTINGS_GROUP.TIMETABLE_STYLING &&
-                        key === SETTINGS_TYPE.SHOW_TIMER) {
-                       timetableTimer.visible = mainView.currentItem == root_ && value;
-                }
-            }
-        }
-
-        Timer {
-            property int value
-            // small hack to start timer immidiately and then set interval to 1 second
-            property bool isFirst
-            running: value !== 0
-            id: countdownTimer
-            interval: 1
-            onTriggered: {
-                if (isFirst) {
-                    interval = 1000;
-                    isFirst = false;
-                }
-                timeDisplay.text = tableModel.secondsToString(--value);
-            }
-            function setTime(count) {
-                    value = count;
-                    isFirst = true
-                    countdownTimer.start();
-            }
-        }
-        Text {
-            id: timeDisplay
-            visible: countdownTimer.running
-            anchors.centerIn: parent
-            width: parent.width*0.75
-            fontSizeMode: Text.Fit
-            font.pixelSize: parent.height*0.5
-            font.family:  digitalFont.status === FontLoader.Ready ?  digitalFont.name : "Arial"
-            color: styles.iconColor
-        }
-        ToolTip.text: qsTr("Timer shows how much time left till the end of lesson")
-    }
-
-    HeaderButton {
-        parent: mainHeader
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: styles.margin
-        enabled: true
-        visible: mainView.currentItem === timetablePage && savedTimetables.modelRef.find(tableModel.id()) < 0
-        onVisibleChanged: {
-            enabled = true
-        }
-
-        background: Rectangle {
-            anchors.fill: parent
-            color: mainHeader.background.color
-        }
-        icon.source: "qrc:///qml/icons/save.svg"
-        icon.color: enabled ? styles.iconColor : mainHeader.background.color
-
-        ToolTip.text: qsTr("Save timetable")
-        onClicked: {
-            enabled = false
-            dialog.setData(qsTr("Success"),qsTr("Timetable saved!"));
-
-            var timetable = localStorage.createTimetable(findPage.timetableId,
-                                                         findPage.timetableTitle,
-                                                         findPage.isTeacher,
-                                                         tableModel.getModel());
-            localStorage.save(TableType.SAVED_TIMETABLE,timetable)
-            savedTimetables.modelRef.addItem(timetable);
         }
     }
 
@@ -163,7 +79,7 @@ Page {
                         running: true
                         onStarted: {
                              if (tableModel.rowProgress(index) > 0 && styles.showTimer) {
-                                    countdownTimer.setTime(duration/1000);
+                                    mainHeader.setTimer(duration/1000);
                              }
                         }
                     }
