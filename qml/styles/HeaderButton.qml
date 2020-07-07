@@ -7,7 +7,6 @@ Button {
     icon.color: styles.iconColor
     scale: styles.iconScaleDefault
 
-    visible: mainView.currentItem !== this
     ToolTip.visible: pressed
     ToolTip.delay: Qt.styleHints.mousePressAndHoldInterval
     hoverEnabled: true

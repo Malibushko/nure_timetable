@@ -44,9 +44,6 @@ Item {
     property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
     property color lb_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LB_COLOR);
     property color zal_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.ZAL_COLOR);
-    function showProperty() {
-        appGeneral.restart()
-    }
 
     Connections {
         target: mainSettings

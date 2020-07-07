@@ -24,9 +24,6 @@ ApplicationWindow {
     Settings {
         id: mainSettings
     }
-    App {
-        id: appGeneral
-    }
 
     LanguageSwitcher {
         id: lang

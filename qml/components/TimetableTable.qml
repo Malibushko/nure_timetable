@@ -7,7 +7,6 @@ import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
-
     Component {
         id: headerDelegate
         Label {
@@ -48,12 +47,13 @@ Page {
         z: 2
         Repeater {
             id: rowsHeaderModel
+            property int activeRect: -1
             model: tableView.verticalHeader
             Label {
                 width: text.width*1.5
                 height: tableView.rowHeightProvider(index)
                 onHeightChanged: {
-                    fillAnimationAnimation.restart()
+                    fillAnimationAnimation.recalculate()
                 }
                 StyledText {
                     id: text
@@ -66,21 +66,44 @@ Page {
                 }
                 Rectangle {
                     id: fillAnimationRect
+                    property alias fillAnimationRef: fillAnimationAnimation
                     anchors.right: parent.right
                     anchors.left: parent.left
                     anchors.top: parent.top
                     PropertyAnimation {
+                        property var appState: Qt.application.state
+
                         id: fillAnimationAnimation
                         target: fillAnimationRect
                         property: "height"
-                        from: (tableModel.rowProgress(index)/tableModel.lessonDuration())*tableView.rowHeightProvider(index)
-                        to: from === 0 ? 0 : tableView.rowHeightProvider(index)
-                        duration: (tableModel.lessonDuration()-tableModel.rowProgress(index))*1000
                         running: true
+
+                        function isRunning(index) {
+                            return tableModel.rowProgress(index) > 0 && styles.showTimer;
+                        }
+                        function recalculate() {
+                            from =    (tableModel.rowProgress(index)/tableModel.lessonDuration())*
+                                    tableView.rowHeightProvider(index);
+                            duration = (tableModel.lessonDuration() - tableModel.rowProgress(index))*1000
+                            to = from === 0 ? 0 : tableView.rowHeightProvider(index)
+
+                            if (duration/1000 !== tableModel.lessonDuration()) {
+                                mainHeader.setTimer(duration/1000)
+                                restart()
+                            }
+                        }
+                        onAppStateChanged: {
+                            if (appState === Qt.ApplicationActive && isRunning(index)) {
+                                recalculate()
+                            }
+                        }
+                        Component.onCompleted: {
+                            recalculate()
+                        }
                         onStarted: {
-                             if (tableModel.rowProgress(index) > 0 && styles.showTimer) {
-                                    mainHeader.setTimer(duration/1000);
-                             }
+                            if (isRunning(index)) {
+                                rowsHeaderModel.activeRect = index
+                            }
                         }
                     }
                     color: styles.accentColor

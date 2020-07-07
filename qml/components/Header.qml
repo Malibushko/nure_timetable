@@ -13,9 +13,9 @@ ToolBar {
         mainView.pop()
     }
     function setTimer(time) {
-        countdownTimer.setTime(time)
+        countdownTimer.value = time;
+        countdownTimer.restart();
     }
-
     RowLayout {
         anchors.fill: parent
 
@@ -65,21 +65,12 @@ ToolBar {
             Timer {
                 property int value
                 // small hack to start timer immidiately and then set interval to 1 second
-                property bool isFirst
                 id: countdownTimer
                 running: value !== 0
-                interval: 1
+                triggeredOnStart: true
+                repeat: true
                 onTriggered: {
-                    if (isFirst) {
-                        interval = 1000;
-                        isFirst = false;
-                    }
                     timeDisplay.text = timetablePage.modelRef.secondsToString(--value);
-                }
-                function setTime(count) {
-                    value = count;
-                    isFirst = true
-                    countdownTimer.start();
                 }
             }
             Text {
@@ -112,6 +103,7 @@ ToolBar {
             Layout.rightMargin: styles.margin
             visible: mainView.currentItem === timetablePage
             enabled: isSaved(timetablePage.modelRef.id())
+
             onVisibleChanged: {
                 if (visible)
                     enabled = isSaved(timetablePage.modelRef.id())
