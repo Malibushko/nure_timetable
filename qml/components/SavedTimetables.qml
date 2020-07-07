@@ -16,6 +16,11 @@ Page {
     Transition {
         id: removeAnimation
                 SequentialAnimation {
+                    PropertyAnimation {
+                        property:"z"
+                        to: -10
+                        duration: 1
+                    }
                     ColorAnimation {
                         property: "color"
                         to: styles.primaryColor
@@ -23,7 +28,7 @@ Page {
                     }
                     NumberAnimation {
                         property: "y";
-                        to: -styles.rowHeight
+                        to: -(Math.abs(y-styles.rowHeight))
                         duration: 300
                         easing.type: Easing.OutQuad
                     }
@@ -57,6 +62,7 @@ Page {
         remove: styles.animationsEnabled ? removeAnimation : null
 
         delegate: Rectangle {
+            id: rowDelegate
             width: parent.width
             height: styles.rowHeight
             color: styles.componentColor
