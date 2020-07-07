@@ -17,7 +17,7 @@ Item {
         TextField {
             id: searchInput
             leftPadding: styles.margin
-            bottomPadding: 5
+            bottomPadding: 0
             Layout.preferredHeight: styles.rowHeight
             // to fix QtBug when text changes to empty for some reasons
             inputMethodHints: Qt.ImhNoPredictiveText |  Qt.ImhSensitiveData
@@ -28,9 +28,11 @@ Item {
             }
         }
         ListView {
+            id: list
             Layout.fillHeight: true
             Layout.fillWidth: true
             clip: true
+
             model: SearchFilterModel {
                 id: listModel_
             }

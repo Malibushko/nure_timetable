@@ -66,12 +66,9 @@ inline namespace details {
         return encodedData;
     }
 }
-
 QString ApiJSON::getRoot() const {
     return API_ROOT;
 }
-
-
 void ApiJSON::schedule(int id,bool isTeacher) {
     QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)
                                      : map(API_TYPES::P_API_GROUP_REQUEST)));
@@ -86,7 +83,9 @@ void ApiJSON::schedule(int id,bool isTeacher) {
     QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
     connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
-            qDebug() << "Error in " << __func__ << " :" << r->error();
+            QString errMsg = tr("Error occured\nProbably you have been banned by cist.nure.ua because you"
+                                  " made too many requests today. Try later");
+            emit error(errMsg);
             return;
         }
         QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
@@ -121,12 +120,13 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
     waiter.exec();
 
     if (r->error() != QNetworkReply::NoError) {
-        qDebug() << "Error in " << __func__ << " :" << r->error();
+        QString errMsg = tr("Error occured\nProbably you have been banned by cist.nure.ua because you"
+                              " made too many requests today. Try later");
+        emit error(errMsg);
         return {};
     }
     QStringList rows = QString(decode1251(r->readAll())).split('\r',Qt::SkipEmptyParts);
     if (rows.size() <= 1) {
-        qDebug() << "No data";
         emit error(tr("This timetable does not contain any information. Try later or "
                    "ask API maintainers about your timetable."));
         return {};
@@ -143,7 +143,6 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
 }
 
 void ApiJSON::groups() {
-    qDebug() << "Network Request";
     QUrl request(API_ROOT+map(API_TYPES::P_API_GROUP_JSON));
     QNetworkReply * r = mng->get(QNetworkRequest{request});
     connect(r,&QNetworkReply::finished,[=](){

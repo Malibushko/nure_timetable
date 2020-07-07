@@ -15,7 +15,7 @@ Dialog {
     }
     function setData(messageTitle,messageDescription) {
         title = messageTitle;
-        messageText.text = messageDescription
+        messageText.text = messageDescription;
         messageDialog.open()
     }
 }

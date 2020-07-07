@@ -37,27 +37,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="127"/>
+        <location filename="../qml/components/Header.qml" line="119"/>
         <source>Save timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="130"/>
+        <location filename="../qml/components/Header.qml" line="122"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="130"/>
+        <location filename="../qml/components/Header.qml" line="122"/>
         <source>Timetable saved!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="95"/>
+        <location filename="../qml/components/Header.qml" line="86"/>
         <source>Timer shows how much time left till the end of lesson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="104"/>
+        <location filename="../qml/components/Header.qml" line="95"/>
         <source>Search for a timetable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -88,18 +88,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="97"/>
         <source>Settings has been succesfully restored to default. Restart the app to come them into force</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Local storage has been succesfully cleared</source>
         <translation type="unfinished"></translation>
     </message>
@@ -112,7 +112,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="83"/>
+        <location filename="../main.qml" line="80"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -120,7 +120,14 @@
 <context>
     <name>timetable::ApiJSON</name>
     <message>
-        <location filename="../src/src/api.cpp" line="96"/>
+        <location filename="../src/src/api.cpp" line="86"/>
+        <location filename="../src/src/api.cpp" line="123"/>
+        <source>Error occured
+Probably you have been banned by cist.nure.ua because you made too many requests today. Try later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/src/api.cpp" line="95"/>
         <location filename="../src/src/api.cpp" line="130"/>
         <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
         <translation type="unfinished"></translation>
@@ -162,7 +169,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
+        <location filename="../src/src/settings.h" line="155"/>
         <source>Theme color</source>
         <translation type="unfinished"></translation>
     </message>
@@ -172,7 +179,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="151"/>
         <source>Primary color</source>
         <translation type="unfinished"></translation>
     </message>

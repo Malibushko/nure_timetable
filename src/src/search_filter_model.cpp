@@ -2,14 +2,14 @@
 namespace timetable {
 SortFilterModel::SortFilterModel()  {
     m_source = new SearchItemModel(this);
-    this->setSourceModel(m_source);
-    this->setFilterRole(Qt::UserRole+1);
-    filter.reserve(40);
+    setSourceModel(m_source);
+    setFilterRole(Qt::UserRole+1);
+    setFilterCaseSensitivity(Qt::CaseInsensitive);
+    filter.reserve(40); // just some random number in order to decrease reallocation count
 }
 
 
 void SortFilterModel::setFilterString(const QString &filter) {
-    qDebug() << "Change:" << filter;
     this->setFilterRegExp(filter);
 }
 }

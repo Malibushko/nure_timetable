@@ -11,7 +11,7 @@
     <message>
         <location filename="../qml/components/FindPage.qml" line="41"/>
         <source>Бандера C. А.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/components/FindPage.qml" line="49"/>
@@ -37,27 +37,27 @@
         <translation>Настройки приложения</translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="127"/>
+        <location filename="../qml/components/Header.qml" line="119"/>
         <source>Save timetable</source>
-        <translation type="unfinished">Сохранить расписание</translation>
+        <translation>Сохранить расписание</translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="130"/>
+        <location filename="../qml/components/Header.qml" line="122"/>
         <source>Success</source>
-        <translation type="unfinished">Успешно</translation>
+        <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="130"/>
+        <location filename="../qml/components/Header.qml" line="122"/>
         <source>Timetable saved!</source>
-        <translation type="unfinished">Расписание сохранено!</translation>
+        <translation>Расписание сохранено!</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Header.qml" line="86"/>
+        <source>Timer shows how much time left till the end of lesson</source>
+        <translation>Поиск расписания</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="95"/>
-        <source>Timer shows how much time left till the end of lesson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/Header.qml" line="104"/>
         <source>Search for a timetable</source>
         <translation>Поиск расписания</translation>
     </message>
@@ -88,15 +88,15 @@
         <translation>Пожалуйста, выберите цвет</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Success</source>
         <translation>Успешно</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="97"/>
         <source>Settings has been succesfully restored to default. Restart the app to come them into force</source>
-        <translation type="unfinished"></translation>
+        <translation>Насйтроки были сброшены. Перезагрузите приложение, чтобы они вступили в силу</translation>
     </message>
     <message>
         <source>The changes will take effect when the application is rebooted.</source>
@@ -107,7 +107,7 @@
         <translation type="vanished">Настройки были успешно сброшены.</translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="101"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Local storage has been succesfully cleared</source>
         <translation>Локальное хранилище было успешно очищено</translation>
     </message>
@@ -135,7 +135,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="83"/>
+        <location filename="../main.qml" line="80"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -143,7 +143,15 @@
 <context>
     <name>timetable::ApiJSON</name>
     <message>
-        <location filename="../src/src/api.cpp" line="96"/>
+        <location filename="../src/src/api.cpp" line="86"/>
+        <location filename="../src/src/api.cpp" line="123"/>
+        <source>Error occured
+Probably you have been banned by cist.nure.ua because you made too many requests today. Try later</source>
+        <translation type="unfinished">Произошла ошибка
+Скорее всего вы были заблокированы cist.nure.ua поскольку делали слишком много запросов сегодня. Попробуйте позже</translation>
+    </message>
+    <message>
+        <location filename="../src/src/api.cpp" line="95"/>
         <location filename="../src/src/api.cpp" line="130"/>
         <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
         <translation>Выбранное расписание не содержит какой-либо информации. Возможно, на данный момент оно не доступно. Попробуйте позже. Если вы уверены, что произошла ошибка, свяжитесь с разработчиком программы.</translation>
@@ -164,7 +172,7 @@
     <message>
         <location filename="../src/qml/saved_model.h" line="35"/>
         <source> at </source>
-        <translation>в</translation>
+        <translation> в </translation>
     </message>
 </context>
 <context>
@@ -185,7 +193,7 @@
         <translation>Стилизация</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
+        <location filename="../src/src/settings.h" line="155"/>
         <source>Theme color</source>
         <translation>Основной цвет</translation>
     </message>
@@ -195,7 +203,7 @@
         <translation>Цвет акценирования</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="151"/>
         <source>Primary color</source>
         <translation>Дополнительный цвет</translation>
     </message>
@@ -277,7 +285,7 @@
     <message>
         <location filename="../src/src/settings.h" line="187"/>
         <source>Show timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать таймер</translation>
     </message>
 </context>
 </TS>

@@ -16,7 +16,7 @@ Page {
                 color: (!styles.isLight ? styles.darkLight : "white")
             }
             verticalAlignment: Text.AlignHCenter | Text.AlignVCenter
-            background: Rectangle { color: styles.themeColor }
+            background: Rectangle { color: styles.backgroundColor }
         }
     }
     Component {
@@ -110,7 +110,7 @@ Page {
                     opacity: 0.5
                 }
                 verticalAlignment: Text.AlignVCenter
-                background: Rectangle { color: styles.themeColor  }
+                background: Rectangle { color: styles.backgroundColor  }
             }
         }
     }

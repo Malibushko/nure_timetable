@@ -148,11 +148,11 @@ public:
             case SETTINGS_GROUP::STYLING:
                 return tr("Styling");
             case SETTINGS_TYPE::APP_THEME:
-                return tr("Theme color");
+                return tr("Primary color");
             case SETTINGS_TYPE::APP_ACCENT:
                 return tr("Accent color");
             case SETTINGS_TYPE::APP_PRIMARY:
-                return tr("Primary color");
+                return tr("Theme color");
             case SETTINGS_TYPE::NIGHT_MODE:
                 return tr("Night mode");
             case SETTINGS_GROUP::TIMETABLE_STYLING:

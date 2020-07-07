@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QDir>
 namespace timetable {
 class LanguageSwitcher : public QObject {
     Q_OBJECT
@@ -17,13 +18,12 @@ public:
     }
     Q_INVOKABLE void setLanguage(const QString& lang) {
         if (lang == "English") {
-            language.load("en");
-            langStr = "en";
+            langStr = ":/languages/en.qm";
         }
         else {
-            language.load("ru");
-            langStr = "ru";
+            langStr = ":/languages/ru.qm";
         }
+        language.load(langStr);
         retranslate();
     }
     Q_INVOKABLE void retranslate() {

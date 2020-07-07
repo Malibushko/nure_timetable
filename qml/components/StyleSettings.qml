@@ -45,6 +45,7 @@ Item {
     property color lb_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LB_COLOR);
     property color zal_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.ZAL_COLOR);
 
+
     Connections {
         target: mainSettings
         function onValueChanged(group,key,value) {

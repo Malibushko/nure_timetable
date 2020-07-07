@@ -69,6 +69,7 @@ Page {
                 clip: true
                 model: modelData.split(';')
                 anchors.fill: parent
+                down: true
                 displayText: lang.getLanguage()
                 onActivated:  {
                     console.log(currentText)
@@ -141,12 +142,15 @@ Page {
                             sourceComponent = switchDelegate;
                             break;
                         case CONTROL.COLOR:
+                            Layout.preferredWidth = styles.iconSize
+                            Layout.preferredHeight = styles.iconSize
                             sourceComponent = colorDelegate;
                             break;
                         case CONTROL.NUMBER:
                             sourceComponent = numberDelegate;
                             break;
                         case CONTROL.LIST:
+                            Layout.preferredWidth = styles.rowWidth*0.33
                             sourceComponent = listDelegate;
                             break;
                         case CONTROL.BTN:
