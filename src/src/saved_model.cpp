@@ -1,6 +1,7 @@
 #include "qml/saved_model.h"
 
 namespace timetable {
+static int updateTimePeriod =1;// 12*60*60; // twice per day
 
 SavedTimetableModel::SavedTimetableModel(QObject *) {
 }
@@ -101,6 +102,9 @@ QVariant SavedTimetableModel::data(const QModelIndex &index, int role) const {
     case Qt::UserRole+4: {
         return item.isTeacher;
     }
+    case Qt::UserRole+5: {
+        return QDateTime::fromString(item.lastUpdate).secsTo(QDateTime::currentDateTime());
+    }
     default:
         break;
     }
@@ -114,7 +118,8 @@ QHash<int, QByteArray> SavedTimetableModel::roleNames() const {
         {Qt::UserRole+1,"title"},
         {Qt::UserRole+2,"lastUpdate"},
         {Qt::UserRole+3,"lessons"},
-        {Qt::UserRole+4,"isTeacher"}
+        {Qt::UserRole+4,"isTeacher"},
+        {Qt::UserRole+5,"timeSinceLastUpdate"}
     };
     return roles;
 }

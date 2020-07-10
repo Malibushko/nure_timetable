@@ -1,10 +1,13 @@
 #include "table_model.h"
 
 namespace timetable {
+static QString datePattern = "dd.MM.yy";
+static QString timePattern = "hh:mm";
+
 void TableModel::generateVerticalHeader() {
     beginResetModel();
     for (const internal::Lesson& lesson : lessons) {
-        m_verticalHeaderData.insert(lesson.timeStart.toString("hh:mm"));
+        m_verticalHeaderData.insert(lesson.timeStart.toString(timePattern));
     }
     emit verticalHeaderFinished();
     endResetModel();
@@ -19,7 +22,7 @@ void TableModel::generateHorizontalHeader() {
     });
     m_horizontalHeaderData.reserve(beginDate->date.daysTo(endDate->date));
     for (QDate date = beginDate->date;date != endDate->date;date = date.addDays(1)) {
-        m_horizontalHeaderData.push_back(date.toString("dd.MM.yyyy"));
+        m_horizontalHeaderData.push_back(date.toString(datePattern));
     }
     emit horizontalHeaderFinished();
     endResetModel();
@@ -57,8 +60,8 @@ int TableModel::lessonDuration() const {
     if (m_verticalHeaderData.size() < 2)
         return 0;
     else
-        return QTime::fromString(*m_verticalHeaderData.begin(),"hh:mm").secsTo(
-                    QTime::fromString(*std::next(m_verticalHeaderData.begin()),"hh:mm"));
+        return QTime::fromString(*m_verticalHeaderData.begin(),timePattern).secsTo(
+                    QTime::fromString(*std::next(m_verticalHeaderData.begin()),timePattern));
 }
 
 
@@ -125,7 +128,7 @@ int TableModel::currentColumn() {
         return 0;
 
     int index = std::abs(QDate::currentDate()
-                         .daysTo(QDate::fromString(m_horizontalHeaderData[0],"dd.MM.yyyy")));
+                         .daysTo(QDate::fromString(m_horizontalHeaderData[0],datePattern)));
     return (index > m_horizontalHeaderData.size()) ? m_horizontalHeaderData.size()/2 : index;
 }
 
@@ -155,7 +158,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid() || index.row() < 0 || index.row() >= static_cast<int32_t>(m_verticalHeaderData.size()))
         return {""};
     QDateTime modelIndex;
-    modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],"dd.MM.yyyy"));
+    modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],datePattern));
     auto iter = m_verticalHeaderData.begin();
     std::advance(iter,index.row());
     modelIndex.setTime(QTime::fromString(*iter,"hh:mm"));

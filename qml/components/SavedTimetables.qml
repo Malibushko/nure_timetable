@@ -56,6 +56,7 @@ Page {
         anchors.fill: parent
         model: SaveModel {
             id: saveModel
+
             Component.onCompleted: {
                 setItems(localStorage.get(TableType.SAVED_TIMETABLE))
             }
@@ -67,6 +68,14 @@ Page {
             width: parent.width
             height: styles.rowHeight
             color: styles.componentColor
+            Component.onCompleted: {
+                var updateTimeLimit = 12*60*60;
+                console.log(styles.autoupdating)
+                if (styles.autoupdating &&
+                        timeSinceLastUpdate > updateTimeLimit) {
+                    updateButton.imitateClick();
+                }
+            }
 
             MouseArea {
                 anchors.fill: parent

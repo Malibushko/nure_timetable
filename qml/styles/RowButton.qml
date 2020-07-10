@@ -16,6 +16,9 @@ Button {
     onHoveredChanged: {
         icon.color = hovered ? styles.accentColor : styles.iconRowButtonColor
     }
+    function imitateClick() {
+        clicked()
+    }
 
     background: Rectangle {
         color: "transparent"

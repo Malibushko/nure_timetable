@@ -15,7 +15,7 @@ Item {
     property double margin: Math.max((isPortrait ? screenWidth : screenHeight) * 0.05,5)
     property double padding: (isPortrait ? screenWidth : screenHeight) * 0.05
     property double rowHeight: {
-            return (!isPortrait? screenHeight : screenWidth) * 0.1;
+        return (!isPortrait? screenHeight : screenWidth) * 0.1;
     }
     property double iconSize: Math.max(rowHeight/4,25)
     property double rowWidth: screenWidth
@@ -39,6 +39,7 @@ Item {
     property bool animationsEnabled: mainSettings.value(SETTINGS_GROUP.GRAPHICS,SETTINGS_TYPE.ANIMATIONS)
     property bool cachingEnabled: mainSettings.value(SETTINGS_GROUP.GRAPHICS,SETTINGS_TYPE.ANIMATIONS)
     property bool showTimer: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.SHOW_TIMER)
+    property bool autoupdating: (mainSettings.value(SETTINGS_GROUP.MISCELLANEOUS,SETTINGS_TYPE.AUTOUPDATING) === "true")
 
     property color pz_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.PZ_COLOR);
     property color lc_color: mainSettings.value(SETTINGS_GROUP.TIMETABLE_STYLING,SETTINGS_TYPE.LC_COLOR);
@@ -95,6 +96,13 @@ Item {
                     break;
                 }
                 break;
+            case SETTINGS_GROUP.MISCELLANEOUS:
+                switch(key) {
+                case SETTINGS_TYPE.AUTOUPDATING:
+                    autoupdating = value;
+                    console.log("Autoupdating changed to:" + autoupdating)
+                    break;
+                }
             }
         }
     }
