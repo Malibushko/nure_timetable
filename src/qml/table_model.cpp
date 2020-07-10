@@ -2,12 +2,13 @@
 
 namespace timetable {
 static QString datePattern = "dd.MM.yy";
-static QString timePattern = "hh:mm";
+static QString timeFormat = "hh:mm";
+static QString datePatternFull = "dd.MM.yyyy";
 
 void TableModel::generateVerticalHeader() {
     beginResetModel();
     for (const internal::Lesson& lesson : lessons) {
-        m_verticalHeaderData.insert(lesson.timeStart.toString(timePattern));
+        m_verticalHeaderData.insert(lesson.timeStart.toString(timeFormat));
     }
     emit verticalHeaderFinished();
     endResetModel();
@@ -60,8 +61,8 @@ int TableModel::lessonDuration() const {
     if (m_verticalHeaderData.size() < 2)
         return 0;
     else
-        return QTime::fromString(*m_verticalHeaderData.begin(),timePattern).secsTo(
-                    QTime::fromString(*std::next(m_verticalHeaderData.begin()),timePattern));
+        return QTime::fromString(*m_verticalHeaderData.begin(),timeFormat).secsTo(
+                    QTime::fromString(*std::next(m_verticalHeaderData.begin()),timeFormat));
 }
 
 
@@ -70,7 +71,7 @@ int TableModel::rowProgress(int row) {
         decltype (auto) it = m_verticalHeaderData.begin();
         QTime currentTime = QTime::currentTime();
         for ( ;it != m_verticalHeaderData.end();++it) {
-            QTime timeStart = QTime::fromString(*it,"hh:mm");
+            QTime timeStart = QTime::fromString(*it,timeFormat);
             if (timeStart.secsTo(currentTime) < lessonDuration()) {
                 currentLesson.first = timeStart;
                 currentLesson.second = std::distance(m_verticalHeaderData.begin(),it);
@@ -156,35 +157,49 @@ int TableModel::columnCount(const QModelIndex &) const {
 
 QVariant TableModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid() || index.row() < 0 || index.row() >= static_cast<int32_t>(m_verticalHeaderData.size()))
-        return {""};
+        return "";
     QDateTime modelIndex;
-    modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],datePattern));
+    // "yy" format always returns date from last century, e.g "03.04.20" -> 03.04.1920
+    modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],datePattern).addYears(100));
+    // so we have to add 100 years manually
     auto iter = m_verticalHeaderData.begin();
     std::advance(iter,index.row());
-    modelIndex.setTime(QTime::fromString(*iter,"hh:mm"));
+    modelIndex.setTime(QTime::fromString(*iter,timeFormat));
 
     if (lessons.find(modelIndex.toMSecsSinceEpoch()) == lessons.end()) {
         return "";
     }
-
     const internal::Lesson& lesson = lessons[modelIndex.toMSecsSinceEpoch()];
     switch (role) {
     case Qt::UserRole:
-        return lesson.subject;
+        return lesson.date.toString(datePatternFull);
     case Qt::UserRole+1:
-        return lesson.type;
+        return lesson.subject;
     case Qt::UserRole+2:
+        return lesson.type;
+    case Qt::UserRole+3:
+        return lesson.groups;
+    case Qt::UserRole+4:
         return lesson.auditory;
+    case Qt::UserRole+5:
+        return lesson.timeStart.toString(timeFormat);
+    case Qt::UserRole+6:
+        return lesson.timeEnd.toString(timeFormat);
     default:
-        break;
+        return {""};
     }
-    return "";
 }
 
 
 QHash<int, QByteArray> TableModel::roleNames() const {
-    return {{Qt::UserRole,"subject"},
-        {Qt::UserRole+1,"type"},
-        {Qt::UserRole+2,"auditory"}};
+    return {{Qt::UserRole,"date"},
+        {Qt::UserRole+1,"subject"},
+        {Qt::UserRole+2,"type"},
+        {Qt::UserRole+3,"groups"},
+        {Qt::UserRole+4,"auditory"},
+        {Qt::UserRole+5,"timeStart"},
+        {Qt::UserRole+6,"timeEnd"}
+    };
+    // [date,subject,type,groups,auditory,timeStart,timeEnd]
 }
 }

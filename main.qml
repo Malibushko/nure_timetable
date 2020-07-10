@@ -109,6 +109,10 @@ ApplicationWindow {
     SettingsPage {
         id: settingsPage
     }
+    LessonInfo {
+        id: lessonInfo
+    }
+
     SettingsGroupPage {
         id: settingsGroup
     }

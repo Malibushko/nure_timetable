@@ -35,6 +35,13 @@ Page {
                 clip: true
                 fontSizeMode: Text.Fit
             }
+            MouseArea {
+                anchors.fill: (color_ == "transparent" ? null : parent)
+                onClicked: {
+                    lessonInfo.properties = properties
+                    lessonInfo.open()
+                }
+            }
         }
     }
 
@@ -162,6 +169,7 @@ Page {
             property var color_
             property var row_: row
             property var column_: column
+            property var properties: [date,subject,type,groups,auditory,timeStart,timeEnd]
             sourceComponent: (row == tableView.rows - 1 ? headerDelegate : cellDelegate)
             onTypeChanged: {
                 switch (model.type) {

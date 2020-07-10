@@ -56,7 +56,6 @@ Page {
         anchors.fill: parent
         model: SaveModel {
             id: saveModel
-
             Component.onCompleted: {
                 setItems(localStorage.get(TableType.SAVED_TIMETABLE))
             }
@@ -70,7 +69,6 @@ Page {
             color: styles.componentColor
             Component.onCompleted: {
                 var updateTimeLimit = 12*60*60;
-                console.log(styles.autoupdating)
                 if (styles.autoupdating &&
                         timeSinceLastUpdate > updateTimeLimit) {
                     updateButton.imitateClick();

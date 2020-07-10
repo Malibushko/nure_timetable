@@ -3,6 +3,7 @@ namespace timetable::internal {
 /**
  * This code is based on loopholes and will only be activated if
  * __COUNTER__ is not defined (it IS on msvc, gcc and clang)
+ * *loopholes is kinda constexpr UB
  */
 #ifndef __COUNTER__
 constexpr static int MAX_DEPTH = 64;
@@ -73,11 +74,11 @@ int constexpr counter_id(int value = mark<next_flag>::value) {
     { constexpr static std::string_view name = #field_name;  \
       constexpr static auto field_ptr = &this_t::field_name;}
 #endif
+
 /**
  * Declares field_info class (which is specialized by field_info)
  * And remembers current value of __COUNTER__ as offset
  */
-
 #ifndef declare_struct
 #define declare_struct(name) template<size_t N,class Dummy = void> struct field_info; \
     using this_t = name; \

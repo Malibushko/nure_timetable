@@ -28,5 +28,6 @@
         <file>qml/fonts/digital.ttf</file>
         <file>languages/en.qm</file>
         <file>languages/ru.qm</file>
+        <file>qml/components/LessonInfo.qml</file>
     </qresource>
 </RCC>

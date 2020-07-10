@@ -32,6 +32,7 @@ set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
     ${CMAKE_SOURCE_DIR}/src/internal/executor.h
     ${CMAKE_SOURCE_DIR}/src/src/settings.h
     ${CMAKE_SOURCE_DIR}/src/src/language.h
+    ${CMAKE_SOURCE_DIR}/src/src/lesson_info.h
     )
 
 set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
@@ -46,6 +47,7 @@ set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/query_builder.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/executor.cpp
     ${CMAKE_SOURCE_DIR}/src/src/settings.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/lesson_info.cpp
     main.cpp)
 
 set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)

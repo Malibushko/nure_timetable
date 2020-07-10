@@ -2,7 +2,7 @@
 #include <QMetaObject>
 #include <QObject>
 #include <QDate>
-
+#include <QDebug>
 #include <vector>
 #include <string>
 
@@ -115,11 +115,21 @@ struct Lesson {
     declare_field(QDate,date);
     declare_field(QString,subject);
     declare_field(QString,type);
+    declare_field(QString,groups);
     declare_field(QString,auditory);
     declare_field(QTime,timeStart);
     declare_field(QTime,timeEnd);
     Lesson() = default;
     static Lesson fromCSV(const QString & csvLine) {
+        /*
+         * Many parts of this function are really hard to understand
+         * This is because NURE API sends wrong and oftenly
+         * unparsable data (like different type of separators in a single (!) string)
+         * I used heuristic with regex and some other fixes
+         * that should work in most cases but not always
+         * Do not try to understand it, this function will be replaced
+         * as soon as new NURE API will be available (current one is legacy)
+         */
         QString editText;
         QStringList innerList = csvLine.split('\"',Qt::SkipEmptyParts);
         if (innerList.size() < 4)
@@ -131,11 +141,12 @@ struct Lesson {
         QString firstToken = innerList.first();
         QRegExp exp("[,]\\s+");
         firstToken.replace(exp,",");
+        qDebug() << innerList;
         Lesson lesson;
         
         auto tokens = firstToken.split(' ');
         while (tokens.size() >= 4) {
-            tokens.removeLast();
+            lesson.groups = tokens.takeLast();
             lesson.auditory += (lesson.auditory.size()? QString("/")+ tokens.takeLast() : tokens.takeLast());
             lesson.type += (lesson.type.size()? QString("/")+ tokens.takeLast() : tokens.takeLast());
             if (lesson.subject.size())
