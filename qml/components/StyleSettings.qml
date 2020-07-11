@@ -15,7 +15,11 @@ Item {
     property double margin: Math.max((isPortrait ? screenWidth : screenHeight) * 0.05,5)
     property double padding: (isPortrait ? screenWidth : screenHeight) * 0.05
     property double rowHeight: {
-        return (!isPortrait? screenHeight : screenWidth) * 0.1;
+        var multiplyKoef = 0.1
+        if (screenWidth > 1280)
+            multiplyKoef = 0.05;
+
+        return (!isPortrait? screenHeight : screenWidth) * multiplyKoef;
     }
     property double iconSize: Math.max(rowHeight/4,25)
     property double rowWidth: screenWidth

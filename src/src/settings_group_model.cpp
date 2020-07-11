@@ -8,10 +8,10 @@ SettingsGroupModel::SettingsGroupModel(QObject *) {
 
 void SettingsGroupModel::setItems(const QVariantList &otherSettings) {
     beginResetModel();
-    settingTitles.clear();
-    settingTitles.reserve(otherSettings.size());
+    m_settingTitles.clear();
+    m_settingTitles.reserve(otherSettings.size());
     for (const QVariant& item : otherSettings) {
-        settingTitles.push_back(qvariant_cast<QPair<int,QVariant>>(item));
+        m_settingTitles.push_back(qvariant_cast<QPair<int,QVariant>>(item));
     }
     endResetModel();
 }
@@ -23,15 +23,15 @@ int SettingsGroupModel::columnCount(const QModelIndex &) const {
 
 
 int SettingsGroupModel::rowCount(const QModelIndex &) const {
-    return settingTitles.size();
+    return m_settingTitles.size();
 }
 
 
 QVariant SettingsGroupModel::data(const QModelIndex &index, int role) const {
-    if (index.row() < 0 || index.row() >= settingTitles.size()) {
+    if (index.row() < 0 || index.row() >= m_settingTitles.size()) {
         return {};
     }
-    const auto& name = settingTitles[index.row()];
+    const auto& name = m_settingTitles[index.row()];
     switch (role) {
     case Qt::UserRole:
         return name.first;

@@ -22,104 +22,181 @@ struct Department;
 struct Teacher;
 struct Faculty;
 struct Direction;
-
+/**
+ * @brief The Department struct
+ *
+ * Describles the department in the university
+ */
 struct Department {
     declare_struct(Department)
-    declare_field(int_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
-    declare_field(container_t<Teacher>,teachers);
+    declare_field(int_t,id); /**< id of department */
+    declare_field(string_t,short_name); /**< short name of department */
+    declare_field(string_t,full_name); /**<  full name of department */
+    declare_field(container_t<Teacher>,teachers); /**< teachers working in the department */
 };
-
+/**
+ * @brief The Teacher struct
+ *
+ * Describes the teacher in the university
+ */
 struct Teacher {
     declare_struct(Teacher)
-    declare_field(int_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
+    declare_field(int_t,id); /**< teacher id */
+    declare_field(string_t,short_name); /**< initials of the teacher */
+    declare_field(string_t,full_name); /**<  full name of the teacher */
 };
+/**
+ * @brief The Faculty struct
+ *
+ * Describes the faculty in the university
+ */
 struct Faculty {
     declare_struct(Faculty)
-    declare_field(int_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
-    declare_field(container_t<Department>,departments);
-    declare_field(container_t<Direction>,directions);
+    declare_field(int_t,id); /**< faculty id */
+    declare_field(string_t,short_name); /**< Short name of the faculty */
+    declare_field(string_t,full_name); /**<  Full name of the faculty */
+    declare_field(container_t<Department>,departments); /**< Departments of faculty */
+    declare_field(container_t<Direction>,directions);/**<  Directions of faculty */
 };
+/**
+ * @brief The AuditoryType struct
+ *
+ * Describes type of auditory
+ */
 struct AuditoryType {
     declare_struct(AuditoryType)
-    declare_field(string_t,id);
-    declare_field(string_t,short_name);
+    declare_field(string_t,id); /**<  Auditory id */
+    declare_field(string_t,short_name); /**< Auditory short name */
 };
+/**
+ * @brief The AuditoryTypes struct
+ *
+ * Describes the container of AuditoryType
+ * Used for JSON parsing
+ */
 struct AuditoryTypes {
     declare_struct(AuditoryTypes)
-    declare_field(container_t<AuditoryType>,auditory_types);
+    declare_field(container_t<AuditoryType>,auditory_types); /**<  Container of AuditoryType */
 };
+/**
+ * @brief The Auditory struct
+ *
+ * Describes the auditory in the university
+ */
 struct Auditory {
     declare_struct(Auditory)
-    declare_field(string_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,floor);
-    declare_field(string_t,is_have_power);
-    declare_field(container_t<AuditoryType>,auditory_types);
+    declare_field(string_t,id); /**<  Auditory id */
+    declare_field(string_t,short_name); /**<  Auditory short name */
+    declare_field(string_t,floor); /**< Auditory floor */
+    declare_field(string_t,is_have_power); /**< Check if auditory has power inside  */
+    declare_field(container_t<AuditoryType>,auditory_types); /**< Types of the auditory */
 };
-
+/**
+ * @brief The University struct
+ *
+ * Describes the whole university with faculties, departments, teachers  etc.
+ */
 struct University {
     declare_struct(University)
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
-    declare_field(container_t<Faculty>,faculties);
+    declare_field(string_t,short_name); /**< Short name of the university */
+    declare_field(string_t,full_name); /**<  Full name of the university*/
+    declare_field(container_t<Faculty>,faculties); /**< Faculties of the university */
 };
+/**
+ * @brief The Group struct
+ *
+ * Describes the group in the university
+ */
 struct Group {
     declare_struct(Group)
-    declare_field(int_t,id);
-    declare_field(string_t,name);
+    declare_field(int_t,id); /**<  Group id*/
+    declare_field(string_t,name); /**<  Group name */
 };
-
+/**
+ * @brief The Speciality struct
+ *
+ * Describes the speciality in the university
+ */
 struct Speciality {
     declare_struct(Speciality)
-    declare_field(int_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
-    declare_field(container_t<Group>,groups);
+    declare_field(int_t,id); /**< Speciality id */
+    declare_field(string_t,short_name); /**<  Speciality shortened name */
+    declare_field(string_t,full_name); /**<  Speciality full name */
+    declare_field(container_t<Group>,groups); /**< groups of the speciality */
 };
-
+/**
+ * @brief The Direction struct
+ *
+ * Describes the diretion in the university
+ */
 struct Direction {
     declare_struct(Direction)
-    declare_field(int_t,id);
-    declare_field(string_t,short_name);
-    declare_field(string_t,full_name);
-    declare_field(container_t<Speciality>,specialities);
-    declare_field(container_t<Group>,groups);
+    declare_field(int_t,id); /**< Direction id */
+    declare_field(string_t,short_name); /**< Direction shortened name */
+    declare_field(string_t,full_name); /**<  Direction full name*/
+    declare_field(container_t<Group>,groups); /**<  Diretion groups */
+    declare_field(container_t<Speciality>,specialities); /**<  Direction specialities \note Can contain another groups*/
 };
-
+/**
+ * @brief The UniversityWrapper struct
+ *
+ * Wrapper for JSON parsing and transfering between models
+ */
 struct UniversityWrapper {
     declare_struct(UniversityWrapper)
-    declare_field(University,university);
+    declare_field(University,university); /**<  University object */
 };
+/**
+ * @brief The DepartmentWrapper struct
+ *
+ * Wrapper for JSON parsing and transfering between models
+ */
 struct DepartmentWrapper {
     declare_struct(DepartmentWrapper)
-    declare_field(Department,department);
+    declare_field(Department,department); /**< Department object */
 };
+/**
+ * @brief The FacultyWrapper struct
+ *
+ * Wrapper for JSON parsing and transfering between models
+ */
 struct FacultyWrapper {
     declare_struct(FacultyWrapper)
-    declare_field(Faculty,faculty);
+    declare_field(Faculty,faculty); /**<  */
 };
+/**
+ * @brief The Timetable struct
+ *
+ * Describes the timetable (generalization of Group and Teacher object)
+ */
 struct Timetable {
     declare_struct(Timetable)
-    declare_field(int,id);
-    declare_field(string_t,title);
+    declare_field(int,id); /**<  Timetable id */
+    declare_field(string_t,title); /**<  Timetable title */
 };
-
+/**
+ * @brief The Lesson struct
+ *
+ * Describes the Lesson in the timetable (Displayed in a form of cell)
+ * Also used for serialization
+ */
 struct Lesson {
     declare_struct(Lesson)
-    declare_field(QDate,date);
-    declare_field(QString,subject);
-    declare_field(QString,type);
-    declare_field(QString,groups);
-    declare_field(QString,auditory);
-    declare_field(QTime,timeStart);
-    declare_field(QTime,timeEnd);
+    declare_field(QDate,date); /**< Date of lesson */
+    declare_field(QString,subject); /**<  Lesson subject */
+    declare_field(QString,type); /**< Lesson type (Lecture/Practice/Credit/Exam etc. */
+    declare_field(QString,groups); /**< Groups that must attend this lesson */
+    declare_field(QString,auditory); /**< Auditory where the lesson takes place */
+    declare_field(QTime,timeStart); /**< Start time of the lesson */
+    declare_field(QTime,timeEnd); /**< End time of the lesson */
     Lesson() = default;
+    /**
+     * @brief Parses CSV line in order to get Lesson object
+     * \note static function
+     * @param csvLine line to parse
+     * @return Lesson object
+     * \note If line does not contain any information, the empty Lesson object will be returned
+     */
     static Lesson fromCSV(const QString & csvLine) {
         /*
          * Many parts of this function are really hard to understand
@@ -167,13 +244,20 @@ struct Lesson {
         return  lesson;    
     }
 };
+/**
+ * @brief The SavedTimetable struct
+ *
+ * Struct that contains information about user-saved timetable
+ * Used for serialization
+ */
 struct SavedTimetable {
     declare_struct(SavedTimetable)
-    declare_field(int,id);
-    declare_field(string_t,title);
-    declare_field(string_t,lastUpdate);
-    declare_field(bool,isTeacher);
-    declare_field(std::vector<Lesson>,lessons);
+    declare_field(int,id); /**< Timetable id */
+    declare_field(string_t,title); /**< Timetable title */
+    declare_field(string_t,lastUpdate); /**< Last update QDateTime of this timetable */
+    declare_field(bool,isTeacher); /**< Check whether this is teacher timetable or group one
+                                    \note NURE API do not distinguish them, so there is a need for boolean flag */
+    declare_field(std::vector<Lesson>,lessons); /**< Container of Lesson objects */
 };
 }
 Q_DECLARE_METATYPE(timetable::internal::Department)

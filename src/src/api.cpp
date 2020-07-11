@@ -13,6 +13,8 @@ struct is_container<QList<T>> : std::true_type {};
 }
 
 inline namespace details {
+    // Api tokens and mapping
+
     enum class API_TYPES {
         P_API_PODR_JSON,
         P_API_GROUP_JSON,
@@ -72,15 +74,19 @@ QString ApiJSON::getRoot() const {
 void ApiJSON::schedule(int id,bool isTeacher) {
     QUrl getUrl(API_ROOT+ (isTeacher ? map(API_TYPES::P_API_TEACHER_REQUEST)
                                      : map(API_TYPES::P_API_GROUP_REQUEST)));
+    /*
+     * Form a request
+     * Note: Api was lost (NURE API refused to give a new one)
+     */
     QUrlQuery query;
     query.addQueryItem("ATypeDoc","3");
     query.addQueryItem((isTeacher ? "Aid_sotr":"Aid_group"),QString::number(id));
     query.addQueryItem((isTeacher ? "Aid_kaf" : "Aid_potok"),"0");
-    query.addQueryItem("ADateStart",dateStart);
-    query.addQueryItem("ADateEnd",dateEnd);
+    query.addQueryItem("ADateStart",m_dateStart);
+    query.addQueryItem("ADateEnd",m_dateEnd);
     getUrl.setQuery(query);
 
-    QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
+    QNetworkReply * r = m_mng->get(QNetworkRequest{getUrl});
     connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
             QString errMsg = tr("Error occured\nProbably you have been banned by cist.nure.ua because you"
@@ -110,12 +116,12 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
     query.addQueryItem("ATypeDoc","3");
     query.addQueryItem((isTeacher ? "Aid_sotr":"Aid_group"),QString::number(id));
     query.addQueryItem((isTeacher ? "Aid_kaf" : "Aid_potok"),"0");
-    query.addQueryItem("ADateStart",dateStart);
-    query.addQueryItem("ADateEnd",dateEnd);
+    query.addQueryItem("ADateStart",m_dateStart);
+    query.addQueryItem("ADateEnd",m_dateEnd);
     getUrl.setQuery(query);
 
     QEventLoop waiter;
-    QNetworkReply * r = mng->get(QNetworkRequest{getUrl});
+    QNetworkReply * r = m_mng->get(QNetworkRequest{getUrl});
     connect(r,&QNetworkReply::finished,&waiter,&QEventLoop::quit);
     waiter.exec();
 
@@ -144,7 +150,7 @@ QVariantList ApiJSON::scheduleSync(int id,bool isTeacher) {
 
 void ApiJSON::groups() {
     QUrl request(API_ROOT+map(API_TYPES::P_API_GROUP_JSON));
-    QNetworkReply * r = mng->get(QNetworkRequest{request});
+    QNetworkReply * r = m_mng->get(QNetworkRequest{request});
     connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
             emit error(r->errorString());
@@ -170,7 +176,7 @@ void ApiJSON::groups() {
 }
 void ApiJSON::teachers() {
     QUrl request(API_ROOT+map(API_TYPES::P_API_PODR_JSON));
-    QNetworkReply * r = mng->get(QNetworkRequest{request});
+    QNetworkReply * r = m_mng->get(QNetworkRequest{request});
     connect(r,&QNetworkReply::finished,[=](){
         if (r->error() != QNetworkReply::NoError) {
             emit error(r->errorString());

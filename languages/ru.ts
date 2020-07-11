@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="ru_UA" sourcelanguage="en">
 <context>
     <name>FindPage</name>
     <message>
         <location filename="../qml/components/FindPage.qml" line="34"/>
         <source>ITKH-18-9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/components/FindPage.qml" line="41"/>
         <source>Бандера C. А.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/components/FindPage.qml" line="49"/>
         <source>Students</source>
-        <translation type="unfinished"></translation>
+        <translation>Студенты</translation>
     </message>
     <message>
         <location filename="../qml/components/FindPage.qml" line="52"/>
         <source>Teachers</source>
-        <translation type="unfinished"></translation>
+        <translation>Преподаватели</translation>
     </message>
 </context>
 <context>
@@ -29,75 +29,75 @@
     <message>
         <location filename="../qml/components/Header.qml" line="28"/>
         <source>Return to the previous page</source>
-        <translation type="unfinished"></translation>
+        <translation>Вернуться на предыдущую страницу</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="37"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки приложения</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="86"/>
         <source>Timer shows how much time left till the end of lesson</source>
-        <translation type="unfinished"></translation>
+        <translation>Таймер отображает кол-во времени до конца занятия</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="95"/>
         <source>Search for a timetable</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск расписания</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="119"/>
         <source>Save timetable</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить расписание</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="122"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Успешно</translation>
     </message>
     <message>
         <location filename="../qml/components/Header.qml" line="122"/>
         <source>Timetable saved!</source>
-        <translation type="unfinished"></translation>
+        <translation>Расписание сохранено!</translation>
     </message>
 </context>
 <context>
     <name>LessonInfo</name>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="10"/>
+        <location filename="../qml/components/LessonInfo.qml" line="15"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="10"/>
+        <location filename="../qml/components/LessonInfo.qml" line="15"/>
         <source>Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>Предмет</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="10"/>
+        <location filename="../qml/components/LessonInfo.qml" line="15"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип занятия</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="11"/>
+        <location filename="../qml/components/LessonInfo.qml" line="16"/>
         <source>Groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Группы</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="11"/>
+        <location filename="../qml/components/LessonInfo.qml" line="16"/>
         <source>Auditory</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудитория</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="11"/>
+        <location filename="../qml/components/LessonInfo.qml" line="16"/>
         <source>Time start</source>
-        <translation type="unfinished"></translation>
+        <translation>Время начала</translation>
     </message>
     <message>
-        <location filename="../qml/components/LessonInfo.qml" line="12"/>
+        <location filename="../qml/components/LessonInfo.qml" line="17"/>
         <source>Time end</source>
-        <translation type="unfinished"></translation>
+        <translation>Время окончания</translation>
     </message>
 </context>
 <context>
@@ -105,17 +105,17 @@
     <message>
         <location filename="../qml/components/SavedTimetables.qml" line="48"/>
         <source>Saved timetables will be displayed here</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранённые расписания будут отображаться тут</translation>
     </message>
     <message>
         <location filename="../qml/components/SavedTimetables.qml" line="129"/>
         <source>Update timetable</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновить расписание</translation>
     </message>
     <message>
         <location filename="../qml/components/SavedTimetables.qml" line="170"/>
         <source>Remove timetable</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить расписание</translation>
     </message>
 </context>
 <context>
@@ -123,23 +123,46 @@
     <message>
         <location filename="../qml/components/SettingsGroupPage.qml" line="43"/>
         <source>Please, select a color</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, выберите цвет</translation>
     </message>
     <message>
         <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
         <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Успешно</translation>
     </message>
     <message>
         <location filename="../qml/components/SettingsGroupPage.qml" line="97"/>
         <source>Settings has been succesfully restored to default. Restart the app to come them into force</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки успешно сброшены. Перезагрузите приложение чтобы они вступили в силу</translation>
+    </message>
+    <message>
+        <source>The changes will take effect when the application is rebooted.</source>
+        <translation type="vanished">Настройки войдут в силу после перезапуска приложения.</translation>
+    </message>
+    <message>
+        <source>Settings has been succesfully restored to default.</source>
+        <translation type="vanished">Настройки были успешно сброшены.</translation>
     </message>
     <message>
         <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
         <source>Local storage has been succesfully cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>Локальное хранилище было успешно очищено</translation>
+    </message>
+</context>
+<context>
+    <name>TimetableTable</name>
+    <message>
+        <source>Save timetable</source>
+        <translation type="vanished">Сохранить расписание</translation>
+    </message>
+    <message>
+        <source>Success</source>
+        <translation type="vanished">Успешно</translation>
+    </message>
+    <message>
+        <source>Timetable saved!</source>
+        <translation type="vanished">Расписание сохранено!</translation>
     </message>
 </context>
 <context>
@@ -147,159 +170,159 @@
     <message>
         <location filename="../main.qml" line="18"/>
         <source>TimeTable</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../main.qml" line="80"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка</translation>
     </message>
 </context>
 <context>
     <name>timetable::ApiJSON</name>
     <message>
-        <location filename="../src/src/api.cpp" line="86"/>
-        <location filename="../src/src/api.cpp" line="123"/>
+        <location filename="../src/src/api.cpp" line="92"/>
+        <location filename="../src/src/api.cpp" line="129"/>
         <source>Error occured
 Probably you have been banned by cist.nure.ua because you made too many requests today. Try later</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка. Возможно cist.nure.ua сейчас недоступен, либы вы делали слишком много запросов сегодня. Попробуйте позже</translation>
     </message>
     <message>
-        <location filename="../src/src/api.cpp" line="95"/>
-        <location filename="../src/src/api.cpp" line="130"/>
+        <location filename="../src/src/api.cpp" line="101"/>
+        <location filename="../src/src/api.cpp" line="136"/>
         <source>This timetable does not contain any information. Try later or ask API maintainers about your timetable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбранное расписание не содержит какой-либо информации. Возможно, на данный момент оно не доступно. Попробуйте позже. Если вы уверены, что произошла ошибка, свяжитесь с разработчиком программы.</translation>
     </message>
 </context>
 <context>
     <name>timetable::SavedTimetableModel</name>
     <message>
-        <location filename="../src/qml/saved_model.h" line="27"/>
+        <location filename="../src/qml/saved_model.h" line="66"/>
         <source>Today</source>
-        <translation type="unfinished"></translation>
+        <translation>Сегодня</translation>
     </message>
     <message>
-        <location filename="../src/qml/saved_model.h" line="30"/>
+        <location filename="../src/qml/saved_model.h" line="69"/>
         <source>Yesterday</source>
-        <translation type="unfinished"></translation>
+        <translation>Вчера</translation>
     </message>
     <message>
-        <location filename="../src/qml/saved_model.h" line="35"/>
+        <location filename="../src/qml/saved_model.h" line="74"/>
         <source> at </source>
-        <translation type="unfinished"></translation>
+        <translation> в </translation>
     </message>
 </context>
 <context>
     <name>timetable::Settings</name>
     <message>
-        <location filename="../src/src/settings.h" line="145"/>
+        <location filename="../src/src/settings.h" line="197"/>
         <source>Undefined type</source>
-        <translation type="unfinished"></translation>
+        <translation>Неизвестное значение</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="147"/>
+        <location filename="../src/src/settings.h" line="199"/>
         <source>Undefined group</source>
-        <translation type="unfinished"></translation>
+        <translation>Неизвестная группа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="149"/>
+        <location filename="../src/src/settings.h" line="201"/>
         <source>Styling</source>
-        <translation type="unfinished"></translation>
+        <translation>Стилизация</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="151"/>
-        <source>Primary color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings.h" line="153"/>
-        <source>Accent color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/src/settings.h" line="155"/>
+        <location filename="../src/src/settings.h" line="207"/>
         <source>Theme color</source>
-        <translation type="unfinished"></translation>
+        <translation>Основной цвет</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="157"/>
+        <location filename="../src/src/settings.h" line="205"/>
+        <source>Accent color</source>
+        <translation>Цвет акценирования</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="203"/>
+        <source>Primary color</source>
+        <translation>Дополнительный цвет</translation>
+    </message>
+    <message>
+        <location filename="../src/src/settings.h" line="209"/>
         <source>Night mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Ночной режим</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="159"/>
+        <location filename="../src/src/settings.h" line="211"/>
         <source>Timetable styling</source>
-        <translation type="unfinished"></translation>
+        <translation>Стилизация таблицы расписания</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="161"/>
+        <location filename="../src/src/settings.h" line="213"/>
         <source>Credit</source>
-        <translation type="unfinished"></translation>
+        <translation>Зачёт</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="163"/>
+        <location filename="../src/src/settings.h" line="215"/>
         <source>Laboratory work</source>
-        <translation type="unfinished"></translation>
+        <translation>Лабораторная работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="165"/>
+        <location filename="../src/src/settings.h" line="217"/>
         <source>Lecture</source>
-        <translation type="unfinished"></translation>
+        <translation>Лекция</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="167"/>
+        <location filename="../src/src/settings.h" line="219"/>
         <source>Practical work</source>
-        <translation type="unfinished"></translation>
+        <translation>Практическая работа</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="169"/>
+        <location filename="../src/src/settings.h" line="221"/>
         <source>Perfomance</source>
-        <translation type="unfinished"></translation>
+        <translation>Производительность</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="171"/>
+        <location filename="../src/src/settings.h" line="223"/>
         <source>Animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Анимации</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="173"/>
+        <location filename="../src/src/settings.h" line="225"/>
         <source>Caching</source>
-        <translation type="unfinished"></translation>
+        <translation>Кэширование</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="175"/>
+        <location filename="../src/src/settings.h" line="227"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="177"/>
+        <location filename="../src/src/settings.h" line="229"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="179"/>
+        <location filename="../src/src/settings.h" line="231"/>
         <source>Autoupdating</source>
-        <translation type="unfinished"></translation>
+        <translation>Автообновление расписаний</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="181"/>
+        <location filename="../src/src/settings.h" line="233"/>
         <source>Restoring</source>
-        <translation type="unfinished"></translation>
+        <translation>Восстановление</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="183"/>
+        <location filename="../src/src/settings.h" line="235"/>
         <source>Clear cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="185"/>
+        <location filename="../src/src/settings.h" line="237"/>
         <source>Reset settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить настройки</translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="187"/>
+        <location filename="../src/src/settings.h" line="239"/>
         <source>Show timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать таймер</translation>
     </message>
 </context>
 </TS>

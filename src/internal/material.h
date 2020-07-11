@@ -1,7 +1,12 @@
 #pragma once
 #include <QtGui/qcolor.h>
 #include <QObject>
-
+/**
+ * @brief The Material class
+ *
+ * Contains Material Design color palette and provides mapping from enum to color values
+ * \note Analogue of Material enum in QML
+ */
 class Material : public QObject
 {    
     Q_OBJECT
@@ -55,8 +60,19 @@ public:
     Q_ENUM(Theme)
     Q_ENUM(Color)
     Q_ENUM(Shade)
-
+    /**
+     * @brief Map Color enum to real value
+     * @param color enum value to map
+     * @param shade shaed to add to the color
+     * @return QColor object that represents the color
+     */
     static QColor color(Color color, Shade shade = Shade500);
+    /**
+     * @brief Applies shade for chosen color
+     * @param color origin QColor object
+     * @param shade Shade to apply
+     * @return QColor with applied shade param
+     */
     static QColor shade(const QColor &color, Shade shade);
 
 };

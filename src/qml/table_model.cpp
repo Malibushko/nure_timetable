@@ -1,13 +1,14 @@
 #include "table_model.h"
 
 namespace timetable {
+
 static QString datePattern = "dd.MM.yy";
 static QString timeFormat = "hh:mm";
 static QString datePatternFull = "dd.MM.yyyy";
 
 void TableModel::generateVerticalHeader() {
     beginResetModel();
-    for (const internal::Lesson& lesson : lessons) {
+    for (const internal::Lesson& lesson : m_lessons) {
         m_verticalHeaderData.insert(lesson.timeStart.toString(timeFormat));
     }
     emit verticalHeaderFinished();
@@ -17,7 +18,7 @@ void TableModel::generateVerticalHeader() {
 
 void TableModel::generateHorizontalHeader() {
     beginResetModel();
-    auto [beginDate,endDate] = std::minmax_element(lessons.begin(),lessons.end(),[](const internal::Lesson& lhs,
+    auto [beginDate,endDate] = std::minmax_element(m_lessons.begin(),m_lessons.end(),[](const internal::Lesson& lhs,
             const internal::Lesson& rhs){
         return lhs.date < rhs.date;
     });
@@ -37,23 +38,23 @@ TableModel::TableModel() {
 
 
 void TableModel::addLesson(int id, const QVariant &lesson) {
-    if (timetableId == -1)
-        timetableId = id;
-    if (id == timetableId) {
+    if (m_timetableId == -1)
+        m_timetableId = id;
+    if (id == m_timetableId) {
         auto l = qvariant_cast<internal::Lesson>(lesson);
         QDateTime index;
         index.setDate(l.date);
         index.setTime(l.timeStart);
-        lessons.insert(index.toMSecsSinceEpoch(),
+        m_lessons.insert(index.toMSecsSinceEpoch(),
                        qvariant_cast<internal::Lesson>(lesson));
-        if (lessons.size() == totalRows)
+        if (m_lessons.size() == m_totalRows)
             emit timetableCompleted();
     }
 }
 
 
 int TableModel::id() const noexcept {
-    return timetableId;
+    return m_timetableId;
 }
 
 
@@ -67,26 +68,32 @@ int TableModel::lessonDuration() const {
 
 
 int TableModel::rowProgress(int row) {
-    if (currentLesson.first.isNull() || currentLesson.first.secsTo(QTime::currentTime()) >= lessonDuration()) {
+    // check if there is a value cached and it is not expired
+    if (m_currentLesson.first.isNull() || m_currentLesson.first.secsTo(QTime::currentTime()) >= lessonDuration()) {
+        // if expired calculate new one
         decltype (auto) it = m_verticalHeaderData.begin();
         QTime currentTime = QTime::currentTime();
         for ( ;it != m_verticalHeaderData.end();++it) {
             QTime timeStart = QTime::fromString(*it,timeFormat);
+            // find the closest lesson for now
             if (timeStart.secsTo(currentTime) < lessonDuration()) {
-                currentLesson.first = timeStart;
-                currentLesson.second = std::distance(m_verticalHeaderData.begin(),it);
+                m_currentLesson.first = timeStart;
+                m_currentLesson.second = std::distance(m_verticalHeaderData.begin(),it);
                 break;
             }
         }
+        // if not value found - all lessons ended for today
         if (it != m_verticalHeaderData.end()) {
             if (std::distance(m_verticalHeaderData.begin(),it) != row)
                 return 0;
         } else
             return 0;
     }
-    if (currentLesson.second != row)
+    // else return 0 if current lesson is not the cached one
+    if (m_currentLesson.second != row)
         return 0;
-    return currentLesson.first.secsTo(QTime::currentTime());
+    // finally return progress
+    return m_currentLesson.first.secsTo(QTime::currentTime());
 }
 
 
@@ -94,8 +101,8 @@ void TableModel::prepareForNewTimetable(int rowCount) {
     // remove the last table
     clear();
 
-    lessons.reserve(rowCount);
-    totalRows = rowCount;
+    m_lessons.reserve(rowCount);
+    m_totalRows = rowCount;
 }
 
 
@@ -106,19 +113,19 @@ QString TableModel::secondsToString(uint seconds) {
 
 void TableModel::clear() {
     beginResetModel();
-    timetableId = -1;
-    lessons.clear();
+    m_timetableId = -1;
+    m_lessons.clear();
     m_verticalHeaderData.clear();
     m_horizontalHeaderData.clear();
-    currentLesson = {};
+    m_currentLesson = {};
     endResetModel();
 }
 
 
 QVariantList TableModel::getModel() const {
     QVariantList list;
-    list.reserve(lessons.size());
-    for (auto it : lessons)
+    list.reserve(m_lessons.size());
+    for (auto it : m_lessons)
         list.push_back(QVariant::fromValue(it));
     return list;
 }
@@ -158,6 +165,10 @@ int TableModel::columnCount(const QModelIndex &) const {
 QVariant TableModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid() || index.row() < 0 || index.row() >= static_cast<int32_t>(m_verticalHeaderData.size()))
         return "";
+    /*
+     * Calculating index
+     * It contains of Time (rows headers) and Date (columns header)
+     */
     QDateTime modelIndex;
     // "yy" format always returns date from last century, e.g "03.04.20" -> 03.04.1920
     modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],datePattern).addYears(100));
@@ -166,10 +177,11 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
     std::advance(iter,index.row());
     modelIndex.setTime(QTime::fromString(*iter,timeFormat));
 
-    if (lessons.find(modelIndex.toMSecsSinceEpoch()) == lessons.end()) {
+    if (m_lessons.find(modelIndex.toMSecsSinceEpoch()) == m_lessons.end()) {
         return "";
     }
-    const internal::Lesson& lesson = lessons[modelIndex.toMSecsSinceEpoch()];
+
+    const internal::Lesson& lesson = m_lessons[modelIndex.toMSecsSinceEpoch()];
     switch (role) {
     case Qt::UserRole:
         return lesson.date.toString(datePatternFull);
@@ -200,6 +212,5 @@ QHash<int, QByteArray> TableModel::roleNames() const {
         {Qt::UserRole+5,"timeStart"},
         {Qt::UserRole+6,"timeEnd"}
     };
-    // [date,subject,type,groups,auditory,timeStart,timeEnd]
 }
 }

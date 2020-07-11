@@ -5,7 +5,7 @@ SortFilterModel::SortFilterModel()  {
     setSourceModel(m_source);
     setFilterRole(Qt::UserRole+1);
     setFilterCaseSensitivity(Qt::CaseInsensitive);
-    filter.reserve(40); // just some random number in order to decrease reallocation count
+    m_filter.reserve(40); // just some random number in order to decrease reallocation count
 }
 
 

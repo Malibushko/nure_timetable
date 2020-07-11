@@ -6,26 +6,26 @@ SearchItemModel::SearchItemModel(QObject *) {
 }
 
 bool SearchItemModel::initialized() const {
-    return mTimetables.size();
+    return m_timetables.size();
 }
 
 void SearchItemModel::setItems(const QVariantList &items) {
     beginResetModel();
 
-    mTimetables.clear();
-    mTimetables.reserve(items.size());
+    m_timetables.clear();
+    m_timetables.reserve(items.size());
 
     for (const auto & item : items) {
-        mTimetables.push_back(qvariant_cast<internal::Timetable>(item));
+        m_timetables.push_back(qvariant_cast<internal::Timetable>(item));
     }
 
     endResetModel();
 }
 
 void SearchItemModel::addItem(const QVariant &item) {
-    beginInsertRows({},mTimetables.size(),mTimetables.size());
+    beginInsertRows({},m_timetables.size(),m_timetables.size());
 
-    mTimetables.push_back(qvariant_cast<internal::Timetable>(item));
+    m_timetables.push_back(qvariant_cast<internal::Timetable>(item));
     endInsertRows();
 }
 
@@ -34,14 +34,14 @@ int SearchItemModel::columnCount(const QModelIndex &) const {
 }
 
 int SearchItemModel::rowCount(const QModelIndex &) const {
-    return mTimetables.size();
+    return m_timetables.size();
 }
 
 QVariant SearchItemModel::data(const QModelIndex &index, int role) const {
-    if (index.row() < 0 || index.row() >= mTimetables.size()) {
+    if (index.row() < 0 || index.row() >= m_timetables.size()) {
         return {};
     }
-    const internal::Timetable& item = mTimetables[index.row()];
+    const internal::Timetable& item = m_timetables[index.row()];
     switch (role) {
     case Qt::UserRole:
         return item.id;

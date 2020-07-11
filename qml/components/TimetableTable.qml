@@ -36,10 +36,12 @@ Page {
                 fontSizeMode: Text.Fit
             }
             MouseArea {
-                anchors.fill: (color_ == "transparent" ? null : parent)
+                anchors.fill: parent
                 onClicked: {
-                    lessonInfo.properties = properties
-                    lessonInfo.open()
+                    if (subject != "") {
+                        lessonInfo.properties = properties
+                        lessonInfo.open()
+                    }
                 }
             }
         }

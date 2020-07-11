@@ -13,41 +13,38 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Core Quick Sql Svg LinguistTools REQUIRED)
 
-set(HEADERS ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
-    ${CMAKE_SOURCE_DIR}/src/src/api.h
+set(HEADERS
+    ${CMAKE_SOURCE_DIR}/src/qml/search_model.h
+    ${CMAKE_SOURCE_DIR}/src/qml/table_model.h
+    ${CMAKE_SOURCE_DIR}/src/qml/saved_model.h
+    ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.h
+    ${CMAKE_SOURCE_DIR}/src/qml/search_filter_model.h
+    ${CMAKE_SOURCE_DIR}/src/internal/query_builder.h
+    ${CMAKE_SOURCE_DIR}/src/internal/material.h
+    ${CMAKE_SOURCE_DIR}/src/internal/executor.h
+    ${CMAKE_SOURCE_DIR}/src/internal/api_base.h
     ${CMAKE_SOURCE_DIR}/src/internal/api_structs.h
     ${CMAKE_SOURCE_DIR}/src/internal/traits.h
     ${CMAKE_SOURCE_DIR}/src/internal/json_parser.h
     ${CMAKE_SOURCE_DIR}/src/internal/macro.h
-    ${CMAKE_SOURCE_DIR}/src/qml/search_model.h
-    ${CMAKE_SOURCE_DIR}/src/qml/table_model.h
-    ${CMAKE_SOURCE_DIR}/src/src/local_storage.h
+    ${CMAKE_SOURCE_DIR}/src/src/api.h
     ${CMAKE_SOURCE_DIR}/src/src/database.h
-    ${CMAKE_SOURCE_DIR}/src/internal/query_builder.h
-    ${CMAKE_SOURCE_DIR}/src/qml/saved_model.h
-    ${CMAKE_SOURCE_DIR}/src/qml/settings_model.h
-    ${CMAKE_SOURCE_DIR}/src/internal/material.h
-    ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.h
-    ${CMAKE_SOURCE_DIR}/src/qml/search_filter_model.h
-    ${CMAKE_SOURCE_DIR}/src/internal/executor.h
     ${CMAKE_SOURCE_DIR}/src/src/settings.h
+    ${CMAKE_SOURCE_DIR}/src/src/local_storage.h
     ${CMAKE_SOURCE_DIR}/src/src/language.h
-    ${CMAKE_SOURCE_DIR}/src/src/lesson_info.h
     )
 
-set(SOURCES  ${CMAKE_SOURCE_DIR}/src/src/api.cpp
-    ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
+set(SOURCES
+    ${CMAKE_SOURCE_DIR}/src/src/api.cpp
     ${CMAKE_SOURCE_DIR}/src/src/saved_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/search_filter_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/qml/search_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/settings_group_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/settings_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/qml/table_model.cpp
     ${CMAKE_SOURCE_DIR}/src/src/local_storage.cpp
-    ${CMAKE_SOURCE_DIR}/src/internal/query_builder.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/settings_group_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/src/search_filter_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/executor.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/settings.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/lesson_info.cpp
+    ${CMAKE_SOURCE_DIR}/src/internal/query_builder.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/search_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/table_model.cpp
     main.cpp)
 
 set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)
