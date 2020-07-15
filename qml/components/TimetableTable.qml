@@ -1,17 +1,22 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls.Material 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls.Material 2.15
 import lib 1.0
 import "../styles"
 Page {
     id: root_
     property alias modelRef: tableModel
+    function dateFormat(date) {
+        return ('0' + date.getDate()).slice(-2) + '.'
+                     + ('0' + (date.getMonth()+1)).slice(-2) + '.'
+                     + date.getFullYear().toString().slice(-2);
+    }
     Component {
         id: headerDelegate
         Label {
             Text {
-                text: tableView.horizontalHeader[column_]
+                text: dateFormat(tableView.horizontalHeader[column_])
                 anchors.centerIn: parent
                 color: (!styles.isLight ? styles.darkLight : "white")
             }
@@ -66,7 +71,7 @@ Page {
                 }
                 StyledText {
                     id: text
-                    text: modelData
+                    text: modelData.toTimeString().slice(0,-3)
                     anchors.centerIn: parent
                     color: (!styles.isLight ? styles.darkLight : "white")
                 }

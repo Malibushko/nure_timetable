@@ -1,10 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls.Material 2.12
-import QtGraphicalEffects 1.0
-import QtQml 2.12
-import QtQuick.Dialogs 1.3
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
 import lib 1.0
 import "./qml/components"
@@ -12,10 +8,23 @@ import "./qml/components"
 ApplicationWindow {
     id: root
     visible: true
-    width: 430
-    height: 760
+    width: 1281
+    height: 860
 
     title: qsTr("TimeTable")
+
+    Material.theme: styles.appTheme
+    Material.accent: styles.accentColor
+    Material.primary: styles.primaryColor
+
+    onClosing: {
+        // Close if only if this is the first (main) page
+        if (mainView.depth > 1) {
+            close.accepted = false;
+            mainHeader.backClick()
+        } else
+            close.accepted = true
+    }
 
     StyleSettings {
         id: styles
@@ -31,21 +40,6 @@ ApplicationWindow {
             lang.setLanguage(mainSettings.value("",SETTINGS_TYPE.CHOSEN_LANGUAGE))
         }
     }
-
-    header: Header {
-        id: mainHeader
-    }
-    onClosing: {
-        if (mainView.depth > 1) {
-            close.accepted = false;
-            mainHeader.backClick()
-        } else
-            close.accepted = true
-    }
-
-    Material.theme: styles.appTheme
-    Material.accent: styles.accentColor
-    Material.primary: styles.primaryColor
 
     MessageDialog {
         id: dialog
@@ -103,9 +97,13 @@ ApplicationWindow {
             }
         }
     }
+
     Storage {
         id: localStorage
     }
+
+    // Pages
+
     SettingsPage {
         id: settingsPage
     }
@@ -124,6 +122,10 @@ ApplicationWindow {
     }
     SavedTimetables {
         id: savedTimetables
+    }
+
+    header: Header {
+        id: mainHeader
     }
 
     StackView {
