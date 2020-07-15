@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationName("Timetable");
     QQmlApplicationEngine engine;
     qRegisterMetaType<Promise>();
+    qRegisterMetaType<QList<QTime>>();
+    qRegisterMetaType<QList<QDateTime>>();
     qmlRegisterType<timetable::ApiJSON>("lib",1,0,"Api");
     qmlRegisterType<timetable::SearchItemModel>("lib",1,0,"BaseSearchModel");
     qmlRegisterType<timetable::TableModel>("lib",1,0,"TableModel");

@@ -16,8 +16,8 @@ class TableModel : public QAbstractTableModel {
     QString m_title; /**< Title of current timetable */
     int m_timetableId = -1; /**< Id of current timetable */
 
-    QStringList m_horizontalHeaderData; /**< Horizontal header data (Dates) */
-    std::set<QString> m_verticalHeaderData; /**< Vertical header data (Time of lessons) */
+    QList<QDateTime>       m_horizontalHeaderData; /**< Horizontal header data (Dates) */
+    QList<QTime> m_verticalHeaderData; /**< Vertical header data (Time of lessons) */
 
     std::pair<QTime,int> m_currentLesson; /**< Current lesson (used for caching) */
     QHash<qint64,internal::Lesson> m_lessons; /**< Container of lessons */
@@ -76,12 +76,12 @@ public:
      * @brief Get horizontal header
      * @return QStringList of dates
      */
-    Q_INVOKABLE QStringList horizontalHeaderData() const;
+    Q_INVOKABLE QList<QDateTime> horizontalHeaderData() const;
     /**
      * @brief Get vertical header
      * @return QStringList of times
      */
-    Q_INVOKABLE QStringList verticalHeaderData() const;
+    Q_INVOKABLE QList<QTime>  verticalHeaderData() const;
     /**
      * @brief Get string representation of time in seconds
      * @param number of seconds
@@ -112,3 +112,5 @@ signals:
 };
 
 }
+Q_DECLARE_METATYPE(QList<QTime>)
+Q_DECLARE_METATYPE(QList<QDateTime>)

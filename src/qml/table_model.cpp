@@ -8,9 +8,13 @@ static QString datePatternFull = "dd.MM.yyyy";
 
 void TableModel::generateVerticalHeader() {
     beginResetModel();
+    m_verticalHeaderData.reserve(m_lessons.size());
     for (const internal::Lesson& lesson : m_lessons) {
-        m_verticalHeaderData.insert(lesson.timeStart.toString(timeFormat));
+        m_verticalHeaderData.push_back(lesson.timeStart);
     }
+    std::sort(m_verticalHeaderData.begin(),m_verticalHeaderData.end());
+    m_verticalHeaderData.erase(std::unique(m_verticalHeaderData.begin(),m_verticalHeaderData.end()),
+                               m_verticalHeaderData.end());
     emit verticalHeaderFinished();
     endResetModel();
 }
@@ -24,7 +28,7 @@ void TableModel::generateHorizontalHeader() {
     });
     m_horizontalHeaderData.reserve(beginDate->date.daysTo(endDate->date));
     for (QDate date = beginDate->date;date != endDate->date;date = date.addDays(1)) {
-        m_horizontalHeaderData.push_back(date.toString(datePattern));
+        m_horizontalHeaderData.push_back(QDateTime(date,{}));
     }
     emit horizontalHeaderFinished();
     endResetModel();
@@ -61,9 +65,9 @@ int TableModel::id() const noexcept {
 int TableModel::lessonDuration() const {
     if (m_verticalHeaderData.size() < 2)
         return 0;
-    else
-        return QTime::fromString(*m_verticalHeaderData.begin(),timeFormat).secsTo(
-                    QTime::fromString(*std::next(m_verticalHeaderData.begin()),timeFormat));
+    else {
+        return m_verticalHeaderData.begin()->secsTo(*std::next(m_verticalHeaderData.begin()));
+    }
 }
 
 
@@ -74,10 +78,9 @@ int TableModel::rowProgress(int row) {
         decltype (auto) it = m_verticalHeaderData.begin();
         QTime currentTime = QTime::currentTime();
         for ( ;it != m_verticalHeaderData.end();++it) {
-            QTime timeStart = QTime::fromString(*it,timeFormat);
             // find the closest lesson for now
-            if (timeStart.secsTo(currentTime) < lessonDuration()) {
-                m_currentLesson.first = timeStart;
+            if (it->secsTo(currentTime) < lessonDuration()) {
+                m_currentLesson.first = *it;
                 m_currentLesson.second = std::distance(m_verticalHeaderData.begin(),it);
                 break;
             }
@@ -136,19 +139,18 @@ int TableModel::currentColumn() {
         return 0;
 
     int index = std::abs(QDate::currentDate()
-                         .daysTo(QDate::fromString(m_horizontalHeaderData[0],datePattern)));
+                         .daysTo(m_horizontalHeaderData[0].date()));
     return (index > m_horizontalHeaderData.size()) ? m_horizontalHeaderData.size()/2 : index;
 }
 
 
-QStringList TableModel::horizontalHeaderData() const {
+QList<QDateTime> TableModel::horizontalHeaderData() const {
     return m_horizontalHeaderData;
 }
 
 
-QStringList TableModel::verticalHeaderData() const {
-    QStringList headerData(m_verticalHeaderData.begin(),m_verticalHeaderData.end());
-    return headerData;
+QList<QTime> TableModel::verticalHeaderData() const {
+    return m_verticalHeaderData;
 }
 
 
@@ -169,13 +171,10 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
      * Calculating index
      * It contains of Time (rows headers) and Date (columns header)
      */
-    QDateTime modelIndex;
-    // "yy" format always returns date from last century, e.g "03.04.20" -> 03.04.1920
-    modelIndex.setDate(QDate::fromString(m_horizontalHeaderData[index.column()],datePattern).addYears(100));
-    // so we have to add 100 years manually
+
     auto iter = m_verticalHeaderData.begin();
     std::advance(iter,index.row());
-    modelIndex.setTime(QTime::fromString(*iter,timeFormat));
+    QDateTime modelIndex(m_horizontalHeaderData[index.column()].date(),*iter);
 
     if (m_lessons.find(modelIndex.toMSecsSinceEpoch()) == m_lessons.end()) {
         return "";
@@ -204,7 +203,8 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
 
 
 QHash<int, QByteArray> TableModel::roleNames() const {
-    return {{Qt::UserRole,"date"},
+    return {
+        {Qt::UserRole,"date"},
         {Qt::UserRole+1,"subject"},
         {Qt::UserRole+2,"type"},
         {Qt::UserRole+3,"groups"},
