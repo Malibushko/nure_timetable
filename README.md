@@ -56,9 +56,6 @@ You should also install Android SDK and NDK
 `cmake -DCMAKE_BUILD_TYPE=RELEASE -DANDROID=ON ..`  
 `cmake --build`  
 
- Next you can deploy the application to any platform  
- supported by Qt, using `<mac/win/android/linux>deployqt` tool  
-
 ### IOS
 
 To make IOS application you should generate an XCode project  
@@ -69,6 +66,10 @@ cmake -G Xcode path_to_project
 Next build the application as in XCode as usually  
 
 ---
+
+ Now you can deploy the application to any platform  
+ supported by Qt, using `<mac/win/android/linux>deployqt` tool  
+
 
 ## Plans for future  <a name="plans"></a>  
 
