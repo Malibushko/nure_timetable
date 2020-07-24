@@ -4,7 +4,6 @@ namespace timetable {
 SavedTimetableModel::SavedTimetableModel(QObject *) {
 }
 
-
 void SavedTimetableModel::clear() {
     beginResetModel();
     m_timetables.clear();
@@ -62,11 +61,6 @@ void SavedTimetableModel::removeItem(int id) {
 }
 
 
-int SavedTimetableModel::columnCount(const QModelIndex &) const {
-    return 1;
-}
-
-
 int SavedTimetableModel::rowCount(const QModelIndex &) const {
     return m_timetables.size();
 }
@@ -78,11 +72,11 @@ QVariant SavedTimetableModel::data(const QModelIndex &index, int role) const {
     }
     decltype (auto) item = m_timetables[index.row()];
     switch (role) {
-    case Qt::UserRole:
+    case TimetableRoles::ID:
         return item.id;
-    case Qt::UserRole+1:
+    case TimetableRoles::TITLE:
         return item.title;
-    case Qt::UserRole+2: {
+    case TimetableRoles::LAST_UPDATE: {
         auto today = QDateTime::currentDateTime();
         if (auto updateDate = QDateTime::fromString(item.lastUpdate);
                 updateDate.daysTo(today) < 2) {
@@ -90,17 +84,17 @@ QVariant SavedTimetableModel::data(const QModelIndex &index, int role) const {
         } else
             return item.lastUpdate;
     }
-    case Qt::UserRole+3: {
+    case TimetableRoles::LESSONS: {
         QVariantList list;
         list.reserve(item.lessons.size());
         for (const auto & lesson : item.lessons)
             list.push_back(QVariant::fromValue(lesson));
         return QVariant::fromValue(list);
     }
-    case Qt::UserRole+4: {
+    case TimetableRoles::IS_TEACHER: {
         return item.isTeacher;
     }
-    case Qt::UserRole+5: {
+    case TimetableRoles::TIME_SINCE_LAST_UPDATE: {
         return QDateTime::fromString(item.lastUpdate).secsTo(QDateTime::currentDateTime());
     }
     default:
@@ -112,12 +106,12 @@ QVariant SavedTimetableModel::data(const QModelIndex &index, int role) const {
 
 QHash<int, QByteArray> SavedTimetableModel::roleNames() const {
     QHash<int,QByteArray> roles {
-        {Qt::UserRole,"id"},
-        {Qt::UserRole+1,"title"},
-        {Qt::UserRole+2,"lastUpdate"},
-        {Qt::UserRole+3,"lessons"},
-        {Qt::UserRole+4,"isTeacher"},
-        {Qt::UserRole+5,"timeSinceLastUpdate"}
+        {TimetableRoles::ID,"id"},
+        {TimetableRoles::TITLE,"title"},
+        {TimetableRoles::LAST_UPDATE,"lastUpdate"},
+        {TimetableRoles::LESSONS,"lessons"},
+        {TimetableRoles::IS_TEACHER,"isTeacher"},
+        {TimetableRoles::TIME_SINCE_LAST_UPDATE,"timeSinceLastUpdate"}
     };
     return roles;
 }

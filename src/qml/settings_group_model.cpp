@@ -33,15 +33,15 @@ QVariant SettingsGroupModel::data(const QModelIndex &index, int role) const {
     }
     const auto& name = m_settingTitles[index.row()];
     switch (role) {
-    case Qt::UserRole:
+    case SettingsRole::NAME:
         return name.first;
-    case Qt::UserRole+1:
+    case SettingsRole::VALUE:
         if (name.second.canConvert<QString>() && name.second.toString().contains(';'))
             return name.second.toString();
         if (name.second.canConvert<bool>())
             return name.second.toString() == "true";
         return name.second;
-    case Qt::UserRole+2: {
+    case SettingsRole::TYPE: {
         if (name.second.toString() == "btn") {
             return CONTROL_TYPE::CONTROL::BTN;
         }
@@ -67,10 +67,11 @@ QVariant SettingsGroupModel::data(const QModelIndex &index, int role) const {
 }
 QHash<int, QByteArray> SettingsGroupModel::roleNames() const {
     QHash<int,QByteArray> roles {
-        {Qt::UserRole,"name"},
-        {Qt::UserRole+1,"value"},
-        {Qt::UserRole+2,"type"}
+        {SettingsRole::NAME,"name"},
+        {SettingsRole::VALUE,"value"},
+        {SettingsRole::TYPE,"type"}
     };
+
     return roles;
 }
 }

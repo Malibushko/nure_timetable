@@ -145,12 +145,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="18"/>
+        <location filename="../main.qml" line="14"/>
         <source>TimeTable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="80"/>
+        <location filename="../main.qml" line="74"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -174,17 +174,17 @@ Probably you have been banned by cist.nure.ua because you made too many requests
 <context>
     <name>timetable::SavedTimetableModel</name>
     <message>
-        <location filename="../src/qml/saved_model.h" line="66"/>
+        <location filename="../src/qml/saved_model.h" line="75"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/saved_model.h" line="69"/>
+        <location filename="../src/qml/saved_model.h" line="78"/>
         <source>Yesterday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/saved_model.h" line="74"/>
+        <location filename="../src/qml/saved_model.h" line="83"/>
         <source> at </source>
         <translation type="unfinished"></translation>
     </message>

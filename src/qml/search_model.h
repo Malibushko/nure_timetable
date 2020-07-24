@@ -14,6 +14,11 @@ class SearchItemModel : public QAbstractListModel {
     Q_OBJECT
 private:
     QList<internal::Timetable> m_timetables; /// list of timetables
+
+    enum SearchRoles {
+        ID = Qt::UserRole,
+        TITLE
+    };
 public:
     SearchItemModel(QObject* /* parent */= nullptr);
     /**
@@ -33,7 +38,6 @@ public:
     Q_INVOKABLE void addItem(const QVariant& item);
 
     // override methods
-    int columnCount(const QModelIndex & /* parent */) const override;
     int rowCount(const QModelIndex& = /* parent */{}) const override;
     QVariant data(const QModelIndex& index,int role = Qt::UserRole) const override;
     QHash<int,QByteArray> roleNames() const override;

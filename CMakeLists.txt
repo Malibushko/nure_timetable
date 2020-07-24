@@ -36,15 +36,15 @@ set(HEADERS
 
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/src/api.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/saved_model.cpp
     ${CMAKE_SOURCE_DIR}/src/src/local_storage.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/settings_group_model.cpp
-    ${CMAKE_SOURCE_DIR}/src/src/search_filter_model.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/material.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/executor.cpp
     ${CMAKE_SOURCE_DIR}/src/internal/query_builder.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/saved_model.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/search_model.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/table_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/search_filter_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.cpp
     main.cpp)
 
 set (RESOURCES ${CMAKE_SOURCE_DIR}/qml.qrc)

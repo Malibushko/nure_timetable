@@ -2,9 +2,11 @@
 
 namespace timetable {
 
+namespace {
 static QString datePattern = "dd.MM.yy";
 static QString timeFormat = "hh:mm";
 static QString datePatternFull = "dd.MM.yyyy";
+}
 
 void TableModel::generateVerticalHeader() {
     beginResetModel();
@@ -182,19 +184,19 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
 
     const internal::Lesson& lesson = m_lessons[modelIndex.toMSecsSinceEpoch()];
     switch (role) {
-    case Qt::UserRole:
+    case TableRoles::DATE:
         return lesson.date.toString(datePatternFull);
-    case Qt::UserRole+1:
+    case TableRoles::SUBJECT:
         return lesson.subject;
-    case Qt::UserRole+2:
+    case TableRoles::TYPE:
         return lesson.type;
-    case Qt::UserRole+3:
+    case TableRoles::GROUPS:
         return lesson.groups;
-    case Qt::UserRole+4:
+    case TableRoles::AUDITORY:
         return lesson.auditory;
-    case Qt::UserRole+5:
+    case TableRoles::TIME_START:
         return lesson.timeStart.toString(timeFormat);
-    case Qt::UserRole+6:
+    case TableRoles::TIME_END:
         return lesson.timeEnd.toString(timeFormat);
     default:
         return {""};
@@ -204,13 +206,13 @@ QVariant TableModel::data(const QModelIndex &index, int role) const {
 
 QHash<int, QByteArray> TableModel::roleNames() const {
     return {
-        {Qt::UserRole,"date"},
-        {Qt::UserRole+1,"subject"},
-        {Qt::UserRole+2,"type"},
-        {Qt::UserRole+3,"groups"},
-        {Qt::UserRole+4,"auditory"},
-        {Qt::UserRole+5,"timeStart"},
-        {Qt::UserRole+6,"timeEnd"}
+        {TableRoles::DATE,"date"},
+        {TableRoles::SUBJECT,"subject"},
+        {TableRoles::TYPE,"type"},
+        {TableRoles::GROUPS,"groups"},
+        {TableRoles::AUDITORY,"auditory"},
+        {TableRoles::TIME_START,"timeStart"},
+        {TableRoles::TIME_END,"timeEnd"}
     };
 }
 }

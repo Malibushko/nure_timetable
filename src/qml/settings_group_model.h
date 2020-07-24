@@ -16,6 +16,12 @@ namespace timetable {
 class SettingsGroupModel : public QAbstractListModel {
     Q_OBJECT
     QVector<QPair<int,QVariant>> m_settingTitles;
+
+    enum SettingsRole {
+        NAME = Qt::UserRole,
+        VALUE,
+        TYPE
+    };
 public:
     SettingsGroupModel(QObject* /* parent */= nullptr);
     Q_INVOKABLE void setItems(const QVariantList& otherSettings);

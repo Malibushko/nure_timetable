@@ -15,6 +15,15 @@ namespace timetable {
 class SavedTimetableModel : public QAbstractListModel {
     Q_OBJECT
     QList<internal::SavedTimetable> m_timetables; /**< List of Timetables saved by user*/
+
+    enum TimetableRoles {
+        ID = Qt::UserRole,
+        TITLE,
+        LAST_UPDATE,
+        LESSONS,
+        IS_TEACHER,
+        TIME_SINCE_LAST_UPDATE
+    };
 public:
     SavedTimetableModel(QObject* /* parent */= nullptr);
     /**
@@ -76,7 +85,6 @@ public:
     }
 
     // override methods
-    int columnCount(const QModelIndex & /* parent */) const override;
     int rowCount(const QModelIndex& = /* parent */{}) const override;
     QVariant data(const QModelIndex& index,int role = Qt::UserRole) const override;
     QHash<int,QByteArray> roleNames() const override;

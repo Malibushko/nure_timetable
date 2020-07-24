@@ -23,6 +23,16 @@ class TableModel : public QAbstractTableModel {
     QHash<qint64,internal::Lesson> m_lessons; /**< Container of lessons */
 
     int m_totalRows; /**< Total number of rows in timetable */
+
+    enum TableRoles {
+        DATE = Qt::UserRole,
+        SUBJECT,
+        TYPE,
+        GROUPS,
+        AUDITORY,
+        TIME_START,
+        TIME_END
+    };
 private:
     void generateVerticalHeader();
     void generateHorizontalHeader();
