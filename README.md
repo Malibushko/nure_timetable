@@ -5,6 +5,8 @@
 
 [![Look of application](https://github.com/Malibushko/nure_timetable/blob/master/gitimg/preview.jpg)]()
 
+Note: the app is not working till September 2020 because there are no timetables available on NURE
+
 ## Table of Contents
 
 - [Requirements](#requirements)
