@@ -15,7 +15,7 @@ namespace timetable {
 class ApiJSON : public internal::api::ApiBase {
     Q_OBJECT
 private:
-    static const inline QString API_ROOT{"http://cist.nure.ua/ias/app/tt/"}; /**< Root for all requests */
+    static const inline QString API_ROOT{"https://cist.nure.ua/ias/app/tt/"}; /**< Root for all requests */
     QNetworkAccessManager* m_mng;
 
     /**< Two variables that represents some magical numbers for API  (see comment in constructor) */
@@ -37,8 +37,8 @@ public:
             m_dateStart = QString("01.01." + QString::number(QDate::currentDate().year()));
             m_dateEnd = QString("31.07."+ QString::number(QDate::currentDate().year()));
         } else {
-            m_dateStart = QString("01.08." + QString::number(QDate::currentDate().year()));
-            m_dateEnd = QString("01.01."+ QString::number(QDate::currentDate().year()+1));
+            m_dateStart = QString("01.09." + QString::number(QDate::currentDate().year()));
+            m_dateEnd = QString("31.01."+ QString::number(QDate::currentDate().year()+1));
         }
     };
     /**
