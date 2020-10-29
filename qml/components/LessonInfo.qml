@@ -92,7 +92,7 @@ Dialog {
                     width: delegate.width
                     text: properties[index]
                     placeholderText: qsTr("Remember to take laptop for this lesson")
-                    visible: index == 7
+                    visible: index === 7
                     color: styles.textColor
                 }
             }

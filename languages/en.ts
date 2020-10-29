@@ -27,42 +27,42 @@
 <context>
     <name>Header</name>
     <message>
-        <location filename="../qml/components/Header.qml" line="29"/>
+        <location filename="../qml/components/Header.qml" line="28"/>
         <source>Return to the previous page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="38"/>
+        <location filename="../qml/components/Header.qml" line="37"/>
         <source>Application settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="88"/>
+        <location filename="../qml/components/Header.qml" line="87"/>
         <source>Timer shows how much time left till the end of lesson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="97"/>
+        <location filename="../qml/components/Header.qml" line="96"/>
         <source>Search for a timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="122"/>
+        <location filename="../qml/components/Header.qml" line="121"/>
         <source>Save timetable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="125"/>
+        <location filename="../qml/components/Header.qml" line="129"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="125"/>
+        <location filename="../qml/components/Header.qml" line="129"/>
         <source>Timetable saved!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Header.qml" line="151"/>
+        <location filename="../qml/components/Header.qml" line="155"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>

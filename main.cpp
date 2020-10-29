@@ -14,49 +14,51 @@
 #include "src/src/language.h"
 #include "src/qml/treemodel.h"
 #include "src/qml/treenode.h"
+
 int main( int argc, char* argv[] )
 {
+    QGuiApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
 
-   QGuiApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
+    QGuiApplication app( argc, argv );
+    app.setWindowIcon( QIcon( ":/qml/icons/app_icon.svg" ) );
 
-   QGuiApplication app( argc, argv );
-   app.setWindowIcon( QIcon( ":/qml/icons/app_icon.svg" ) );
+    QGuiApplication::setOrganizationName( "Timetable" );
+    QGuiApplication::setApplicationName( "Timetable" );
+    QQmlApplicationEngine engine;
+    qRegisterMetaType< Promise >();
+    qRegisterMetaType< QList< QTime > >();
+    qRegisterMetaType< QList< QDateTime > >();
+    qmlRegisterType< timetable::ApiJSON >( "lib", 1, 0, "Api" );
+    qmlRegisterType< timetable::SearchItemModel >( "lib", 1, 0, "BaseSearchModel" );
+    qmlRegisterType< timetable::TableModel >( "lib", 1, 0, "TableModel" );
+    qmlRegisterType< timetable::LocalStorage >( "lib", 1, 0, "Storage" );
+    qmlRegisterType< timetable::SettingsGroupModel >( "lib", 1, 0, "SettingsGroupModel" );
+    qmlRegisterType< timetable::SavedTimetableModel >( "lib", 1, 0, "SaveModel" );
+    qmlRegisterType< timetable::SortFilterModel >( "lib", 1, 0, "SearchFilterModel" );
+    qmlRegisterType< timetable::Settings >( "lib", 1, 0, "Settings" );
+    qmlRegisterType< timetable::LanguageSwitcher >( "lib", 1, 0, "LanguageSwitcher" );
+    qmlRegisterType< TreeNode >( "lib", 1, 0, "TreeNode" );
+    qmlRegisterType< TreeModel >( "lib", 1, 0, "TreeModel" );
 
-   QGuiApplication::setOrganizationName( "Timetable" );
-   QGuiApplication::setApplicationName( "Timetable" );
-   QQmlApplicationEngine engine;
-   qRegisterMetaType<Promise>();
-   qRegisterMetaType<QList<QTime>>();
-   qRegisterMetaType<QList<QDateTime>>();
-   qmlRegisterType<timetable::ApiJSON>( "lib", 1, 0, "Api" );
-   qmlRegisterType<timetable::SearchItemModel>( "lib", 1, 0, "BaseSearchModel" );
-   qmlRegisterType<timetable::TableModel>( "lib", 1, 0, "TableModel" );
-   qmlRegisterType<timetable::LocalStorage>( "lib", 1, 0, "Storage" );
-   qmlRegisterType<timetable::SettingsGroupModel>( "lib", 1, 0, "SettingsGroupModel" );
-   qmlRegisterType<timetable::SavedTimetableModel>( "lib", 1, 0, "SaveModel" );
-   qmlRegisterType<timetable::SortFilterModel>( "lib", 1, 0, "SearchFilterModel" );
-   qmlRegisterType<timetable::Settings>( "lib", 1, 0, "Settings" );
-   qmlRegisterType<timetable::LanguageSwitcher>( "lib", 1, 0, "LanguageSwitcher" );
-   qmlRegisterType<TreeNode>( "lib", 1, 0, "TreeNode" );
-   qmlRegisterType<TreeModel>( "lib", 1, 0, "TreeModel" );
+    qRegisterMetaType< timetable::TableType >( "TableType" );
 
-   qRegisterMetaType<timetable::TableType>( "TableType" );
+    qmlRegisterUncreatableMetaObject(
+       timetable::staticMetaObject, "lib", 1, 0, "TableType", "Error: only enums" );
+    qmlRegisterUncreatableMetaObject( SETTINGS_TYPE::staticMetaObject, "lib", 1, 0,
+       "SETTINGS_TYPE", "Error: only enums" );
+    qmlRegisterUncreatableMetaObject( SETTINGS_GROUP::staticMetaObject, "lib", 1, 0,
+       "SETTINGS_GROUP", "Error: only enums" );
+    qmlRegisterUncreatableMetaObject(
+       CONTROL_TYPE::staticMetaObject, "lib", 1, 0, "CONTROL", "Error: only enums" );
 
-   qmlRegisterUncreatableMetaObject( timetable::staticMetaObject, "lib", 1, 0, "TableType", "Error: only enums" );
-   qmlRegisterUncreatableMetaObject(
-      SETTINGS_TYPE::staticMetaObject, "lib", 1, 0, "SETTINGS_TYPE", "Error: only enums" );
-   qmlRegisterUncreatableMetaObject(
-      SETTINGS_GROUP::staticMetaObject, "lib", 1, 0, "SETTINGS_GROUP", "Error: only enums" );
-   qmlRegisterUncreatableMetaObject( CONTROL_TYPE::staticMetaObject, "lib", 1, 0, "CONTROL", "Error: only enums" );
-
-   const QUrl url( QStringLiteral( "qrc:/main.qml" ) );
-   QObject::connect(
-      &engine, &QQmlApplicationEngine::objectCreated, &app,
-      [url]( QObject* obj, const QUrl& objUrl ) {
-         if( !obj && url == objUrl )
-            QCoreApplication::exit( -1 );
-      },
-      Qt::QueuedConnection );
-   engine.load( url );
-   return app.exec();
+    const QUrl url( QStringLiteral( "qrc:/main.qml" ) );
+    QObject::connect(
+       &engine, &QQmlApplicationEngine::objectCreated, &app,
+       [url]( QObject* obj, const QUrl& objUrl ) {
+           if( !obj && url == objUrl )
+               QCoreApplication::exit( -1 );
+       },
+       Qt::QueuedConnection );
+    engine.load( url );
+    return app.exec();
 }
