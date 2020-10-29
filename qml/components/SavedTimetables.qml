@@ -156,7 +156,7 @@ Page {
                                                                             model.isTeacher,
                                                                             api.scheduleSync(model.id,
                                                                                              model.isTeacher),
-                                                                            model.hideLessons)
+                                                                            saveModel.getHideLessons(model.id))
                             if (newTimetable) {
                                 localStorage.save(TableType.SAVED_TIMETABLE,newTimetable);
                                 saveModel.replaceItem(newTimetable);

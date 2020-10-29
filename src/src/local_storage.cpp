@@ -72,6 +72,7 @@ QVariant LocalStorage::createTimetable( int id, QString title, bool isTeacher,
    const QVariantList& lessons, const QVariantList& hideLessons ) const
 {
     using namespace internal;
+    qDebug() << "Variant List" << hideLessons;
     SavedTimetable timetable;
     timetable.id = id;
     timetable.title = title;
