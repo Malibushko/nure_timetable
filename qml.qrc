@@ -29,5 +29,12 @@
         <file>languages/en.qm</file>
         <file>languages/ru.qm</file>
         <file>qml/components/LessonInfo.qml</file>
+        <file>qml/icons/timetable_settings.svg</file>
+        <file>qml/components/TimetableSettings.qml</file>
+        <file>qml/components/TableSettingsPage.qml</file>
+        <file>qml/icons/down_triangle.svg</file>
+        <file>qml/icons/hide.svg</file>
+        <file>qml/icons/edit.svg</file>
+        <file>qml/icons/done.svg</file>
     </qresource>
 </RCC>

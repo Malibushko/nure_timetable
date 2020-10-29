@@ -9,6 +9,7 @@ import lib 1.0
 ToolBar {
     id: root_
     height: styles.rowHeight*0.75
+
     function backClick() {
         mainView.pop()
     }
@@ -18,7 +19,6 @@ ToolBar {
     }
     RowLayout {
         anchors.fill: parent
-
         HeaderButton {
             id: backButton
             visible: mainView.depth > 1
@@ -46,6 +46,7 @@ ToolBar {
             Layout.preferredWidth: height*2
             Layout.rightMargin: styles.margin
             Layout.leftMargin: styles.margin
+
             visible: mainView.currentItem === timetablePage
 
             FontLoader {
@@ -93,6 +94,7 @@ ToolBar {
             Layout.rightMargin: styles.margin
             icon.source: "qrc:///qml/icons/search.svg"
             ToolTip.text: qsTr("Search for a timetable")
+
             onClicked: {
                 mainView.push(findPage)
             }
@@ -101,7 +103,7 @@ ToolBar {
             id: saveButton
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.rightMargin: styles.margin
-            visible: mainView.currentItem === timetablePage
+            visible: mainView.currentItem === timetablePage && isSaved(timetablePage.modelRef.id())
             enabled: isSaved(timetablePage.modelRef.id())
 
             onVisibleChanged: {
@@ -117,6 +119,11 @@ ToolBar {
             icon.color: enabled ? styles.iconColor : mainHeader.background.color
 
             ToolTip.text: qsTr("Save timetable")
+            MessageDialog {
+                id: dialog
+                parent: overlay
+            }
+
             onClicked: {
                 enabled = false
                 dialog.setData(qsTr("Success"),qsTr("Timetable saved!"));
@@ -124,9 +131,30 @@ ToolBar {
                 var timetable = localStorage.createTimetable(findPage.timetableId,
                                                              findPage.timetableTitle,
                                                              findPage.isTeacher,
-                                                             timetablePage.modelRef.getModel());
+                                                             timetablePage.modelRef.getModel(),
+                                                             timetablePage.modelRef.getHideLessonList());
                 localStorage.save(TableType.SAVED_TIMETABLE,timetable)
                 savedTimetables.modelRef.addItem(timetable);
+            }
+        }
+        HeaderButton {
+            id: timetableSaveButtons
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+            Layout.rightMargin: styles.margin
+
+            visible: mainView.currentItem == timetablePage &&
+                     !isSaved(timetablePage.modelRef.id())
+
+            function isSaved(id) {
+                return savedTimetables.modelRef.find(id) < 0
+            }
+
+            icon.source: "qrc:///qml/icons/hide.svg"
+            icon.color: enabled ? styles.iconColor : mainHeader.background.color
+
+            ToolTip.text: qsTr("Settings")
+            onClicked:  {
+                timetablePage.showSettings()
             }
         }
     }

@@ -15,15 +15,14 @@ Page {
         delegate: Rectangle {
             width: root_.width
             height: styles.rowHeight
-            color: styles.componentColor
+            color: hoverCatch.containsMouse ? Qt.darker(styles.componentColor,1.02) : styles.componentColor
             BottomBorder {
             }
             MouseArea {
+                id: hoverCatch
                 anchors.fill: parent
                 hoverEnabled: styles.animationsEnabled
                 onHoveredChanged: {
-                    parent.color = containsMouse ? Qt.darker(styles.componentColor,1.05) :
-                                                   styles.componentColor;
                     parent.border.color = containsMouse ? styles.accentColor : "transparent"
                     parent.border.width = containsMouse
                 }

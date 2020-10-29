@@ -21,7 +21,6 @@ Page {
             }
         }
     }
-
     /*
       There is a bug in Qt now (05.07.2020)
       ColorDialog may not work on some platform because
@@ -94,7 +93,8 @@ Page {
                     case SETTINGS_TYPE.CLEAR_CACHE_BTN:
                         mainSettings.load(true)
                         dialog.setData(qsTr("Success"),
-                                       qsTr("Settings has been succesfully restored to default. Restart the app to come them into force"));
+                                       qsTr("Settings has been succesfully restored to default.
+                                             Restart the app to come them into force"));
                         break;
                     case SETTINGS_TYPE.RESTORE_DEFAULT_BTN:
                         localStorage.clearStorage();

@@ -19,6 +19,8 @@ set(HEADERS
     ${CMAKE_SOURCE_DIR}/src/qml/saved_model.h
     ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.h
     ${CMAKE_SOURCE_DIR}/src/qml/search_filter_model.h
+    ${CMAKE_SOURCE_DIR}/src/qml/treemodel.h
+    ${CMAKE_SOURCE_DIR}/src/qml/treenode.h
     ${CMAKE_SOURCE_DIR}/src/internal/query_builder.h
     ${CMAKE_SOURCE_DIR}/src/internal/material.h
     ${CMAKE_SOURCE_DIR}/src/internal/executor.h
@@ -26,6 +28,7 @@ set(HEADERS
     ${CMAKE_SOURCE_DIR}/src/internal/api_structs.h
     ${CMAKE_SOURCE_DIR}/src/internal/traits.h
     ${CMAKE_SOURCE_DIR}/src/internal/json_parser.h
+    ${CMAKE_SOURCE_DIR}/src/internal/hide_serialize.h
     ${CMAKE_SOURCE_DIR}/src/internal/macro.h
     ${CMAKE_SOURCE_DIR}/src/src/api.h
     ${CMAKE_SOURCE_DIR}/src/src/database.h
@@ -43,6 +46,8 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/qml/saved_model.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/search_model.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/table_model.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/treemodel.cpp
+    ${CMAKE_SOURCE_DIR}/src/qml/treenode.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/search_filter_model.cpp
     ${CMAKE_SOURCE_DIR}/src/qml/settings_group_model.cpp
     main.cpp)
@@ -56,6 +61,9 @@ qt5_create_translation(GENERATED_TR ${HEADERS} ${SOURCES} ${RESOURCES} ${TRANSLA
 
 if(ANDROID)
     message("Building for android")
+
+    include(/home/malibushko/Android/android_openssl/CMakeLists.txt)
+
     add_library(Timetable2 SHARED
         ${HEADERS}
         ${SOURCES}
@@ -103,5 +111,7 @@ conan_cmake_run(REQUIRES
     BASIC_SETUP
     BUILD missing)
 
+message("Libs:${CONAN_LIBS}")
 target_link_libraries(${PROJECT_NAME}
     PRIVATE Qt5::Core Qt5::Quick Qt5::Sql Qt5::Svg ${CONAN_LIBS})
+

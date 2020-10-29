@@ -28,7 +28,7 @@ Page {
                     }
                     NumberAnimation {
                         property: "y";
-                        to: -(Math.abs(y-styles.rowHeight))
+                        to: y-styles.rowHeight
                         duration: 300
                         easing.type: Easing.OutQuad
                     }
@@ -66,7 +66,7 @@ Page {
             id: rowDelegate
             width: parent.width
             height: styles.rowHeight
-            color: styles.componentColor
+            color: hoverCatch.hovered ? Qt.darker(styles.componentColor,1.05) : styles.componentColor
             Component.onCompleted: {
                 var updateTimeLimit = 12*60*60;
                 if (styles.autoupdating &&
@@ -76,18 +76,20 @@ Page {
             }
 
             MouseArea {
+                id: hoverCatch
                 anchors.fill: parent
                 hoverEnabled: styles.animationsEnabled
                 onHoveredChanged: {
-                    parent.color = containsMouse ? Qt.darker(styles.componentColor,1.05) : styles.componentColor;
                     parent.border.color = containsMouse ? styles.accentColor : "transparent"
                     parent.border.width = containsMouse
                 }
                 onClicked: {
                     var lessons = model.lessons;
                     timetablePage.modelRef.prepareForNewTimetable(lessons.length)
+                    timetablePage.modelRef.setHideLessons(modelRef.getHideLessons(model.id))
                     for (var i in lessons)
                         timetablePage.modelRef.addLesson(model.id,lessons[i])
+                    timetablePage.modelRef.setNotes(localStorage.get(TableType.NOTE,"id="+model.id))
                     mainView.push(timetablePage);
                 }
             }
@@ -100,7 +102,6 @@ Page {
                     Layout.preferredWidth: parent.width/2
                     Layout.alignment: Qt.AlignLeft
                     Layout.preferredHeight: name.height+lastUpdate_.height
-
                     Layout.leftMargin: styles.margin
                     StyledText {
                         id: name
@@ -112,7 +113,7 @@ Page {
                     StyledText {
                         id: lastUpdate_
                         Layout.alignment: Qt.AlignLeft
-                        text: qsTr(lastUpdate)
+                        text: lastUpdate
                         height: lineHeight
                         color: styles.utilityColor
                     }
@@ -154,10 +155,12 @@ Page {
                                                                             model.title,
                                                                             model.isTeacher,
                                                                             api.scheduleSync(model.id,
-                                                                                             model.isTeacher))
-                            localStorage.save(TableType.SAVED_TIMETABLE,newTimetable);
-                            saveModel.replaceItem(newTimetable);
-
+                                                                                             model.isTeacher),
+                                                                            model.hideLessons)
+                            if (newTimetable) {
+                                localStorage.save(TableType.SAVED_TIMETABLE,newTimetable);
+                                saveModel.replaceItem(newTimetable);
+                            }
                             if (styles.animationsEnabled) {
                                 rotationAnimation.stop();
                             }

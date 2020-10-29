@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.15
 
 import lib 1.0
 import "./qml/components"
+import Qt.labs.platform 1.1
 
 ApplicationWindow {
     id: root
@@ -16,6 +17,7 @@ ApplicationWindow {
     Material.theme: styles.appTheme
     Material.accent: styles.accentColor
     Material.primary: styles.primaryColor
+
 
     onClosing: {
         // Close if only if this is the first (main) page
@@ -101,16 +103,16 @@ ApplicationWindow {
     Storage {
         id: localStorage
     }
-
     // Pages
-
     SettingsPage {
         id: settingsPage
     }
     LessonInfo {
         id: lessonInfo
     }
-
+    TableSettingsPage {
+        id: tableSettings
+    }
     SettingsGroupPage {
         id: settingsGroup
     }
@@ -123,11 +125,9 @@ ApplicationWindow {
     SavedTimetables {
         id: savedTimetables
     }
-
     header: Header {
         id: mainHeader
     }
-
     StackView {
         id: mainView
         anchors.fill: parent
