@@ -141,24 +141,24 @@
 <context>
     <name>SettingsGroupPage</name>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="42"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="47"/>
         <source>Please, select a color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="95"/>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="104"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="111"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="96"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="105"/>
         <source>Settings has been succesfully restored to default.
                                              Restart the app to come them into force</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SettingsGroupPage.qml" line="102"/>
+        <location filename="../qml/components/SettingsGroupPage.qml" line="111"/>
         <source>Local storage has been succesfully cleared</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,14 +225,6 @@
     </message>
 </context>
 <context>
-    <name>TimetableTable</name>
-    <message>
-        <location filename="../qml/components/TimetableTable.qml" line="163"/>
-        <source>Your notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>TreeModel</name>
     <message>
         <location filename="../src/qml/treemodel.cpp" line="38"/>
@@ -253,12 +245,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="15"/>
+        <location filename="../main.qml" line="14"/>
         <source>TimeTable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="76"/>
+        <location filename="../main.qml" line="75"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -300,112 +292,112 @@ Probably you have been banned by cist.nure.ua because you made too many requests
 <context>
     <name>timetable::Settings</name>
     <message>
-        <location filename="../src/src/settings.h" line="197"/>
+        <location filename="../src/src/settings.h" line="218"/>
         <source>Undefined type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="199"/>
+        <location filename="../src/src/settings.h" line="220"/>
         <source>Undefined group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="201"/>
+        <location filename="../src/src/settings.h" line="222"/>
         <source>Styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="203"/>
+        <location filename="../src/src/settings.h" line="224"/>
         <source>Primary color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="205"/>
+        <location filename="../src/src/settings.h" line="226"/>
         <source>Accent color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="207"/>
+        <location filename="../src/src/settings.h" line="228"/>
         <source>Theme color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="209"/>
+        <location filename="../src/src/settings.h" line="230"/>
         <source>Night mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="211"/>
+        <location filename="../src/src/settings.h" line="232"/>
         <source>Timetable styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="213"/>
+        <location filename="../src/src/settings.h" line="234"/>
         <source>Credit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="215"/>
+        <location filename="../src/src/settings.h" line="236"/>
         <source>Laboratory work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="217"/>
+        <location filename="../src/src/settings.h" line="238"/>
         <source>Lecture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="219"/>
+        <location filename="../src/src/settings.h" line="240"/>
         <source>Practical work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="221"/>
+        <location filename="../src/src/settings.h" line="242"/>
         <source>Perfomance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="223"/>
+        <location filename="../src/src/settings.h" line="244"/>
         <source>Animations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="225"/>
+        <location filename="../src/src/settings.h" line="246"/>
         <source>Caching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="227"/>
+        <location filename="../src/src/settings.h" line="248"/>
         <source>Miscellaneous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="229"/>
+        <location filename="../src/src/settings.h" line="250"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="231"/>
+        <location filename="../src/src/settings.h" line="252"/>
         <source>Autoupdating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="233"/>
+        <location filename="../src/src/settings.h" line="254"/>
         <source>Restoring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="235"/>
+        <location filename="../src/src/settings.h" line="256"/>
         <source>Clear cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="237"/>
+        <location filename="../src/src/settings.h" line="258"/>
         <source>Reset settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/src/settings.h" line="239"/>
+        <location filename="../src/src/settings.h" line="260"/>
         <source>Show timer</source>
         <translation type="unfinished"></translation>
     </message>

@@ -145,80 +145,6 @@ Page {
         }
     }
 
-    Drawer {
-        id: noteList
-        width: parent.width * 0.75
-        edge: Qt.RightEdge
-        height: parent.height
-        Page {
-            anchors.fill: parent
-            header: Rectangle {
-                width: parent.width
-                height: styles.rowHeight * 0.75
-                color: styles.themeColor
-                StyledText {
-                    anchors.left: parent.left
-                    anchors.leftMargin: styles.margin * 0.75
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("Your notes")
-                    font.bold: true
-                    color: styles.iconColor
-                }
-            }
-
-            ListView {
-                anchors.fill: parent
-                model: ListModel {
-                    ListElement { index: 1; text: "Можно не приходить"}
-                    ListElement { index: 20; text: "Просмотр аниме с 12 до 13. После чего купаться
-                                                    Просмотр аниме с 12 до 13. После чего купаться
-                                                    Просмотр аниме с 12 до 13. После чего купаться
-                                                    Просмотр аниме с 12 до 13. После чего купаться"}
-                    ListElement { index: 35; text: "Уииииииииииииииииии"}
-                    ListElement { index: 100; text: "Дз в телеге"}
-                    ListElement { index: 200; text: "Кек"}
-                }
-                delegate: Rectangle {
-                    width: noteList.width
-                    height: Math.max(noteEdit.height,styles.rowHeight*0.75)
-                    color: hoverCatch.containsMouse ? Qt.darker(styles.componentColor,1.02) : styles.componentColor
-                    Text {
-                        id: noteEdit
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        padding: styles.margin/2
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        width: parent.width - goButton.width
-                        text: model.text
-                        color: styles.textColor
-                    }
-                    RowButton {
-                        id: goButton
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: styles.rowHeight * 0.75
-                        width: height
-                        icon.source: "qrc:///qml/icons/back.svg"
-                        rotation: 180
-                    }
-
-                    MouseArea {
-                        id: hoverCatch
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onClicked: {
-                            tableView.contentX = (tableView.columnWidthProvider(1)-0.5) * model.index
-                            noteList.close()
-                        }
-                    }
-
-
-                    BottomBorder{}
-                }
-            }
-        }
-    }
-
     TableView {
         id: tableView
         width: parent.width
@@ -227,7 +153,12 @@ Page {
         columnSpacing: 1
         property var horizontalHeader
         property var verticalHeader
-        property var columnsPerScreen: 4
+        property var columnsPerScreen: {
+            if (tableView.width > 1280)
+                return 8;
+            else
+                return 4;
+        }
 
         rowHeightProvider: function (row) {
             if (row === rows-1)

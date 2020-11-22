@@ -27,8 +27,8 @@ Page {
                         duration: 200
                     }
                     NumberAnimation {
-                        property: "y";
-                        to: y-styles.rowHeight
+                        property: "scale";
+                        to: 0
                         duration: 300
                         easing.type: Easing.OutQuad
                     }

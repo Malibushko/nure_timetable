@@ -4,7 +4,6 @@ import QtQuick.Controls.Material 2.15
 
 import lib 1.0
 import "./qml/components"
-import Qt.labs.platform 1.1
 
 ApplicationWindow {
     id: root

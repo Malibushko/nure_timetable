@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Dialogs 1.0
+import QtQuick.Dialogs 1.3
 
 import "../styles"
 import lib 1.0
@@ -12,12 +12,16 @@ Page {
     Component {
         id: switchDelegate
         Switch {
+            id: innerItem
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Component.onCompleted: {
                 checked =  modelData
             }
             onCheckedChanged: {
                 modelData = checked
+            }
+            function click() {
+                innerItem.checked = !innerItem.checked
             }
         }
     }
@@ -36,6 +40,7 @@ Page {
             radius: width
             color: modelData
             MouseArea {
+                id: clickCatcher
                 anchors.fill: parent
                 ColorDialog {
                     id: colorPicker
@@ -48,16 +53,20 @@ Page {
                     colorPicker.open()
                 }
             }
+            function click() {
+                colorPicker.open()
+            }
         }
     }
     Component {
         id: numberDelegate
         SpinBox {
-            value: 0
-            onValueChanged: {
-                modelData = value;
-            }
+            from: 1
+            to: 10
+            value: modelData
+            anchors.margins: styles.margin
         }
+
     }
     Component {
         id: listDelegate
@@ -98,10 +107,13 @@ Page {
                         break;
                     case SETTINGS_TYPE.RESTORE_DEFAULT_BTN:
                         localStorage.clearStorage();
-                        savedTimetables.modelRef.clear()
+                        savedTimetables.modelRef.clear();
                         dialog.setData(qsTr("Success"),qsTr("Local storage has been succesfully cleared"));
                         break;
                 }
+            }
+            function click() {
+                clicked()
             }
         }
     }
@@ -114,8 +126,17 @@ Page {
         delegate: Rectangle {
             width: root_.width
             height: styles.rowHeight
-            color: styles.componentColor
+            color: hoverCatch.containsMouse ? Qt.darker(styles.componentColor,1.02) : styles.componentColor
             BottomBorder {}
+            MouseArea {
+                id: hoverCatch
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+                    console.log("Trying to send click")
+                    loaderDelegate.item.click()
+                }
+            }
 
             RowLayout {
                 anchors.fill: parent
@@ -128,6 +149,7 @@ Page {
                 }
                 Loader {
                     id: loaderDelegate
+                    signal clicked()
                     Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                     Layout.preferredWidth: styles.rowHeight * 0.75
                     Layout.preferredHeight: styles.rowHeight * 0.75
@@ -147,6 +169,7 @@ Page {
                             sourceComponent = colorDelegate;
                             break;
                         case CONTROL.NUMBER:
+                            Layout.preferredWidth = styles.rowHeight * 2
                             sourceComponent = numberDelegate;
                             break;
                         case CONTROL.LIST:

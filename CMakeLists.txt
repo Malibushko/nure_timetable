@@ -70,6 +70,7 @@ if(ANDROID)
         ${RESOURCES}
         ${GENERATED_TR}
         )
+    message("Android extra libs: ${ANDROID_EXTRA_LIBS}")
 else()
     message("Building for another platform")
     add_executable(Timetable2
@@ -112,6 +113,10 @@ conan_cmake_run(REQUIRES
     BUILD missing)
 
 message("Libs:${CONAN_LIBS}")
+if (ANDROID)
+    include(/home/malibushko/Android/android_openssl/CMakeLists.txt)
+endif()
+
 target_link_libraries(${PROJECT_NAME}
     PRIVATE Qt5::Core Qt5::Quick Qt5::Sql Qt5::Svg ${CONAN_LIBS})
 
